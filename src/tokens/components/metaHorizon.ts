@@ -174,13 +174,13 @@ export const metaHorizonComponentTokens: ComponentTokens = {
     backgroundColor: metaHorizonSemanticLight.colors.background.primary, // Pure white
     shadow: {
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.05, // Very subtle shadow for depth
-      shadowRadius: 3,
-      elevation: 2,
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0, // NO shadow - completely flat like Meta's design
+      shadowRadius: 0,
+      elevation: 0,
     },
     border: {
-      width: 0, // No border - uses subtle shadow instead
+      width: 0, // No border - completely clean separation
       color: 'transparent',
     },
     title: {
