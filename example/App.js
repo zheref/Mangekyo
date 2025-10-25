@@ -14,17 +14,9 @@ import { TagV2 } from './lib/src/components/Tag/TagV2';
 import { ButtonV2 } from './lib/src/components/Button/ButtonV2';
 import { CardV2 } from './lib/src/components/Card/CardV2';
 import { AppBarV2 } from './lib/src/components/AppBar/AppBarV2';
+import { IconV2 } from './lib/src/components/Icon/IconV2';
 import { fetchBlogPosts, getAllTags, getAllYears, filterBlogPosts } from './lib/src/services/blogService';
 import { convertTypographyToTextStyle } from './lib/src/utils/typography';
-
-// Simple icon components for AppBar (placeholders - replace with react-native-vector-icons)
-const SearchIcon = ({ color = '#65676B', size = 24 }) => {
-  return React.createElement(Text, { style: { fontSize: size, color, opacity: 0.8 } }, '🔍');
-};
-
-const FilterIcon = ({ color = '#65676B', size = 24 }) => {
-  return React.createElement(Text, { style: { fontSize: size, color, opacity: 0.8 } }, '⚙️');
-};
 
 const BlogFeed = () => {
   const { theme, designLanguage, setDesignLanguage, colorScheme, setColorScheme } = useDesignLanguage();
@@ -105,7 +97,13 @@ const BlogFeed = () => {
         <AppBarV2
           title="Now in React Native"
           leftAction={{
-            icon: <SearchIcon color={theme.semantic.colors.text.secondary} />,
+            icon: (
+              <IconV2 
+                name="search" 
+                size={24} 
+                color={theme.semantic.colors.text.secondary}
+              />
+            ),
             onPress: () => console.log('Search pressed'),
             accessibilityLabel: 'Search posts',
           }}
@@ -121,14 +119,13 @@ const BlogFeed = () => {
                   : theme.semantic.colors.interactive.secondary,
                 borderRadius: 16,
               }}>
-                <Text style={{ 
-                  fontSize: 16,
-                  color: showFilters
+                <IconV2 
+                  name={showFilters ? 'close' : 'settings'} 
+                  size={18}
+                  color={showFilters
                     ? '#FFFFFF'
-                    : theme.semantic.colors.text.primary,
-                }}>
-                  {showFilters ? '✕' : '⚙'}
-                </Text>
+                    : theme.semantic.colors.text.primary}
+                />
                 {hasActiveFilters && !showFilters && (
                   <View style={{
                     position: 'absolute',
@@ -149,17 +146,6 @@ const BlogFeed = () => {
           }}
           elevation={true}
         />
-        
-        {/* Subtitle below app bar */}
-        <View style={[styles.subtitleContainer, { 
-          backgroundColor: theme.semantic.colors.surface.elevated,
-          borderBottomWidth: 1,
-          borderBottomColor: theme.semantic.colors.border.secondary,
-        }]}>
-          <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
-            Latest updates • {filteredPosts.length} posts
-          </Text>
-        </View>
       </View>
 
       {/* Design Language Pill Bar */}

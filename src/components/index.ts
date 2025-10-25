@@ -11,3 +11,4 @@ export * from './Image';
 export * from './Tag';
 export * from './ArticleCard';
 export * from './AppBar';
+export * from './Icon';
