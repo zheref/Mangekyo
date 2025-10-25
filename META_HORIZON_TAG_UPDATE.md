@@ -10,10 +10,10 @@ Updated the Meta Horizon tag component to match the authentic pill-shaped badge 
 ### 1. **Border Radius** (Fully Rounded Pills)
 ```diff
 - borderRadius: 6, // Slightly rounded but not fully circular
-+ borderRadius: 16, // Fully rounded pill shape (Meta Horizon style)
++ borderRadius: 100, // Fully rounded pill shape (Meta Horizon style) - large value ensures perfect pills
 ```
 
-**Why**: Meta Horizon uses fully rounded pill-shaped badges (similar to the "New" badges in the reference image) rather than slightly rounded rectangles.
+**Why**: Meta Horizon uses fully rounded pill-shaped badges (like "Communities Beta" in Meta's interface). Using `borderRadius: 100` (a value larger than the element's height) ensures perfect pill shapes with fully rounded ends, regardless of content length.
 
 ### 2. **Horizontal Padding** (More Prominent)
 ```diff
@@ -52,7 +52,7 @@ paddingVertical: spacing[1], // 4px - Compact vertical
 - **Background**: `#E4E6EB` (light gray)
 - **Text Color**: Based on variant (primary text for secondary variant)
 - **Border**: None (`width: 0`)
-- **Border Radius**: `16px` (fully rounded)
+- **Border Radius**: `100px` (fully rounded pill - perfect circular ends)
 - **Padding**: `4px vertical × 12px horizontal`
 - **Typography**: 
   - Font: Inter
@@ -64,7 +64,7 @@ paddingVertical: spacing[1], // 4px - Compact vertical
 - **Background**: `#3A3B3C` (dark gray)
 - **Text Color**: Based on variant (light text for secondary variant)
 - **Border**: None (`width: 0`)
-- **Border Radius**: `16px` (fully rounded)
+- **Border Radius**: `100px` (fully rounded pill - perfect circular ends)
 - **Padding**: `4px vertical × 12px horizontal`
 - **Typography**: Same as light mode
 
@@ -84,9 +84,10 @@ The updated tag styling is automatically applied when using the `metaHorizon` de
 ## Files Modified
 
 1. **`/src/tokens/components/metaHorizon.ts`**
-   - Updated `tag.borderRadius` from 6 to 16
+   - Updated `tag.borderRadius` from 6 → 16 → **100** (for true pill shape)
    - Updated `tag.paddingHorizontal` from `spacing[2]` (8px) to `spacing[3]` (12px)
    - Added clarifying comments
+   - **Final update**: Increased borderRadius to 100 to match Meta's "Communities Beta" pill style
 
 2. **`/src/tokens/semantic/metaHorizon.ts`**
    - Updated comment for `interactive.secondary` to clarify it's used for tag backgrounds

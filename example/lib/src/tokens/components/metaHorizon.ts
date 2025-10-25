@@ -10,7 +10,7 @@ const { spacing, borderRadius, shadows, typography } = basePrimitiveTokens;
  */
 export const metaHorizonComponentTokens: ComponentTokens = {
   button: {
-    borderRadius: 8, // Meta uses consistent 8px radius
+    borderRadius: borderRadius.full, // Meta Horizon uses fully rounded pill buttons (like "Communities Beta")
     paddingVertical: {
       small: spacing[1], // 4px
       medium: spacing[2], // 8px
@@ -126,9 +126,9 @@ export const metaHorizonComponentTokens: ComponentTokens = {
   },
 
   tag: {
-    borderRadius: 6, // Slightly rounded but not fully circular
-    paddingVertical: spacing[1], // 4px
-    paddingHorizontal: spacing[2], // 8px
+    borderRadius: borderRadius.md, // Moderate rounding (8px) - not full pills like buttons
+    paddingVertical: spacing[1], // 4px - Compact vertical
+    paddingHorizontal: spacing[3], // 12px - More generous horizontal
     typography: {
       ...metaHorizonSemanticLight.typography.label.small,
       fontWeight: typography.fontWeights.semibold,

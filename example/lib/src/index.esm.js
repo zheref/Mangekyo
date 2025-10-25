@@ -3478,7 +3478,7 @@ var aeroGlassSemanticDark = _objectSpread2(_objectSpread2({}, aeroGlassSemanticL
 });
 
 var spacing$9 = basePrimitiveTokens.spacing,
-  borderRadius$8 = basePrimitiveTokens.borderRadius,
+  borderRadius$9 = basePrimitiveTokens.borderRadius,
   typography$9 = basePrimitiveTokens.typography;
 /**
  * Holo Design Component Tokens
@@ -3504,7 +3504,7 @@ var spacing$9 = basePrimitiveTokens.spacing,
  */
 var holoComponentTokens = {
   button: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     // Sharp edges - no rounding in Holo
     paddingVertical: {
       small: spacing$9[1],
@@ -3556,7 +3556,7 @@ var holoComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     // Hard edges, no rounding
     padding: {
       none: 0,
@@ -3619,7 +3619,7 @@ var holoComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     // No rounding
     paddingVertical: spacing$9[2],
     // 16dp
@@ -3656,7 +3656,7 @@ var holoComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     aspectRatio: {
       square: 1,
       portrait: 3 / 4,
@@ -3669,7 +3669,7 @@ var holoComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     // Sharp edges
     paddingVertical: spacing$9[1],
     // 8dp
@@ -3693,7 +3693,7 @@ var holoComponentTokens = {
     contentPadding: spacing$9[4]
   },
   articleCard: {
-    borderRadius: borderRadius$8.none,
+    borderRadius: borderRadius$9.none,
     // Sharp edges
     padding: spacing$9[4],
     // 32dp
@@ -3730,7 +3730,7 @@ var holoComponentTokens = {
 };
 
 var spacing$8 = basePrimitiveTokens.spacing,
-  borderRadius$7 = basePrimitiveTokens.borderRadius,
+  borderRadius$8 = basePrimitiveTokens.borderRadius,
   shadows$3 = basePrimitiveTokens.shadows,
   typography$8 = basePrimitiveTokens.typography;
 /**
@@ -3738,7 +3738,7 @@ var spacing$8 = basePrimitiveTokens.spacing,
  */
 var materialComponentTokens = {
   button: {
-    borderRadius: borderRadius$7.sm,
+    borderRadius: borderRadius$8.sm,
     // Material uses subtle corners
     paddingVertical: {
       small: spacing$8[1],
@@ -3780,7 +3780,7 @@ var materialComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$7.sm,
+    borderRadius: borderRadius$8.sm,
     padding: {
       none: 0,
       small: spacing$8[2],
@@ -3827,7 +3827,7 @@ var materialComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$7.sm,
+    borderRadius: borderRadius$8.sm,
     paddingVertical: spacing$8[3],
     paddingHorizontal: spacing$8[4],
     minHeight: 56,
@@ -3848,7 +3848,7 @@ var materialComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$7.sm,
+    borderRadius: borderRadius$8.sm,
     aspectRatio: {
       square: 1,
       portrait: 3 / 4,
@@ -3861,7 +3861,7 @@ var materialComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$7.full,
+    borderRadius: borderRadius$8.full,
     paddingVertical: spacing$8[1],
     paddingHorizontal: spacing$8[3],
     typography: _objectSpread2(_objectSpread2({}, materialSemanticLight.typography.label.small), {}, {
@@ -3877,7 +3877,7 @@ var materialComponentTokens = {
     contentPadding: spacing$8[4]
   },
   articleCard: {
-    borderRadius: borderRadius$7.md,
+    borderRadius: borderRadius$8.md,
     padding: spacing$8[4],
     imageHeight: 200,
     shadow: {
@@ -3905,7 +3905,7 @@ var materialComponentTokens = {
 };
 
 var spacing$7 = basePrimitiveTokens.spacing,
-  borderRadius$6 = basePrimitiveTokens.borderRadius,
+  borderRadius$7 = basePrimitiveTokens.borderRadius,
   typography$7 = basePrimitiveTokens.typography;
 /**
  * Flat Design Component Tokens (iOS 18)
@@ -3913,7 +3913,7 @@ var spacing$7 = basePrimitiveTokens.spacing,
  */
 var flatComponentTokens = {
   button: {
-    borderRadius: borderRadius$6.xl,
+    borderRadius: borderRadius$7.xl,
     // 12px - iOS continuous corner radius
     paddingVertical: {
       small: spacing$7[1],
@@ -3964,7 +3964,7 @@ var flatComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$6['2xl'],
+    borderRadius: borderRadius$7['2xl'],
     // 16px - larger for modern iOS
     padding: {
       none: 0,
@@ -4025,7 +4025,7 @@ var flatComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$6.lg,
+    borderRadius: borderRadius$7.lg,
     // 10px
     paddingVertical: spacing$7[2],
     // 8
@@ -4057,7 +4057,7 @@ var flatComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$6['2xl'],
+    borderRadius: borderRadius$7['2xl'],
     // 16px for modern look
     aspectRatio: {
       square: 1,
@@ -4071,7 +4071,7 @@ var flatComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$6.full,
+    borderRadius: borderRadius$7.full,
     // Pill shape
     paddingVertical: spacing$7[1],
     // 4
@@ -4097,7 +4097,7 @@ var flatComponentTokens = {
     contentPadding: spacing$7[4] // 16
   },
   articleCard: {
-    borderRadius: borderRadius$6['2xl'],
+    borderRadius: borderRadius$7['2xl'],
     // 16px
     padding: spacing$7[4],
     // 16
@@ -4132,11 +4132,11 @@ var flatComponentTokens = {
 };
 
 var spacing$6 = basePrimitiveTokens.spacing,
-  borderRadius$5 = basePrimitiveTokens.borderRadius,
+  borderRadius$6 = basePrimitiveTokens.borderRadius,
   typography$6 = basePrimitiveTokens.typography;
 var liquidGlassComponentTokens = {
   button: {
-    borderRadius: borderRadius$5['2xl'],
+    borderRadius: borderRadius$6['2xl'],
     // Very rounded
     paddingVertical: {
       small: spacing$6[2],
@@ -4178,7 +4178,7 @@ var liquidGlassComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$5['2xl'],
+    borderRadius: borderRadius$6['2xl'],
     padding: {
       none: 0,
       small: spacing$6[4],
@@ -4234,7 +4234,7 @@ var liquidGlassComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$5.xl,
+    borderRadius: borderRadius$6.xl,
     paddingVertical: spacing$6[3],
     paddingHorizontal: spacing$6[4],
     minHeight: 48,
@@ -4260,7 +4260,7 @@ var liquidGlassComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$5['2xl'],
+    borderRadius: borderRadius$6['2xl'],
     aspectRatio: {
       square: 1,
       portrait: 3 / 4,
@@ -4273,7 +4273,7 @@ var liquidGlassComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$5.full,
+    borderRadius: borderRadius$6.full,
     paddingVertical: spacing$6[1],
     paddingHorizontal: spacing$6[4],
     typography: {
@@ -4293,7 +4293,7 @@ var liquidGlassComponentTokens = {
     contentPadding: spacing$6[6]
   },
   articleCard: {
-    borderRadius: borderRadius$5['2xl'],
+    borderRadius: borderRadius$6['2xl'],
     padding: spacing$6[6],
     imageHeight: 240,
     shadow: {
@@ -4321,7 +4321,7 @@ var liquidGlassComponentTokens = {
 };
 
 var spacing$5 = basePrimitiveTokens.spacing,
-  borderRadius$4 = basePrimitiveTokens.borderRadius,
+  borderRadius$5 = basePrimitiveTokens.borderRadius,
   shadows$2 = basePrimitiveTokens.shadows,
   typography$5 = basePrimitiveTokens.typography;
 /**
@@ -4329,7 +4329,7 @@ var spacing$5 = basePrimitiveTokens.spacing,
  */
 var metroComponentTokens = {
   button: {
-    borderRadius: borderRadius$4.xs,
+    borderRadius: borderRadius$5.xs,
     // Metro uses sharp or very subtle corners
     paddingVertical: {
       small: spacing$5[1],
@@ -4372,7 +4372,7 @@ var metroComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$4.sm,
+    borderRadius: borderRadius$5.sm,
     padding: {
       none: 0,
       small: spacing$5[3],
@@ -4419,7 +4419,7 @@ var metroComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$4.xs,
+    borderRadius: borderRadius$5.xs,
     paddingVertical: spacing$5[2],
     paddingHorizontal: spacing$5[3],
     minHeight: 40,
@@ -4445,7 +4445,7 @@ var metroComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$4.none,
+    borderRadius: borderRadius$5.none,
     aspectRatio: {
       square: 1,
       portrait: 3 / 4,
@@ -4458,7 +4458,7 @@ var metroComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$4.xs,
+    borderRadius: borderRadius$5.xs,
     paddingVertical: spacing$5[1],
     paddingHorizontal: spacing$5[3],
     typography: {
@@ -4478,7 +4478,7 @@ var metroComponentTokens = {
     contentPadding: spacing$5[4]
   },
   articleCard: {
-    borderRadius: borderRadius$4.sm,
+    borderRadius: borderRadius$5.sm,
     padding: spacing$5[4],
     imageHeight: 200,
     shadow: {
@@ -4506,11 +4506,11 @@ var metroComponentTokens = {
 };
 
 var spacing$4 = basePrimitiveTokens.spacing,
-  borderRadius$3 = basePrimitiveTokens.borderRadius,
+  borderRadius$4 = basePrimitiveTokens.borderRadius,
   typography$4 = basePrimitiveTokens.typography;
 var fluentComponentTokens = {
   button: {
-    borderRadius: borderRadius$3.sm,
+    borderRadius: borderRadius$4.sm,
     paddingVertical: {
       small: spacing$4[1],
       medium: spacing$4[2],
@@ -4551,7 +4551,7 @@ var fluentComponentTokens = {
     }
   },
   card: {
-    borderRadius: borderRadius$3.md,
+    borderRadius: borderRadius$4.md,
     padding: {
       none: 0,
       small: spacing$4[3],
@@ -4607,7 +4607,7 @@ var fluentComponentTokens = {
     }
   },
   input: {
-    borderRadius: borderRadius$3.sm,
+    borderRadius: borderRadius$4.sm,
     paddingVertical: spacing$4[2],
     paddingHorizontal: spacing$4[3],
     minHeight: 32,
@@ -4633,7 +4633,7 @@ var fluentComponentTokens = {
     }
   },
   image: {
-    borderRadius: borderRadius$3.md,
+    borderRadius: borderRadius$4.md,
     aspectRatio: {
       square: 1,
       portrait: 3 / 4,
@@ -4646,7 +4646,7 @@ var fluentComponentTokens = {
     }
   },
   tag: {
-    borderRadius: borderRadius$3.sm,
+    borderRadius: borderRadius$4.sm,
     paddingVertical: spacing$4[1],
     paddingHorizontal: spacing$4[3],
     typography: {
@@ -4666,7 +4666,7 @@ var fluentComponentTokens = {
     contentPadding: spacing$4[4]
   },
   articleCard: {
-    borderRadius: borderRadius$3.md,
+    borderRadius: borderRadius$4.md,
     padding: spacing$4[4],
     imageHeight: 200,
     shadow: {
@@ -4693,9 +4693,9 @@ var fluentComponentTokens = {
   }
 };
 
-var spacing$3 = basePrimitiveTokens.spacing;
-  basePrimitiveTokens.borderRadius;
-  var shadows$1 = basePrimitiveTokens.shadows,
+var spacing$3 = basePrimitiveTokens.spacing,
+  borderRadius$3 = basePrimitiveTokens.borderRadius,
+  shadows$1 = basePrimitiveTokens.shadows,
   typography$3 = basePrimitiveTokens.typography;
 /**
  * Meta Horizon Design Component Tokens
@@ -4703,8 +4703,8 @@ var spacing$3 = basePrimitiveTokens.spacing;
  */
 var metaHorizonComponentTokens = {
   button: {
-    borderRadius: 8,
-    // Meta uses consistent 8px radius
+    borderRadius: borderRadius$3.full,
+    // Meta Horizon uses fully rounded pill buttons (like "Communities Beta")
     paddingVertical: {
       small: spacing$3[1],
       // 4px
@@ -4841,12 +4841,12 @@ var metaHorizonComponentTokens = {
     }
   },
   tag: {
-    borderRadius: 16,
-    // Fully rounded pill shape (Meta Horizon style)
+    borderRadius: borderRadius$3.md,
+    // Moderate rounding (8px) - not full pills like buttons
     paddingVertical: spacing$3[1],
     // 4px - Compact vertical
     paddingHorizontal: spacing$3[3],
-    // 12px - More generous horizontal for pill shape
+    // 12px - More generous horizontal
     typography: _objectSpread2(_objectSpread2({}, metaHorizonSemanticLight.typography.label.small), {}, {
       fontWeight: typography$3.fontWeights.semibold
     }),

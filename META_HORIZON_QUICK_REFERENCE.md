@@ -196,7 +196,7 @@ xl: 24px  (component.paddingXl)
 ```typescript
 buttons: 8px    // Subtle rounding
 cards:   16px   // More pronounced (Meta Horizon standard)
-tags:    16px   // Fully rounded pills
+tags:    100px  // Fully rounded pills (ensures perfect circular ends)
 inputs:  8px    // Matching buttons
 ```
 
