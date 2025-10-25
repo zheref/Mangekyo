@@ -191,4 +191,81 @@ export const materialComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.full, // Material uses pill shape
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[2],
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[6],
+    },
+    typography: {
+      small: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography.fontWeights.medium,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+      medium: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography.fontWeights.medium,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+      large: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 17,
+        fontWeight: typography.fontWeights.medium,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+    },
+    border: {
+      width: 0,
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.15,
+        shadowRadius: 2,
+        elevation: 2,
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 4,
+      },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: materialSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.08,
+      shadowRadius: 2,
+      elevation: 2,
+    },
+  },
 };

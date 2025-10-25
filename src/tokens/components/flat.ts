@@ -207,5 +207,82 @@ export const flatComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius['2xl'], // 16px - iOS rounded corners
+    paddingVertical: {
+      small: spacing[1], // 4
+      medium: spacing[1.5], // 6
+      large: spacing[2], // 8
+    },
+    paddingHorizontal: {
+      small: spacing[3], // 12
+      medium: spacing[4], // 16
+      large: spacing[5], // 20
+    },
+    typography: {
+      small: {
+        fontFamily: 'System',
+        fontSize: 13,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.3,
+        letterSpacing: -0.08,
+      },
+      medium: {
+        fontFamily: 'System',
+        fontSize: 15,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.33,
+        letterSpacing: -0.24,
+      },
+      large: {
+        fontFamily: 'System',
+        fontSize: 17,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.29,
+        letterSpacing: -0.41,
+      },
+    },
+    border: {
+      width: 0,
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.04,
+        shadowRadius: 2,
+        elevation: 1,
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.05,
+        shadowRadius: 3,
+        elevation: 2,
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
+        elevation: 3,
+      },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: flatSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4], // 16
+    gap: spacing[2], // 8
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.04,
+      shadowRadius: 3,
+      elevation: 1,
+    },
+  },
 };
 

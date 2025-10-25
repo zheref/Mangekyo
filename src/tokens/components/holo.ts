@@ -229,5 +229,82 @@ export const holoComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.none, // Sharp edges, no rounding
+    paddingVertical: {
+      small: spacing[1], // 8dp
+      medium: spacing[2], // 16dp
+      large: spacing[2], // 16dp
+    },
+    paddingHorizontal: {
+      small: spacing[3], // 24dp
+      medium: spacing[4], // 32dp
+      large: spacing[6], // 48dp
+    },
+    typography: {
+      small: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 12,
+        fontWeight: typography.fontWeights.bold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+      medium: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 14,
+        fontWeight: typography.fontWeights.bold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+      large: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 16,
+        fontWeight: typography.fontWeights.bold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
+      },
+    },
+    border: {
+      width: 1, // Holo uses borders
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 1,
+        elevation: 1,
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 2,
+        elevation: 2,
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 3,
+      },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: 'transparent',
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+  },
 };
 

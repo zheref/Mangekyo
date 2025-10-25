@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator, Pressable } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { 
@@ -15,8 +15,9 @@ import { ButtonV2 } from './lib/src/components/Button/ButtonV2';
 import { CardV2 } from './lib/src/components/Card/CardV2';
 import { AppBarV2 } from './lib/src/components/AppBar/AppBarV2';
 import { IconV2 } from './lib/src/components/Icon/IconV2';
+import { PillV2 } from './lib/src/components/Pill/PillV2';
+import { PillBarV2 } from './lib/src/components/Pill/PillBarV2';
 import { fetchBlogPosts, getAllTags, getAllYears, filterBlogPosts } from './lib/src/services/blogService';
-import { convertTypographyToTextStyle } from './lib/src/utils/typography';
 
 const BlogFeed = () => {
   const { theme, designLanguage, setDesignLanguage, colorScheme, setColorScheme } = useDesignLanguage();
@@ -149,68 +150,21 @@ const BlogFeed = () => {
       </View>
 
       {/* Design Language Pill Bar */}
-      <View style={[styles.pillBar, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.pillBarContent}
-        >
-          {languages.map((lang) => {
-            const isSelected = designLanguage === lang.value;
-            const buttonTokens = theme.components.button;
-            
-            // Meta Horizon uses subtle gray for selected, transparent for unselected
-            const isMetaHorizon = designLanguage === 'metaHorizon';
-            const selectedBg = isMetaHorizon 
-              ? '#E4E6EB'  // Light gray for Meta Horizon
-              : theme.semantic.colors.interactive.primary;
-            const unselectedBg = isMetaHorizon
-              ? 'transparent'  // Transparent for Meta Horizon
-              : theme.semantic.colors.surface.secondary;
-            const selectedTextColor = isMetaHorizon
-              ? theme.semantic.colors.text.primary  // Dark text for Meta Horizon
-              : '#FFFFFF';
-            
-            return (
-              <Pressable
-                key={lang.value}
-                onPress={() => setDesignLanguage(lang.value)}
-                style={[
-                  {
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingHorizontal: buttonTokens.paddingHorizontal.medium,
-                    paddingVertical: buttonTokens.paddingVertical.medium,
-                    borderRadius: buttonTokens.borderRadius,
-                    borderWidth: buttonTokens.border?.width || 0,
-                    gap: 6,
-                    backgroundColor: isSelected ? selectedBg : unselectedBg,
-                    borderColor: isSelected
-                      ? (isMetaHorizon ? 'transparent' : theme.semantic.colors.interactive.primary)
-                      : theme.semantic.colors.border.secondary,
-                    // Apply shadow for elevated design languages (not for Meta Horizon)
-                    ...(buttonTokens.shadow?.medium && isSelected && !isMetaHorizon ? buttonTokens.shadow.medium : {}),
-                  },
-                ]}
-              >
-                <Text style={styles.pillEmoji}>{lang.emoji}</Text>
-                <Text
-                  style={[
-                    convertTypographyToTextStyle(buttonTokens.typography.medium),
-                    {
-                      color: isSelected
-                        ? selectedTextColor
-                        : theme.semantic.colors.text.primary,
-                    },
-                  ]}
-                >
-                  {lang.label}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-      </View>
+      <PillBarV2>
+        {languages.map((lang) => {
+          const isSelected = designLanguage === lang.value;
+          return (
+            <PillV2
+              key={lang.value}
+              label={lang.label}
+              icon={<Text style={styles.pillEmoji}>{lang.emoji}</Text>}
+              selected={isSelected}
+              onPress={() => setDesignLanguage(lang.value)}
+              size="medium"
+            />
+          );
+        })}
+      </PillBarV2>
 
       <ScrollView
         style={styles.scrollView}
@@ -390,19 +344,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  pillBar: {
-    paddingVertical: 10,
-    elevation: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-  },
-  pillBarContent: {
-    paddingHorizontal: 16,
-    gap: 8,
-    alignItems: 'center',
   },
   pillEmoji: {
     fontSize: 16,

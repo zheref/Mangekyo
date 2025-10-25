@@ -189,5 +189,54 @@ export const metaHorizonComponentTokens: ComponentTokens = {
     },
     iconSize: 24, // Standard icon size for app bar actions
   },
+
+  pill: {
+    borderRadius: borderRadius.full, // Fully rounded pills like buttons
+    paddingVertical: {
+      small: spacing[1], // 4px
+      medium: spacing[2], // 8px
+      large: spacing[2], // 8px
+    },
+    paddingHorizontal: {
+      small: spacing[3], // 12px
+      medium: spacing[4], // 16px
+      large: spacing[6], // 24px
+    },
+    typography: {
+      small: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 13,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      medium: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 15,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      large: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 17,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+    },
+    border: {
+      width: 0, // No border for Meta Horizon pills
+    },
+    // No shadow for Meta Horizon pills
+  },
+
+  pillBar: {
+    backgroundColor: metaHorizonSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4], // 16px
+    gap: spacing[2], // 8px
+    // NO shadow for Meta Horizon pill bar - completely flat
+  },
 };
 

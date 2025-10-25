@@ -96,4 +96,45 @@ export const liquidGlassComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.full, // Fully rounded for glass effect
+    paddingVertical: {
+      small: spacing[2],
+      medium: spacing[3],
+      large: spacing[4],
+    },
+    paddingHorizontal: {
+      small: spacing[4],
+      medium: spacing[6],
+      large: spacing[8],
+    },
+    typography: {
+      small: { fontFamily: 'Inter, System', fontSize: 13, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      medium: { fontFamily: 'Inter, System', fontSize: 15, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      large: { fontFamily: 'Inter, System', fontSize: 17, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+    },
+    border: {
+      width: 1,
+    },
+    shadow: {
+      small: { shadowColor: 'rgba(0, 0, 0, 0.1)', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 8, elevation: 1 },
+      medium: { shadowColor: 'rgba(0, 0, 0, 0.1)', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.12, shadowRadius: 16, elevation: 2 },
+      large: { shadowColor: 'rgba(0, 0, 0, 0.1)', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.15, shadowRadius: 24, elevation: 3 },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: liquidGlassSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[3],
+    shadow: {
+      shadowColor: 'rgba(0, 0, 0, 0.1)',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 16,
+      elevation: 2,
+    },
+  },
 };

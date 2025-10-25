@@ -200,4 +200,53 @@ export const metroComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.none, // Metro flat design, no rounding
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[3],
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[6],
+    },
+    typography: {
+      small: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      medium: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      large: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 17,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+    },
+    border: {
+      width: 1, // Metro uses borders
+    },
+    // No shadow for Metro
+  },
+
+  pillBar: {
+    backgroundColor: metroSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    // No shadow for Metro - flat design
+  },
 };

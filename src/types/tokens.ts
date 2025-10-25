@@ -421,6 +421,41 @@ export interface ComponentTokens {
     title: TypographyStyle;
     iconSize: number;
   };
+
+  pill: {
+    borderRadius: number;
+    paddingVertical: {
+      small: number;
+      medium: number;
+      large: number;
+    };
+    paddingHorizontal: {
+      small: number;
+      medium: number;
+      large: number;
+    };
+    typography: {
+      small: TypographyStyle;
+      medium: TypographyStyle;
+      large: TypographyStyle;
+    };
+    border?: {
+      width: number;
+    };
+    shadow?: {
+      small?: ShadowDefinition;
+      medium?: ShadowDefinition;
+      large?: ShadowDefinition;
+    };
+  };
+
+  pillBar: {
+    backgroundColor: string;
+    paddingVertical: number;
+    contentPaddingHorizontal: number;
+    gap: number;
+    shadow?: ShadowDefinition;
+  };
 }
 
 /**

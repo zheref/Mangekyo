@@ -206,4 +206,81 @@ export const aquaComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.lg, // Aqua has rounded corners
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[2],
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[5],
+    },
+    typography: {
+      small: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 11,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      medium: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      large: {
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+    },
+    border: {
+      width: 1,
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 1,
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
+        elevation: 2,
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 3,
+      },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: aquaSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+  },
 };

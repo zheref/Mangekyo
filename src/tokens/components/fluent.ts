@@ -96,4 +96,45 @@ export const fluentComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.sm,
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[3],
+    },
+    paddingHorizontal: {
+      small: spacing[4],
+      medium: spacing[6],
+      large: spacing[8],
+    },
+    typography: {
+      small: { fontFamily: 'Segoe UI Variable, System', fontSize: 13, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      medium: { fontFamily: 'Segoe UI Variable, System', fontSize: 15, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      large: { fontFamily: 'Segoe UI Variable, System', fontSize: 17, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+    },
+    border: {
+      width: 1,
+    },
+    shadow: {
+      small: { shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.05, shadowRadius: 2, elevation: 1 },
+      medium: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 4, elevation: 2 },
+      large: { shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 4 },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: fluentSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.06,
+      shadowRadius: 3,
+      elevation: 2,
+    },
+  },
 };
