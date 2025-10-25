@@ -20,15 +20,14 @@ const BlogFeed = () => {
   const [availableYears, setAvailableYears] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // Design language options
+  // Mobile Design language options
   const languages = [
-    { value: 'material', label: 'Material', platform: 'Mobile' },
-    { value: 'cupertino', label: 'Cupertino', platform: 'iOS' },
-    { value: 'aqua', label: 'Aqua', platform: 'macOS' },
-    { value: 'aeroGlass', label: 'Aero', platform: 'Windows' },
-    { value: 'metro', label: 'Metro', platform: 'Windows' },
-    { value: 'fluent', label: 'Fluent', platform: 'Windows' },
-    { value: 'liquidGlass', label: 'Liquid', platform: 'Modern' },
+    { value: 'holo', label: 'Holo', emoji: '🤖' },
+    { value: 'material', label: 'Material', emoji: '🎨' },
+    { value: 'flag', label: 'Flag', emoji: '🍎' },
+    { value: 'liquidGlass', label: 'Liquid', emoji: '💎' },
+    { value: 'metro', label: 'Metro', emoji: '📱' },
+    { value: 'fluent', label: 'Fluent', emoji: '🪟' },
   ];
 
   // Load blog posts
@@ -86,12 +85,12 @@ const BlogFeed = () => {
       {/* Header */}
       <View style={[styles.header, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
         <View style={styles.headerContent}>
-          <View>
+          <View style={styles.headerLeft}>
             <Text style={[styles.title, { color: theme.semantic.colors.text.primary }]}>
               Now in React Native
             </Text>
             <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
-              Latest updates from the React Native blog
+              Latest updates • {filteredPosts.length} posts
             </Text>
           </View>
 
@@ -116,10 +115,53 @@ const BlogFeed = () => {
                 },
               ]}
             >
-              Filters {hasActiveFilters ? `(${selectedTags.length + (selectedYear ? 1 : 0)})` : ''}
+              {showFilters ? '✕' : '⚙'} {hasActiveFilters ? `(${selectedTags.length + (selectedYear ? 1 : 0)})` : ''}
             </Text>
           </Pressable>
         </View>
+      </View>
+
+      {/* Design Language Pill Bar */}
+      <View style={[styles.pillBar, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.pillBarContent}
+        >
+          {languages.map((lang) => (
+            <Pressable
+              key={lang.value}
+              onPress={() => setDesignLanguage(lang.value)}
+              style={[
+                styles.pill,
+                {
+                  backgroundColor:
+                    designLanguage === lang.value
+                      ? theme.semantic.colors.interactive.primary
+                      : theme.semantic.colors.surface.secondary,
+                  borderColor: designLanguage === lang.value 
+                    ? theme.semantic.colors.interactive.primary 
+                    : theme.semantic.colors.border.secondary,
+                },
+              ]}
+            >
+              <Text style={styles.pillEmoji}>{lang.emoji}</Text>
+              <Text
+                style={[
+                  styles.pillText,
+                  {
+                    color:
+                      designLanguage === lang.value
+                        ? '#FFFFFF'
+                        : theme.semantic.colors.text.primary,
+                  },
+                ]}
+              >
+                {lang.label}
+              </Text>
+            </Pressable>
+          ))}
+        </ScrollView>
       </View>
 
       <ScrollView
@@ -127,36 +169,6 @@ const BlogFeed = () => {
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
-        {/* Design Language Selector */}
-        <CardV2 elevation="small">
-          <Text style={[styles.sectionTitle, { color: theme.semantic.colors.text.primary }]}>
-            Design Language: {languages.find(l => l.value === designLanguage)?.label}
-          </Text>
-          <View style={styles.languageGrid}>
-            {languages.map((lang) => (
-              <View key={lang.value} style={styles.languageButton}>
-                <ButtonV2
-                  title={lang.label}
-                  onPress={() => setDesignLanguage(lang.value)}
-                  variant={designLanguage === lang.value ? 'primary' : 'secondary'}
-                  size="small"
-                />
-              </View>
-            ))}
-          </View>
-
-          <View style={styles.themeToggle}>
-            <Text style={[styles.themeLabel, { color: theme.semantic.colors.text.primary }]}>
-              {colorScheme === 'light' ? 'Light Mode' : 'Dark Mode'}
-            </Text>
-            <ButtonV2
-              title="Toggle Theme"
-              onPress={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}
-              variant="secondary"
-              size="small"
-            />
-          </View>
-        </CardV2>
 
         {/* Filters */}
         {showFilters && (
@@ -253,14 +265,16 @@ const BlogFeed = () => {
           </View>
         )}
 
-        {/* Footer */}
+        {/* Theme Toggle Footer */}
         <View style={styles.footer}>
-          <Text style={[styles.footerText, { color: theme.semantic.colors.text.tertiary }]}>
-            Running on {Platform.OS} • {colorScheme} mode • {designLanguage}
-          </Text>
-          <Text style={[styles.footerText, { color: theme.semantic.colors.text.tertiary }]}>
-            Powered by Mangekyo Design System
-          </Text>
+          <Pressable
+            onPress={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}
+            style={[styles.themeToggleButton, { backgroundColor: theme.semantic.colors.surface.secondary }]}
+          >
+            <Text style={[styles.themeToggleText, { color: theme.semantic.colors.text.primary }]}>
+              {colorScheme === 'light' ? '🌙' : '☀️'} {colorScheme === 'light' ? 'Dark' : 'Light'} Mode
+            </Text>
+          </Pressable>
         </View>
       </ScrollView>
     </View>
@@ -270,7 +284,7 @@ const BlogFeed = () => {
 export default function App() {
   // Auto-select design language based on platform
   const defaultLanguage = Platform.select({
-    ios: 'cupertino',
+    ios: 'flag',
     android: 'material',
     default: 'material',
   });
@@ -289,9 +303,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  pillBar: {
+    paddingVertical: 10,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+  },
+  pillBarContent: {
+    paddingHorizontal: 16,
+    gap: 8,
+    alignItems: 'center',
+  },
+  pill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+    gap: 6,
+  },
+  pillEmoji: {
+    fontSize: 16,
+  },
+  pillText: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
   header: {
-    paddingTop: Platform.OS === 'ios' ? 60 : 40,
-    paddingBottom: 16,
+    paddingTop: Platform.OS === 'ios' ? 60 : 20,
+    paddingBottom: 12,
     paddingHorizontal: 16,
     elevation: 2,
     shadowColor: '#000',
@@ -304,21 +347,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  headerLeft: {
+    flex: 1,
+  },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '700',
-    marginBottom: 4,
+    marginBottom: 2,
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: 13,
   },
   filterButton: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 8,
+    minWidth: 40,
+    alignItems: 'center',
   },
   filterButtonText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
   },
   scrollView: {
@@ -329,37 +377,15 @@ const styles = StyleSheet.create({
     gap: 16,
     paddingBottom: 40,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 12,
-  },
-  languageGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 16,
-  },
-  languageButton: {
-    width: '30%',
-  },
-  themeToggle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(0,0,0,0.1)',
-  },
-  themeLabel: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
   filterHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
   },
   filterSection: {
     marginBottom: 16,
@@ -395,18 +421,23 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   postsContainer: {
-    gap: 16,
+    gap: 12,
   },
   articleCard: {
     marginBottom: 0,
   },
   footer: {
-    marginTop: 32,
-    paddingVertical: 24,
+    marginTop: 24,
+    paddingVertical: 16,
     alignItems: 'center',
-    gap: 8,
   },
-  footerText: {
-    fontSize: 12,
+  themeToggleButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 24,
+  },
+  themeToggleText: {
+    fontSize: 15,
+    fontWeight: '600',
   },
 });

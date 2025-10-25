@@ -2,13 +2,15 @@
  * Design Language Types
  */
 export type DesignLanguage =
+  | 'holo'        // Android Holo Design (2011-2014)
   | 'material'    // Google Material Design (2014-Present)
-  | 'cupertino'   // Apple iOS/macOS (2013-Present)
-  | 'aqua'        // Classic macOS (2000-2014)
-  | 'aeroGlass'   // Windows Vista/7 (2006-2012)
-  | 'metro'       // Windows 8 (2012-2015)
-  | 'fluent'      // Windows 10/11 (2017-Present)
-  | 'liquidGlass'; // Modern Glassmorphism (2020-Present)
+  | 'flag'        // Apple iOS Mobile (2013-Present)
+  | 'liquidGlass' // Modern Liquid Glass (2020-Present)
+  | 'metro'       // Windows 8 Metro UI (2012-2015)
+  | 'fluent'      // Windows Fluent 2 (2017-Present)
+  | 'cupertino'   // Apple iOS/macOS (2013-Present) - kept for compatibility
+  | 'aqua'        // Classic macOS (2000-2014) - kept for compatibility
+  | 'aeroGlass';  // Windows Vista/7 (2006-2012) - kept for compatibility
 
 export type ColorScheme = 'light' | 'dark';
 
