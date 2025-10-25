@@ -18,6 +18,8 @@ export interface ArticleCardV2Props {
   onTagPress?: (tag: string) => void;
   style?: ViewStyle;
   designLanguage?: DesignLanguage; // Override global design language
+  layout?: 'vertical' | 'horizontal'; // Layout variant
+  showImage?: boolean; // Whether to show image/icon
 }
 
 export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
@@ -32,6 +34,8 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
   onTagPress,
   style,
   designLanguage: overrideDesignLanguage,
+  layout = 'vertical',
+  showImage = true,
 }) => {
   const { theme, designLanguage: globalDesignLanguage } = useDesignLanguage();
   const activeDesignLanguage = overrideDesignLanguage ?? globalDesignLanguage;
@@ -57,9 +61,9 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
     overflow: 'hidden',
   };
 
-  const content = (
-    <View style={[styles.container, containerStyle, style]}>
-      {imageUrl && (
+  const renderVerticalLayout = () => (
+    <>
+      {showImage && imageUrl && (
         <ImageV2
           source={{ uri: imageUrl }}
           aspectRatio="wide"
@@ -69,7 +73,6 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
       )}
 
       <View style={[styles.content, { padding: articleCardTokens.padding }]}>
-        {/* Title */}
         <Text
           style={[
             styles.title,
@@ -81,7 +84,6 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
           {title}
         </Text>
 
-        {/* Excerpt */}
         <Text
           style={[
             styles.excerpt,
@@ -96,7 +98,6 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
           {excerpt}
         </Text>
 
-        {/* Tags */}
         {tags.length > 0 && (
           <View
             style={[
@@ -117,7 +118,6 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
           </View>
         )}
 
-        {/* Meta information */}
         <View
           style={[
             styles.meta,
@@ -135,6 +135,71 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
             {readTime && ` • ${readTime}`}
           </Text>
         </View>
+      </View>
+    </>
+  );
+
+  const renderHorizontalLayout = () => (
+    <View style={styles.horizontalContent}>
+      {/* Logo/Icon on the left */}
+      {showImage && (
+        <View
+          style={[
+            styles.iconContainer,
+            {
+              backgroundColor: semantic.colors.interactive.primary,
+              borderRadius: articleCardTokens.borderRadius / 2,
+            },
+          ]}
+        >
+          <Text style={styles.iconText}>⚛️</Text>
+        </View>
+      )}
+
+      {/* Content on the right */}
+      <View style={styles.horizontalTextContent}>
+        <Text
+          style={[
+            convertTypographyToTextStyle(semantic.typography.heading.h6),
+            { color: semantic.colors.text.primary },
+          ]}
+          numberOfLines={2}
+        >
+          {title}
+        </Text>
+
+        <Text
+          style={[
+            convertTypographyToTextStyle(semantic.typography.body.small),
+            {
+              color: semantic.colors.text.secondary,
+              marginTop: articleCardTokens.spacing.contentGap / 2,
+            },
+          ]}
+          numberOfLines={2}
+        >
+          {excerpt}
+        </Text>
+
+        <View style={[styles.meta, { marginTop: articleCardTokens.spacing.metaGap }]}>
+          <Text
+            style={[
+              convertTypographyToTextStyle(semantic.typography.label.small),
+              { color: semantic.colors.text.tertiary },
+            ]}
+          >
+            {formatDate(date)}
+            {readTime && ` • ${readTime}`}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+
+  const content = (
+    <View style={[styles.container, containerStyle, style]}>
+      <View style={[styles.innerContent, { padding: layout === 'horizontal' ? articleCardTokens.padding : 0 }]}>
+        {layout === 'horizontal' ? renderHorizontalLayout() : renderVerticalLayout()}
       </View>
     </View>
   );
@@ -157,8 +222,11 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
   },
+  innerContent: {
+    // Padding is set dynamically for horizontal layout
+  },
   content: {
-    // Padding is set dynamically from tokens
+    // Padding is set dynamically from tokens for vertical layout
   },
   title: {
     // Typography is set dynamically from semantic tokens
@@ -177,6 +245,24 @@ const styles = StyleSheet.create({
   meta: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  horizontalContent: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+  },
+  iconContainer: {
+    width: 56,
+    height: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  iconText: {
+    fontSize: 32,
+  },
+  horizontalTextContent: {
+    flex: 1,
   },
   pressed: {
     opacity: 0.8,

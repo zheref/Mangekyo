@@ -243,9 +243,8 @@ const BlogFeed = () => {
                 excerpt={post.excerpt}
                 date={post.date}
                 author={post.author?.name}
-                imageUrl={post.imageUrl}
-                tags={post.tags}
                 readTime={post.readTime}
+                layout="horizontal"
                 onPress={() => console.log('Open post:', post.title)}
                 onTagPress={toggleTag}
                 style={styles.articleCard}
