@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { 
+  Inter_400Regular, 
+  Inter_500Medium, 
+  Inter_600SemiBold, 
+  Inter_700Bold 
+} from '@expo-google-fonts/inter';
 import { DesignLanguageProvider, useDesignLanguage } from './lib/src/themes/DesignLanguageContext';
 import { ArticleCardV2 } from './lib/src/components/ArticleCard/ArticleCardV2';
 import { TagV2 } from './lib/src/components/Tag/TagV2';
@@ -29,6 +35,7 @@ const BlogFeed = () => {
     { value: 'liquidGlass', label: 'Liquid', emoji: '💎' },
     { value: 'metro', label: 'Metro', emoji: '📱' },
     { value: 'fluent', label: 'Fluent', emoji: '🪟' },
+    { value: 'metaHorizon', label: 'Meta', emoji: '🥽' },
   ];
 
   // Load blog posts
@@ -283,12 +290,18 @@ const BlogFeed = () => {
 };
 
 export default function App() {
-  // Load Roboto fonts for Holo Design theme
+  // Load fonts for different design themes
   const [fontsLoaded] = useFonts({
+    // Roboto for Holo Design
     'Roboto-Light': Roboto_300Light,
     'Roboto-Regular': Roboto_400Regular,
     'Roboto-Medium': Roboto_500Medium,
     'Roboto-Bold': Roboto_700Bold,
+    // Inter for Meta Horizon Design
+    'Inter': Inter_400Regular,
+    'Inter-Medium': Inter_500Medium,
+    'Inter-SemiBold': Inter_600SemiBold,
+    'Inter-Bold': Inter_700Bold,
   });
 
   // Auto-select design language based on platform

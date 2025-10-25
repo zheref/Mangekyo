@@ -9,12 +9,14 @@ Switch between different design systems seamlessly! Your components can now look
 - **Material Design** (Google) - Bold shadows, vibrant colors
 - **Cupertino** (Apple iOS) - Soft shadows, rounded corners
 - **Metro** (Microsoft Windows) - Minimal shadows, sharp edges
+- **Meta Horizon** (Meta/Facebook) - Modern, clean, VR/AR-optimized
+- **And 5+ more!** - Fluent, Holo, Aqua, Aero Glass, Liquid Glass
 
 **[📖 Read the Design Language Guide →](./DESIGN_LANGUAGE_GUIDE.md)**
 
 ## Features
 
-- 🎨 **Multi-Design Language Support** - Material, Cupertino, Metro, and more (7 design languages!)
+- 🎨 **Multi-Design Language Support** - Material, Cupertino, Metro, Meta Horizon, and more (10 design languages!)
 - 📰 **Real-World Example** - "Now in React Native" blog feed app
 - 🌓 **Dark Mode** - Full dark mode support for every design language
 - 📱 **React Native** - Works seamlessly with React Native applications
@@ -38,7 +40,7 @@ The example app demonstrates Mangekyo by creating a fully functional blog feed a
 
 - 📰 **React Native Blog Feed**: Displays latest posts from the React Native blog
 - 🔍 **Advanced Filtering**: Filter by tags and year
-- 🎨 **7 Design Languages**: Switch between Material, Cupertino, Aqua, Aero Glass, Metro, Fluent, and Liquid Glass
+- 🎨 **10 Design Languages**: Switch between Material, Cupertino, Metro, Meta Horizon, Fluent, Holo, Liquid Glass, Aqua, Aero Glass
 - 🌓 **Theme Toggle**: Light and dark mode support
 - 📱 **Responsive Design**: Adapts to different screen sizes
 
@@ -136,7 +138,7 @@ import {
 function App() {
   return (
     <DesignLanguageProvider
-      initialDesignLanguage="material"  // or "cupertino" or "metro"
+      initialDesignLanguage="material"  // or "cupertino", "metro", "metaHorizon", etc.
       initialColorScheme="light"        // or "dark"
     >
       <CardV2 elevation="medium" padding="large">
@@ -161,6 +163,7 @@ function LanguageSwitcher() {
       <ButtonV2 title="Material" onPress={() => setDesignLanguage('material')} />
       <ButtonV2 title="iOS" onPress={() => setDesignLanguage('cupertino')} />
       <ButtonV2 title="Windows" onPress={() => setDesignLanguage('metro')} />
+      <ButtonV2 title="Meta" onPress={() => setDesignLanguage('metaHorizon')} />
       <ButtonV2 title="Toggle Dark Mode" onPress={toggleColorScheme} />
     </>
   );
@@ -340,6 +343,24 @@ mangekyo/
 ├── dist/                # Built files (generated)
 └── package.json
 ```
+
+## Documentation
+
+### Design Language Guides
+
+- **[Design Language Guide](./DESIGN_LANGUAGE_GUIDE.md)** - Comprehensive overview of all design languages
+- **[Design Language Architecture](./DESIGN_LANGUAGE_ARCHITECTURE.md)** - Technical architecture details
+- **[Meta Horizon Design Guide](./META_HORIZON_DESIGN_GUIDE.md)** - Complete Meta Horizon implementation guide
+- **[Meta Horizon Quick Reference](./META_HORIZON_QUICK_REFERENCE.md)** - Quick reference for Meta Horizon
+- **[Meta Horizon Font Note](./META_HORIZON_FONT_NOTE.md)** - Font implementation details (Inter vs Optimist)
+- **[Holo Design Guide](./HOLO_DESIGN_GUIDE.md)** - Android Holo design system
+- **[Storybook Guide](./STORYBOOK_GUIDE.md)** - Using Storybook with Mangekyo
+
+### Additional Resources
+
+- **[Getting Started](./GETTING_STARTED.md)** - Step-by-step getting started guide
+- **[Project Overview](./PROJECT_OVERVIEW.md)** - High-level project overview
+- **[Example App README](./example/README.md)** - "Now in React Native" example documentation
 
 ## Contributing
 

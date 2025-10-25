@@ -8,6 +8,7 @@ export type DesignLanguage =
   | 'liquidGlass' // Modern Liquid Glass (2020-Present)
   | 'metro'       // Windows 8 Metro UI (2012-2015)
   | 'fluent'      // Windows Fluent 2 (2017-Present)
+  | 'metaHorizon' // Meta Horizon Design System (2023-Present)
   | 'cupertino'   // Apple iOS/macOS (2013-Present) - kept for compatibility
   | 'aqua'        // Classic macOS (2000-2014) - kept for compatibility
   | 'aeroGlass';  // Windows Vista/7 (2006-2012) - kept for compatibility

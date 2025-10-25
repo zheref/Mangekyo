@@ -13,6 +13,7 @@ import { flatSemanticLight, flatSemanticDark } from '../tokens/semantic/flat';
 import { liquidGlassSemanticLight, liquidGlassSemanticDark } from '../tokens/semantic/liquidGlass';
 import { metroSemanticLight, metroSemanticDark } from '../tokens/semantic/metro';
 import { fluentSemanticLight, fluentSemanticDark } from '../tokens/semantic/fluent';
+import { metaHorizonSemanticLight, metaHorizonSemanticDark } from '../tokens/semantic/metaHorizon';
 import { cupertinoSemanticLight, cupertinoSemanticDark } from '../tokens/semantic/cupertino';
 import { aquaSemanticLight, aquaSemanticDark } from '../tokens/semantic/aqua';
 import { aeroGlassSemanticLight, aeroGlassSemanticDark } from '../tokens/semantic/aeroGlass';
@@ -24,6 +25,7 @@ import { flatComponentTokens } from '../tokens/components/flat';
 import { liquidGlassComponentTokens } from '../tokens/components/liquidGlass';
 import { metroComponentTokens } from '../tokens/components/metro';
 import { fluentComponentTokens } from '../tokens/components/fluent';
+import { metaHorizonComponentTokens } from '../tokens/components/metaHorizon';
 import { cupertinoComponentTokens } from '../tokens/components/cupertino';
 import { aquaComponentTokens } from '../tokens/components/aqua';
 import { aeroGlassComponentTokens } from '../tokens/components/aeroGlass';
@@ -60,6 +62,10 @@ function getSemanticTokens(
       light: fluentSemanticLight,
       dark: fluentSemanticDark,
     },
+    metaHorizon: {
+      light: metaHorizonSemanticLight,
+      dark: metaHorizonSemanticDark,
+    },
     cupertino: {
       light: cupertinoSemanticLight,
       dark: cupertinoSemanticDark,
@@ -88,6 +94,7 @@ function getComponentTokens(designLanguage: DesignLanguage): ComponentTokens {
     liquidGlass: liquidGlassComponentTokens,
     metro: metroComponentTokens,
     fluent: fluentComponentTokens,
+    metaHorizon: metaHorizonComponentTokens,
     cupertino: cupertinoComponentTokens,
     aqua: aquaComponentTokens,
     aeroGlass: aeroGlassComponentTokens,
@@ -142,6 +149,10 @@ export const themes = {
   // Fluent 2 (Windows 11)
   fluentLight: createTheme('fluent', 'light'),
   fluentDark: createTheme('fluent', 'dark'),
+
+  // Meta Horizon (Meta VR/AR)
+  metaHorizonLight: createTheme('metaHorizon', 'light'),
+  metaHorizonDark: createTheme('metaHorizon', 'dark'),
 
   // Legacy: Cupertino (Apple iOS/macOS)
   cupertinoLight: createTheme('cupertino', 'light'),
