@@ -408,6 +408,19 @@ export interface ComponentTokens {
       metaGap: number;
     };
   };
+
+  appBar: {
+    height: number;
+    paddingHorizontal: number;
+    backgroundColor: string;
+    shadow: ShadowDefinition;
+    border: {
+      width: number;
+      color: string;
+    };
+    title: TypographyStyle;
+    iconSize: number;
+  };
 }
 
 /**

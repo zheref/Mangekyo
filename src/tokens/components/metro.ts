@@ -175,4 +175,29 @@ export const metroComponentTokens: ComponentTokens = {
       metaGap: spacing[1],
     },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: metroSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+    },
+    border: {
+      width: 1,
+      color: metroSemanticLight.colors.border.secondary,
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.light,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };

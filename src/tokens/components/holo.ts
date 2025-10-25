@@ -204,5 +204,30 @@ export const holoComponentTokens: ComponentTokens = {
       metaGap: spacing[1],     // 8dp
     },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: 'transparent',
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 4,
+    },
+    border: {
+      width: 0,
+      color: 'transparent',
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.bold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };
 

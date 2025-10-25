@@ -167,5 +167,27 @@ export const metaHorizonComponentTokens: ComponentTokens = {
       metaGap: spacing[2], // 8px - Slightly more space for meta info
     },
   },
+
+  appBar: {
+    height: 56, // Standard app bar height matching Meta's design
+    paddingHorizontal: spacing[4], // 16px horizontal padding
+    backgroundColor: metaHorizonSemanticLight.colors.background.primary, // Pure white
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.05, // Very subtle shadow for depth
+      shadowRadius: 3,
+      elevation: 2,
+    },
+    border: {
+      width: 0, // No border - uses subtle shadow instead
+      color: 'transparent',
+    },
+    title: {
+      ...metaHorizonSemanticLight.typography.heading.h6, // 17px, Semibold
+      fontWeight: typography.fontWeights.semibold, // Emphasize title
+    },
+    iconSize: 24, // Standard icon size for app bar actions
+  },
 };
 

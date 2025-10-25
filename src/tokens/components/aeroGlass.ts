@@ -71,4 +71,29 @@ export const aeroGlassComponentTokens: ComponentTokens = {
     border: { width: 1, color: aeroGlassSemanticLight.colors.border.primary },
     spacing: { headerGap: spacing[2], contentGap: spacing[2], tagsGap: spacing[2], metaGap: spacing[1] },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: aeroGlassSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.12,
+      shadowRadius: 6,
+      elevation: 3,
+    },
+    border: {
+      width: 1,
+      color: aeroGlassSemanticLight.colors.border.primary,
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };

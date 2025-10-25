@@ -181,4 +181,29 @@ export const aquaComponentTokens: ComponentTokens = {
       metaGap: spacing[1],
     },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: aquaSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+    border: {
+      width: 1,
+      color: aquaSemanticLight.colors.border.secondary,
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };

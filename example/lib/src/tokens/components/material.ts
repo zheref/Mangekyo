@@ -166,4 +166,29 @@ export const materialComponentTokens: ComponentTokens = {
       metaGap: spacing[1],
     },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: materialSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 4,
+    },
+    border: {
+      width: 0,
+      color: 'transparent',
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 20,
+      fontWeight: typography.fontWeights.medium,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };

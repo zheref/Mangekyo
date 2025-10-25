@@ -71,4 +71,29 @@ export const liquidGlassComponentTokens: ComponentTokens = {
     border: { width: 1, color: liquidGlassSemanticLight.colors.border.primary },
     spacing: { headerGap: spacing[4], contentGap: spacing[3], tagsGap: spacing[3], metaGap: spacing[2] },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: liquidGlassSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: 'rgba(0, 0, 0, 0.1)',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.12,
+      shadowRadius: 16,
+      elevation: 3,
+    },
+    border: {
+      width: 1,
+      color: liquidGlassSemanticLight.colors.border.primary,
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    iconSize: 24,
+  },
 };

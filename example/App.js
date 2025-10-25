@@ -13,8 +13,18 @@ import { ArticleCardV2 } from './lib/src/components/ArticleCard/ArticleCardV2';
 import { TagV2 } from './lib/src/components/Tag/TagV2';
 import { ButtonV2 } from './lib/src/components/Button/ButtonV2';
 import { CardV2 } from './lib/src/components/Card/CardV2';
+import { AppBarV2 } from './lib/src/components/AppBar/AppBarV2';
 import { fetchBlogPosts, getAllTags, getAllYears, filterBlogPosts } from './lib/src/services/blogService';
 import { convertTypographyToTextStyle } from './lib/src/utils/typography';
+
+// Simple icon components for AppBar (placeholders - replace with react-native-vector-icons)
+const SearchIcon = ({ color = '#65676B', size = 24 }) => {
+  return React.createElement(Text, { style: { fontSize: size, color, opacity: 0.8 } }, '🔍');
+};
+
+const FilterIcon = ({ color = '#65676B', size = 24 }) => {
+  return React.createElement(Text, { style: { fontSize: size, color, opacity: 0.8 } }, '⚙️');
+};
 
 const BlogFeed = () => {
   const { theme, designLanguage, setDesignLanguage, colorScheme, setColorScheme } = useDesignLanguage();
@@ -90,51 +100,65 @@ const BlogFeed = () => {
     <View style={[styles.container, { backgroundColor: theme.semantic.colors.background.primary }]}>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
-      {/* Header */}
-      <View style={[styles.header, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
-        <View style={styles.headerContent}>
-          <View style={styles.headerLeft}>
-            <Text style={[styles.title, { color: theme.semantic.colors.text.primary }]}>
-              Now in React Native
-            </Text>
-            <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
-              Latest updates • {filteredPosts.length} posts
-            </Text>
-          </View>
-
-          <Pressable
-            onPress={() => setShowFilters(!showFilters)}
-            style={[
-              {
-                paddingHorizontal: theme.components.button.paddingHorizontal.medium,
-                paddingVertical: theme.components.button.paddingVertical.medium,
-                borderRadius: theme.components.button.borderRadius,
-                minWidth: 40,
+      {/* App Bar with dynamic design language support */}
+      <View style={{ paddingTop: Platform.OS === 'ios' ? 44 : 0 }}>
+        <AppBarV2
+          title="Now in React Native"
+          leftAction={{
+            icon: <SearchIcon color={theme.semantic.colors.text.secondary} />,
+            onPress: () => console.log('Search pressed'),
+            accessibilityLabel: 'Search posts',
+          }}
+          rightAction={{
+            icon: (
+              <View style={{
+                width: 32,
+                height: 32,
                 alignItems: 'center',
+                justifyContent: 'center',
                 backgroundColor: showFilters
                   ? theme.semantic.colors.interactive.primary
-                  : theme.semantic.colors.surface.secondary,
-                borderWidth: theme.components.button.border?.width || 0,
-                borderColor: showFilters
-                  ? theme.semantic.colors.interactive.primary
-                  : theme.semantic.colors.border.secondary,
-                ...(theme.components.button.shadow?.medium && showFilters ? theme.components.button.shadow.medium : {}),
-              },
-            ]}
-          >
-            <Text
-              style={[
-                convertTypographyToTextStyle(theme.components.button.typography.medium),
-                {
+                  : theme.semantic.colors.interactive.secondary,
+                borderRadius: 16,
+              }}>
+                <Text style={{ 
+                  fontSize: 16,
                   color: showFilters
                     ? '#FFFFFF'
                     : theme.semantic.colors.text.primary,
-                },
-              ]}
-            >
-              {showFilters ? '✕' : '⚙'} {hasActiveFilters ? `(${selectedTags.length + (selectedYear ? 1 : 0)})` : ''}
-            </Text>
-          </Pressable>
+                }}>
+                  {showFilters ? '✕' : '⚙'}
+                </Text>
+                {hasActiveFilters && !showFilters && (
+                  <View style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: 8,
+                    height: 8,
+                    borderRadius: 4,
+                    backgroundColor: theme.semantic.colors.feedback.error,
+                    borderWidth: 1,
+                    borderColor: theme.semantic.colors.background.primary,
+                  }} />
+                )}
+              </View>
+            ),
+            onPress: () => setShowFilters(!showFilters),
+            accessibilityLabel: showFilters ? 'Close filters' : 'Open filters',
+          }}
+          elevation={true}
+        />
+        
+        {/* Subtitle below app bar */}
+        <View style={[styles.subtitleContainer, { 
+          backgroundColor: theme.semantic.colors.surface.elevated,
+          borderBottomWidth: 1,
+          borderBottomColor: theme.semantic.colors.border.secondary,
+        }]}>
+          <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
+            Latest updates • {filteredPosts.length} posts
+          </Text>
         </View>
       </View>
 
@@ -397,31 +421,13 @@ const styles = StyleSheet.create({
   pillEmoji: {
     fontSize: 16,
   },
-  header: {
-    paddingTop: Platform.OS === 'ios' ? 60 : 20,
-    paddingBottom: 12,
+  subtitleContainer: {
     paddingHorizontal: 16,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-  },
-  headerContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerLeft: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 2,
+    paddingVertical: 8,
   },
   subtitle: {
     fontSize: 13,
+    textAlign: 'center',
   },
   scrollView: {
     flex: 1,

@@ -182,5 +182,30 @@ export const flatComponentTokens: ComponentTokens = {
       metaGap: spacing[1], // 4
     },
   },
+
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4], // 16
+    backgroundColor: flatSemanticLight.colors.background.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.05,
+      shadowRadius: 3,
+      elevation: 2,
+    },
+    border: {
+      width: 0,
+      color: 'transparent',
+    },
+    title: {
+      fontFamily: 'System',
+      fontSize: 17,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: 1.29,
+      letterSpacing: -0.41,
+    },
+    iconSize: 24,
+  },
 };
 
