@@ -28,7 +28,7 @@ export const cupertinoComponentTokens: ComponentTokens = {
     typography: {
       small: {
         fontFamily: 'System',
-        fontSize: typography.fontSizes.sm,
+        fontSize: 15,
         fontWeight: typography.fontWeights.semibold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.tight,
@@ -42,7 +42,7 @@ export const cupertinoComponentTokens: ComponentTokens = {
       },
       large: {
         fontFamily: 'System',
-        fontSize: typography.fontSizes.lg,
+        fontSize: 19,
         fontWeight: typography.fontWeights.semibold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.tight,
@@ -113,6 +113,66 @@ export const cupertinoComponentTokens: ComponentTokens = {
     background: {
       default: cupertinoSemanticLight.colors.surface.secondary,
       disabled: cupertinoSemanticLight.colors.surface.tertiary,
+    },
+  },
+
+  image: {
+    borderRadius: borderRadius.xl,
+    aspectRatio: {
+      square: 1,
+      portrait: 3 / 4,
+      landscape: 4 / 3,
+      wide: 16 / 9,
+    },
+    overlay: {
+      gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%)',
+      opacity: 0.3,
+    },
+  },
+
+  tag: {
+    borderRadius: borderRadius.full,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[3],
+    typography: {
+      fontFamily: 'System',
+      fontSize: typography.fontSizes.sm,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.tight,
+    },
+    border: {
+      width: 0,
+    },
+  },
+
+  list: {
+    itemSpacing: spacing[3],
+    sectionHeaderSpacing: spacing[4],
+    contentPadding: spacing[4],
+  },
+
+  articleCard: {
+    borderRadius: borderRadius.xl,
+    padding: spacing[4],
+    imageHeight: 200,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.08,
+      shadowRadius: 12,
+      elevation: 3,
+    },
+    background: cupertinoSemanticLight.colors.surface.secondary,
+    border: {
+      width: 0,
+      color: 'transparent',
+    },
+    spacing: {
+      headerGap: spacing[3],
+      contentGap: spacing[2],
+      tagsGap: spacing[2],
+      metaGap: spacing[1],
     },
   },
 };

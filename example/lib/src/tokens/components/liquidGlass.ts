@@ -11,9 +11,9 @@ export const liquidGlassComponentTokens: ComponentTokens = {
     paddingHorizontal: { small: spacing[6], medium: spacing[8], large: spacing[12] },
     minHeight: { small: 36, medium: 44, large: 56 },
     typography: {
-      small: { fontFamily: 'Inter, System', fontSize: 14, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
-      medium: { fontFamily: 'Inter, System', fontSize: 16, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
-      large: { fontFamily: 'Inter, System', fontSize: 18, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      small: { fontFamily: 'Inter, System', fontSize: 15, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      medium: { fontFamily: 'Inter, System', fontSize: 17, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      large: { fontFamily: 'Inter, System', fontSize: 19, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
     },
   },
   card: {
@@ -44,5 +44,31 @@ export const liquidGlassComponentTokens: ComponentTokens = {
       },
     },
     background: { default: liquidGlassSemanticLight.colors.surface.secondary, disabled: liquidGlassSemanticLight.colors.surface.tertiary },
+  },
+  image: {
+    borderRadius: borderRadius['2xl'],
+    aspectRatio: { square: 1, portrait: 3 / 4, landscape: 4 / 3, wide: 16 / 9 },
+    overlay: { gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%)', opacity: 0.25 },
+  },
+  tag: {
+    borderRadius: borderRadius.full,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[4],
+    typography: { fontFamily: 'Inter, System', fontSize: 13, fontWeight: typography.fontWeights.medium, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+    border: { width: 1 },
+  },
+  list: {
+    itemSpacing: spacing[4],
+    sectionHeaderSpacing: spacing[6],
+    contentPadding: spacing[6],
+  },
+  articleCard: {
+    borderRadius: borderRadius['2xl'],
+    padding: spacing[6],
+    imageHeight: 240,
+    shadow: { shadowColor: 'rgba(0, 0, 0, 0.1)', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.15, shadowRadius: 24, elevation: 4 },
+    background: liquidGlassSemanticLight.colors.surface.primary,
+    border: { width: 1, color: liquidGlassSemanticLight.colors.border.primary },
+    spacing: { headerGap: spacing[4], contentGap: spacing[3], tagsGap: spacing[3], metaGap: spacing[2] },
   },
 };

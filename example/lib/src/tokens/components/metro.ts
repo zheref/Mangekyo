@@ -28,21 +28,21 @@ export const metroComponentTokens: ComponentTokens = {
     typography: {
       small: {
         fontFamily: 'System', // Segoe UI
-        fontSize: 13,
+        fontSize: 15,
         fontWeight: typography.fontWeights.semibold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       medium: {
         fontFamily: 'System',
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: typography.fontWeights.semibold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       large: {
         fontFamily: 'System',
-        fontSize: 18,
+        fontSize: 19,
         fontWeight: typography.fontWeights.semibold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
@@ -113,6 +113,66 @@ export const metroComponentTokens: ComponentTokens = {
     background: {
       default: metroSemanticLight.colors.background.primary,
       disabled: metroSemanticLight.colors.surface.tertiary,
+    },
+  },
+
+  image: {
+    borderRadius: borderRadius.none,
+    aspectRatio: {
+      square: 1,
+      portrait: 3 / 4,
+      landscape: 4 / 3,
+      wide: 16 / 9,
+    },
+    overlay: {
+      gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)',
+      opacity: 0.6,
+    },
+  },
+
+  tag: {
+    borderRadius: borderRadius.xs,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[3],
+    typography: {
+      fontFamily: 'System',
+      fontSize: 12,
+      fontWeight: typography.fontWeights.bold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.wide,
+    },
+    border: {
+      width: 1,
+    },
+  },
+
+  list: {
+    itemSpacing: spacing[3],
+    sectionHeaderSpacing: spacing[4],
+    contentPadding: spacing[4],
+  },
+
+  articleCard: {
+    borderRadius: borderRadius.sm,
+    padding: spacing[4],
+    imageHeight: 200,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.12,
+      shadowRadius: 3,
+      elevation: 3,
+    },
+    background: metroSemanticLight.colors.surface.elevated,
+    border: {
+      width: 1,
+      color: metroSemanticLight.colors.border.secondary,
+    },
+    spacing: {
+      headerGap: spacing[3],
+      contentGap: spacing[2],
+      tagsGap: spacing[2],
+      metaGap: spacing[1],
     },
   },
 };

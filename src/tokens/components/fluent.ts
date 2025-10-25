@@ -11,9 +11,9 @@ export const fluentComponentTokens: ComponentTokens = {
     paddingHorizontal: { small: spacing[4], medium: spacing[6], large: spacing[8] },
     minHeight: { small: 24, medium: 32, large: 40 },
     typography: {
-      small: { fontFamily: 'Segoe UI Variable, System', fontSize: 12, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
-      medium: { fontFamily: 'Segoe UI Variable, System', fontSize: 14, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
-      large: { fontFamily: 'Segoe UI Variable, System', fontSize: 16, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      small: { fontFamily: 'Segoe UI Variable, System', fontSize: 15, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      medium: { fontFamily: 'Segoe UI Variable, System', fontSize: 17, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      large: { fontFamily: 'Segoe UI Variable, System', fontSize: 19, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
     },
   },
   card: {
@@ -44,5 +44,31 @@ export const fluentComponentTokens: ComponentTokens = {
       },
     },
     background: { default: fluentSemanticLight.colors.surface.primary, disabled: fluentSemanticLight.colors.background.tertiary },
+  },
+  image: {
+    borderRadius: borderRadius.md,
+    aspectRatio: { square: 1, portrait: 3 / 4, landscape: 4 / 3, wide: 16 / 9 },
+    overlay: { gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%)', opacity: 0.4 },
+  },
+  tag: {
+    borderRadius: borderRadius.sm,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[3],
+    typography: { fontFamily: 'Segoe UI Variable, System', fontSize: 12, fontWeight: typography.fontWeights.semibold, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+    border: { width: 1 },
+  },
+  list: {
+    itemSpacing: spacing[2],
+    sectionHeaderSpacing: spacing[4],
+    contentPadding: spacing[4],
+  },
+  articleCard: {
+    borderRadius: borderRadius.md,
+    padding: spacing[4],
+    imageHeight: 200,
+    shadow: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 8, elevation: 4 },
+    background: fluentSemanticLight.colors.surface.elevated,
+    border: { width: 1, color: fluentSemanticLight.colors.border.secondary },
+    spacing: { headerGap: spacing[3], contentGap: spacing[2], tagsGap: spacing[2], metaGap: spacing[1] },
   },
 };

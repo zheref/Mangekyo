@@ -14,7 +14,8 @@ Switch between different design systems seamlessly! Your components can now look
 
 ## Features
 
-- 🎨 **Multi-Design Language Support** - Material, Cupertino, Metro, and more
+- 🎨 **Multi-Design Language Support** - Material, Cupertino, Metro, and more (7 design languages!)
+- 📰 **Real-World Example** - "Now in React Native" blog feed app
 - 🌓 **Dark Mode** - Full dark mode support for every design language
 - 📱 **React Native** - Works seamlessly with React Native applications
 - 🎯 **TypeScript** - Fully typed with comprehensive token system
@@ -29,6 +30,26 @@ Switch between different design systems seamlessly! Your components can now look
 npm install @mangekyo/components
 # or
 yarn add @mangekyo/components
+```
+
+## Example App: Now in React Native
+
+The example app demonstrates Mangekyo by creating a fully functional blog feed app inspired by Google's "Now in Android". It features:
+
+- 📰 **React Native Blog Feed**: Displays latest posts from the React Native blog
+- 🔍 **Advanced Filtering**: Filter by tags and year
+- 🎨 **7 Design Languages**: Switch between Material, Cupertino, Aqua, Aero Glass, Metro, Fluent, and Liquid Glass
+- 🌓 **Theme Toggle**: Light and dark mode support
+- 📱 **Responsive Design**: Adapts to different screen sizes
+
+See [example/README.md](./example/README.md) for detailed documentation.
+
+### Run the Example
+
+```bash
+cd example
+npm install
+npm start
 ```
 
 ## Quick Start

@@ -94,7 +94,7 @@ export const ButtonV2: React.FC<ButtonV2Props> = ({
       fontFamily: typo.fontFamily,
       fontSize: typo.fontSize,
       fontWeight: typo.fontWeight,
-      lineHeight: typo.lineHeight,
+      lineHeight: typo.fontSize * typo.lineHeight, // Convert multiplier to absolute value
       letterSpacing: typo.letterSpacing,
       color: getTextColor(),
     };

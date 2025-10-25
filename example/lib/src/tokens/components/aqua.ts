@@ -28,21 +28,21 @@ export const aquaComponentTokens: ComponentTokens = {
     typography: {
       small: {
         fontFamily: 'Lucida Grande, System',
-        fontSize: 11,
+        fontSize: 14,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       medium: {
         fontFamily: 'Lucida Grande, System',
-        fontSize: 13,
+        fontSize: 16,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       large: {
         fontFamily: 'Lucida Grande, System',
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
@@ -119,6 +119,66 @@ export const aquaComponentTokens: ComponentTokens = {
     background: {
       default: '#FFFFFF',
       disabled: '#F0F0F0',
+    },
+  },
+
+  image: {
+    borderRadius: borderRadius.lg,
+    aspectRatio: {
+      square: 1,
+      portrait: 3 / 4,
+      landscape: 4 / 3,
+      wide: 16 / 9,
+    },
+    overlay: {
+      gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%)',
+      opacity: 0.35,
+    },
+  },
+
+  tag: {
+    borderRadius: borderRadius.md,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[2],
+    typography: {
+      fontFamily: 'Lucida Grande, System',
+      fontSize: 11,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal,
+    },
+    border: {
+      width: 1,
+    },
+  },
+
+  list: {
+    itemSpacing: spacing[2],
+    sectionHeaderSpacing: spacing[3],
+    contentPadding: spacing[3],
+  },
+
+  articleCard: {
+    borderRadius: borderRadius.lg,
+    padding: spacing[3],
+    imageHeight: 180,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.15,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    background: aquaSemanticLight.colors.surface.primary,
+    border: {
+      width: 1,
+      color: aquaSemanticLight.colors.border.secondary,
+    },
+    spacing: {
+      headerGap: spacing[2],
+      contentGap: spacing[2],
+      tagsGap: spacing[2],
+      metaGap: spacing[1],
     },
   },
 };

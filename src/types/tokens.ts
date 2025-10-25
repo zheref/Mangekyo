@@ -357,6 +357,54 @@ export interface ComponentTokens {
       disabled: string;
     };
   };
+
+  image: {
+    borderRadius: number;
+    aspectRatio: {
+      square: number;
+      portrait: number;
+      landscape: number;
+      wide: number;
+    };
+    overlay: {
+      gradient: string;
+      opacity: number;
+    };
+  };
+
+  tag: {
+    borderRadius: number;
+    paddingVertical: number;
+    paddingHorizontal: number;
+    typography: TypographyStyle;
+    border: {
+      width: number;
+    };
+  };
+
+  list: {
+    itemSpacing: number;
+    sectionHeaderSpacing: number;
+    contentPadding: number;
+  };
+
+  articleCard: {
+    borderRadius: number;
+    padding: number;
+    imageHeight: number;
+    shadow: ShadowDefinition;
+    background: string;
+    border: {
+      width: number;
+      color: string;
+    };
+    spacing: {
+      headerGap: number;
+      contentGap: number;
+      tagsGap: number;
+      metaGap: number;
+    };
+  };
 }
 
 /**

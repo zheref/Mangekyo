@@ -27,16 +27,22 @@ export const materialComponentTokens: ComponentTokens = {
     },
     typography: {
       small: {
-        ...materialSemanticLight.typography.label.medium,
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 15,
         fontWeight: typography.fontWeights.medium,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
       },
       medium: {
-        ...materialSemanticLight.typography.label.large,
+        fontFamily: typography.fontFamilies.body,
+        fontSize: 17,
         fontWeight: typography.fontWeights.medium,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.wide,
       },
       large: {
         fontFamily: typography.fontFamilies.body,
-        fontSize: typography.fontSizes.base,
+        fontSize: 19,
         fontWeight: typography.fontWeights.medium,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,
@@ -101,6 +107,63 @@ export const materialComponentTokens: ComponentTokens = {
     background: {
       default: materialSemanticLight.colors.surface.secondary,
       disabled: materialSemanticLight.colors.surface.tertiary,
+    },
+  },
+
+  image: {
+    borderRadius: borderRadius.sm,
+    aspectRatio: {
+      square: 1,
+      portrait: 3 / 4,
+      landscape: 4 / 3,
+      wide: 16 / 9,
+    },
+    overlay: {
+      gradient: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)',
+      opacity: 0.4,
+    },
+  },
+
+  tag: {
+    borderRadius: borderRadius.full,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[3],
+    typography: {
+      ...materialSemanticLight.typography.label.small,
+      fontWeight: typography.fontWeights.medium,
+    },
+    border: {
+      width: 0,
+    },
+  },
+
+  list: {
+    itemSpacing: spacing[2],
+    sectionHeaderSpacing: spacing[4],
+    contentPadding: spacing[4],
+  },
+
+  articleCard: {
+    borderRadius: borderRadius.md,
+    padding: spacing[4],
+    imageHeight: 200,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      elevation: 4,
+    },
+    background: materialSemanticLight.colors.surface.elevated,
+    border: {
+      width: 0,
+      color: 'transparent',
+    },
+    spacing: {
+      headerGap: spacing[3],
+      contentGap: spacing[2],
+      tagsGap: spacing[2],
+      metaGap: spacing[1],
     },
   },
 };
