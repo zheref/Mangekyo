@@ -43,7 +43,29 @@ npm run example:ios
 npm run example:android
 ```
 
-### 2. What You'll See
+### 2. Sync Source Code (Important!)
+
+The example app uses a **local copy** of your library source code located in `example/lib/src/`. When you make changes to the main library (`src/`), you need to resync:
+
+```bash
+# From the main project directory (Mangekyo/)
+cp -r src example/lib/
+
+# Metro will hot-reload automatically
+```
+
+**Why this approach?**
+- ✅ Avoids React Native module duplication issues
+- ✅ Prevents `TurboModuleRegistry` errors
+- ✅ Standard pattern for React Native example apps
+- ✅ Works reliably on all platforms
+
+**Development Workflow:**
+1. Make changes to components in `src/`
+2. Run `cp -r src example/lib/` to sync
+3. Changes appear automatically in the simulator (hot reload)
+
+### 3. What You'll See
 
 The example app automatically showcases:
 - All 7 design languages (Material, Cupertino, Aqua, Aero Glass, Metro, Fluent, Liquid Glass)
