@@ -4,7 +4,7 @@
 export type DesignLanguage =
   | 'holo'        // Android Holo Design (2011-2014)
   | 'material'    // Google Material Design (2014-Present)
-  | 'flag'        // Apple iOS Mobile (2013-Present)
+  | 'flat'        // Apple iOS Flat Design (iOS 7-18, 2013-Present)
   | 'liquidGlass' // Modern Liquid Glass (2020-Present)
   | 'metro'       // Windows 8 Metro UI (2012-2015)
   | 'fluent'      // Windows Fluent 2 (2017-Present)

@@ -9,7 +9,7 @@ import { basePrimitiveTokens } from '../tokens/primitives';
 // Semantic tokens
 import { holoSemanticLight, holoSemanticDark } from '../tokens/semantic/holo';
 import { materialSemanticLight, materialSemanticDark } from '../tokens/semantic/material';
-import { flagSemanticLight, flagSemanticDark } from '../tokens/semantic/flag';
+import { flatSemanticLight, flatSemanticDark } from '../tokens/semantic/flat';
 import { liquidGlassSemanticLight, liquidGlassSemanticDark } from '../tokens/semantic/liquidGlass';
 import { metroSemanticLight, metroSemanticDark } from '../tokens/semantic/metro';
 import { fluentSemanticLight, fluentSemanticDark } from '../tokens/semantic/fluent';
@@ -20,7 +20,7 @@ import { aeroGlassSemanticLight, aeroGlassSemanticDark } from '../tokens/semanti
 // Component tokens
 import { holoComponentTokens } from '../tokens/components/holo';
 import { materialComponentTokens } from '../tokens/components/material';
-import { flagComponentTokens } from '../tokens/components/flag';
+import { flatComponentTokens } from '../tokens/components/flat';
 import { liquidGlassComponentTokens } from '../tokens/components/liquidGlass';
 import { metroComponentTokens } from '../tokens/components/metro';
 import { fluentComponentTokens } from '../tokens/components/fluent';
@@ -44,9 +44,9 @@ function getSemanticTokens(
       light: materialSemanticLight,
       dark: materialSemanticDark,
     },
-    flag: {
-      light: flagSemanticLight,
-      dark: flagSemanticDark,
+    flat: {
+      light: flatSemanticLight,
+      dark: flatSemanticDark,
     },
     liquidGlass: {
       light: liquidGlassSemanticLight,
@@ -84,7 +84,7 @@ function getComponentTokens(designLanguage: DesignLanguage): ComponentTokens {
   const tokenMap = {
     holo: holoComponentTokens,
     material: materialComponentTokens,
-    flag: flagComponentTokens,
+    flat: flatComponentTokens,
     liquidGlass: liquidGlassComponentTokens,
     metro: metroComponentTokens,
     fluent: fluentComponentTokens,
@@ -127,9 +127,9 @@ export const themes = {
   materialLight: createTheme('material', 'light'),
   materialDark: createTheme('material', 'dark'),
 
-  // Flag Design (iOS Mobile)
-  flagLight: createTheme('flag', 'light'),
-  flagDark: createTheme('flag', 'dark'),
+  // Flat Design (iOS 7-18)
+  flatLight: createTheme('flat', 'light'),
+  flatDark: createTheme('flat', 'dark'),
 
   // Liquid Glass (Modern)
   liquidGlassLight: createTheme('liquidGlass', 'light'),

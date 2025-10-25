@@ -24,7 +24,7 @@ const BlogFeed = () => {
   const languages = [
     { value: 'holo', label: 'Holo', emoji: '🤖' },
     { value: 'material', label: 'Material', emoji: '🎨' },
-    { value: 'flag', label: 'Flag', emoji: '🍎' },
+    { value: 'flat', label: 'Flat', emoji: '🍎' },
     { value: 'liquidGlass', label: 'Liquid', emoji: '💎' },
     { value: 'metro', label: 'Metro', emoji: '📱' },
     { value: 'fluent', label: 'Fluent', emoji: '🪟' },
@@ -284,7 +284,7 @@ const BlogFeed = () => {
 export default function App() {
   // Auto-select design language based on platform
   const defaultLanguage = Platform.select({
-    ios: 'flag',
+    ios: 'flat',
     android: 'material',
     default: 'material',
   });
