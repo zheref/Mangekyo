@@ -14,7 +14,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "type-check": "tsc --noEmit",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx",
+    "example": "cd example && npm start",
+    "example:ios": "cd example && npm run ios",
+    "example:android": "cd example && npm run android",
+    "example:web": "cd example && npm run web"
   },
   "keywords": [
     "react-native",
