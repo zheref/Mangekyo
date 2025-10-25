@@ -29,13 +29,13 @@ const BlogFeed = () => {
 
   // Mobile Design language options
   const languages = [
+    { value: 'metaHorizon', label: 'Meta', emoji: '🥽' },
     { value: 'holo', label: 'Holo', emoji: '🤖' },
     { value: 'material', label: 'Material', emoji: '🎨' },
     { value: 'flat', label: 'Flat', emoji: '🍎' },
     { value: 'liquidGlass', label: 'Liquid', emoji: '💎' },
     { value: 'metro', label: 'Metro', emoji: '📱' },
     { value: 'fluent', label: 'Fluent', emoji: '🪟' },
-    { value: 'metaHorizon', label: 'Meta', emoji: '🥽' },
   ];
 
   // Load blog posts
@@ -149,6 +149,18 @@ const BlogFeed = () => {
             const isSelected = designLanguage === lang.value;
             const buttonTokens = theme.components.button;
             
+            // Meta Horizon uses subtle gray for selected, transparent for unselected
+            const isMetaHorizon = designLanguage === 'metaHorizon';
+            const selectedBg = isMetaHorizon 
+              ? '#E4E6EB'  // Light gray for Meta Horizon
+              : theme.semantic.colors.interactive.primary;
+            const unselectedBg = isMetaHorizon
+              ? 'transparent'  // Transparent for Meta Horizon
+              : theme.semantic.colors.surface.secondary;
+            const selectedTextColor = isMetaHorizon
+              ? theme.semantic.colors.text.primary  // Dark text for Meta Horizon
+              : '#FFFFFF';
+            
             return (
               <Pressable
                 key={lang.value}
@@ -162,14 +174,12 @@ const BlogFeed = () => {
                     borderRadius: buttonTokens.borderRadius,
                     borderWidth: buttonTokens.border?.width || 0,
                     gap: 6,
-                    backgroundColor: isSelected
-                      ? theme.semantic.colors.interactive.primary
-                      : theme.semantic.colors.surface.secondary,
+                    backgroundColor: isSelected ? selectedBg : unselectedBg,
                     borderColor: isSelected
-                      ? theme.semantic.colors.interactive.primary
+                      ? (isMetaHorizon ? 'transparent' : theme.semantic.colors.interactive.primary)
                       : theme.semantic.colors.border.secondary,
-                    // Apply shadow for elevated design languages
-                    ...(buttonTokens.shadow?.medium && isSelected ? buttonTokens.shadow.medium : {}),
+                    // Apply shadow for elevated design languages (not for Meta Horizon)
+                    ...(buttonTokens.shadow?.medium && isSelected && !isMetaHorizon ? buttonTokens.shadow.medium : {}),
                   },
                 ]}
               >
@@ -179,7 +189,7 @@ const BlogFeed = () => {
                     convertTypographyToTextStyle(buttonTokens.typography.medium),
                     {
                       color: isSelected
-                        ? '#FFFFFF'
+                        ? selectedTextColor
                         : theme.semantic.colors.text.primary,
                     },
                   ]}
@@ -344,7 +354,7 @@ export default function App() {
   const defaultLanguage = Platform.select({
     ios: 'flat',
     android: 'material',
-    default: 'material',
+    default: 'metaHorizon', // Meta Horizon is the default fallback
   });
 
   // Show loading screen while fonts are loading
