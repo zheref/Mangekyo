@@ -126,9 +126,9 @@ export const metaHorizonComponentTokens: ComponentTokens = {
   },
 
   tag: {
-    borderRadius: 6, // Slightly rounded but not fully circular
-    paddingVertical: spacing[1], // 4px
-    paddingHorizontal: spacing[2], // 8px
+    borderRadius: 16, // Fully rounded pill shape (Meta Horizon style)
+    paddingVertical: spacing[1], // 4px - Compact vertical
+    paddingHorizontal: spacing[3], // 12px - More generous horizontal for pill shape
     typography: {
       ...metaHorizonSemanticLight.typography.label.small,
       fontWeight: typography.fontWeights.semibold,

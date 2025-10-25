@@ -195,8 +195,8 @@ xl: 24px  (component.paddingXl)
 ## 🎯 Border Radius Scale
 ```typescript
 buttons: 8px    // Subtle rounding
-cards:   12px   // More pronounced
-tags:    6px    // Slight rounding
+cards:   16px   // More pronounced (Meta Horizon standard)
+tags:    16px   // Fully rounded pills
 inputs:  8px    // Matching buttons
 ```
 
@@ -204,9 +204,9 @@ inputs:  8px    // Matching buttons
 
 - [ ] Use Meta blue (#0866FF) for primary actions
 - [ ] Maintain 44px minimum touch targets
-- [ ] Use Optimist font family (with fallbacks)
-- [ ] Apply 8-12px border radius consistently
-- [ ] Use subtle shadows (0.08-0.15 opacity)
+- [ ] Use Inter font family (with fallbacks)
+- [ ] Apply 8-16px border radius (8px buttons, 16px cards/tags)
+- [ ] Use very subtle shadows (0.04-0.08 opacity)
 - [ ] Ensure proper contrast ratios (WCAG AA)
 - [ ] Test in both light and dark modes
 - [ ] Use semantic color tokens (not hard-coded values)
@@ -229,7 +229,10 @@ All components adapt automatically:
 
 ## 🔗 Resources
 - [Full Guide](./META_HORIZON_DESIGN_GUIDE.md)
+- [Implementation Summary](./META_HORIZON_IMPLEMENTATION_SUMMARY.md)
 - [Font Implementation Note](./META_HORIZON_FONT_NOTE.md)
+- [Card Update Details](./META_HORIZON_CARD_UPDATE.md)
+- [Tag Update Details](./META_HORIZON_TAG_UPDATE.md)
 - [Official Meta Docs](https://developers.meta.com/horizon/design/)
 - [Mangekyo Library Docs](./README.md)
 - [Inter Font](https://rsms.me/inter/)

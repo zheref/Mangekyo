@@ -352,7 +352,10 @@ mangekyo/
 - **[Design Language Architecture](./DESIGN_LANGUAGE_ARCHITECTURE.md)** - Technical architecture details
 - **[Meta Horizon Design Guide](./META_HORIZON_DESIGN_GUIDE.md)** - Complete Meta Horizon implementation guide
 - **[Meta Horizon Quick Reference](./META_HORIZON_QUICK_REFERENCE.md)** - Quick reference for Meta Horizon
+- **[Meta Horizon Implementation Summary](./META_HORIZON_IMPLEMENTATION_SUMMARY.md)** - Complete technical summary
 - **[Meta Horizon Font Note](./META_HORIZON_FONT_NOTE.md)** - Font implementation details (Inter vs Optimist)
+- **[Meta Horizon Card Update](./META_HORIZON_CARD_UPDATE.md)** - Card styling specifications
+- **[Meta Horizon Tag Update](./META_HORIZON_TAG_UPDATE.md)** - Tag styling specifications (pill-shaped badges)
 - **[Holo Design Guide](./HOLO_DESIGN_GUIDE.md)** - Android Holo design system
 - **[Storybook Guide](./STORYBOOK_GUIDE.md)** - Using Storybook with Mangekyo
 

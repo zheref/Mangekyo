@@ -42,7 +42,7 @@ export const metaHorizonSemanticLight: SemanticTokens = {
       primaryHover: '#0654D4',
       primaryActive: '#0551C5',
       primaryDisabled: 'rgba(8, 102, 255, 0.4)',
-      secondary: '#E4E6EB',
+      secondary: '#E4E6EB', // Light gray background for tags
       secondaryHover: '#D8DADF',
       secondaryActive: '#CCD0D5',
       secondaryDisabled: '#F0F2F5',

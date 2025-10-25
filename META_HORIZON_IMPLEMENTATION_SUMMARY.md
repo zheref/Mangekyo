@@ -151,8 +151,25 @@ Font sizes and weights match Meta's design specifications exactly. Inter was cho
 
 ### Component Styling
 
-- **Subtle shadows**: 0.08-0.15 opacity (not overdone)
-- **Minimal borders**: 1px, used strategically
+#### Cards & Article Cards
+- **Border Radius**: 16px (more pronounced, Meta Horizon standard)
+- **Shadows**: Very subtle (0.04-0.08 opacity) for depth
+- **No Borders**: Relying on shadows for definition
+- **Generous Padding**: 16px for breathing room
+- **Increased Spacing**: 12px between elements
+
+#### Tags & Badges
+- **Border Radius**: 16px (fully rounded pill shape)
+- **Padding**: 4px vertical × 12px horizontal
+- **No Borders**: Clean, borderless design
+- **Typography**: Inter SemiBold, 11px, wide letter spacing
+- **Colors**: 
+  - Light mode: `#E4E6EB` background
+  - Dark mode: `#3A3B3C` background
+
+#### General Styling Principles
+- **Subtle shadows**: 0.04-0.08 opacity (very minimal)
+- **Strategic borders**: Mostly removed, using shadows instead
 - **Clean backgrounds**: Light neutrals for surfaces
 - **Proper contrast**: All text passes WCAG AA standards
 
@@ -178,6 +195,8 @@ mangekyo/
 ├── META_HORIZON_DESIGN_GUIDE.md        ✨ NEW
 ├── META_HORIZON_QUICK_REFERENCE.md     ✨ NEW
 ├── META_HORIZON_FONT_NOTE.md           ✨ NEW
+├── META_HORIZON_CARD_UPDATE.md         ✨ NEW
+├── META_HORIZON_TAG_UPDATE.md          ✨ NEW
 ├── META_HORIZON_IMPLEMENTATION_SUMMARY.md ✨ NEW (this file)
 └── README.md                           📝 UPDATED
 ```
