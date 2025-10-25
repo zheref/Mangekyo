@@ -46,21 +46,21 @@ export const holoComponentTokens: ComponentTokens = {
     },
     typography: {
       small: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 14,  // Standard button text
         fontWeight: typography.fontWeights.bold,  // Buttons use bold
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,  // Slightly wider for buttons
       },
       medium: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 16,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,
       },
       large: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 18,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
@@ -121,7 +121,7 @@ export const holoComponentTokens: ComponentTokens = {
     paddingHorizontal: spacing[3],    // 24dp
     minHeight: 48,  // Standard touch target
     typography: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
       fontSize: 16,  // Comfortable reading size
       fontWeight: typography.fontWeights.regular,
       lineHeight: typography.lineHeights.normal,
@@ -163,7 +163,7 @@ export const holoComponentTokens: ComponentTokens = {
     paddingVertical: spacing[1],      // 8dp
     paddingHorizontal: spacing[2],    // 16dp
     typography: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
       fontSize: 12,
       fontWeight: typography.fontWeights.bold,
       lineHeight: typography.lineHeights.normal,

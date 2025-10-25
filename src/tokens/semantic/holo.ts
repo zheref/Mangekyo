@@ -94,42 +94,42 @@ export const holoSemanticLight: SemanticTokens = {
   typography: {
     heading: {
       h1: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Light',  // Official Roboto Light (300)
         fontSize: 34,  // textAppearanceLarge in Holo
-        fontWeight: typography.fontWeights.light,  // Roboto Light (300)
+        fontWeight: typography.fontWeights.light,
         lineHeight: typography.lineHeights.tight,
         letterSpacing: typography.letterSpacing.normal,
       },
       h2: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Light',  // Official Roboto Light (300)
         fontSize: 28,
         fontWeight: typography.fontWeights.light,
         lineHeight: typography.lineHeights.tight,
         letterSpacing: typography.letterSpacing.normal,
       },
       h3: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 22,  // textAppearanceMedium
-        fontWeight: typography.fontWeights.regular,  // Roboto Regular (400)
+        fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h4: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 20,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h5: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Medium',  // Official Roboto Medium (500)
         fontSize: 18,  // textAppearanceSmall
-        fontWeight: typography.fontWeights.medium,  // Roboto Medium (500)
+        fontWeight: typography.fontWeights.medium,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h6: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Medium',  // Official Roboto Medium (500)
         fontSize: 16,
         fontWeight: typography.fontWeights.medium,
         lineHeight: typography.lineHeights.normal,
@@ -138,21 +138,21 @@ export const holoSemanticLight: SemanticTokens = {
     },
     body: {
       large: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 18,  // Large body text
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.relaxed,
         letterSpacing: typography.letterSpacing.normal,
       },
       medium: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 14,  // Standard body text
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       small: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 12,  // Small text
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
@@ -161,21 +161,21 @@ export const holoSemanticLight: SemanticTokens = {
     },
     label: {
       large: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 14,
-        fontWeight: typography.fontWeights.bold,  // Roboto Bold (700)
+        fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,  // All caps labels
       },
       medium: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 12,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,
       },
       small: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 11,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.tight,
@@ -183,14 +183,14 @@ export const holoSemanticLight: SemanticTokens = {
       },
     },
     caption: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
       fontSize: 12,
       fontWeight: typography.fontWeights.regular,
       lineHeight: typography.lineHeights.tight,
       letterSpacing: typography.letterSpacing.normal,
     },
     overline: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
       fontSize: 10,
       fontWeight: typography.fontWeights.bold,
       lineHeight: typography.lineHeights.tight,
@@ -279,42 +279,42 @@ export const holoSemanticDark: SemanticTokens = {
   typography: {
     heading: {
       h1: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Light',  // Official Roboto Light (300)
         fontSize: 34,
         fontWeight: typography.fontWeights.light,
         lineHeight: typography.lineHeights.tight,
         letterSpacing: typography.letterSpacing.normal,
       },
       h2: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Light',  // Official Roboto Light (300)
         fontSize: 28,
         fontWeight: typography.fontWeights.light,
         lineHeight: typography.lineHeights.tight,
         letterSpacing: typography.letterSpacing.normal,
       },
       h3: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 22,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h4: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 20,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h5: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Medium',  // Official Roboto Medium (500)
         fontSize: 18,
         fontWeight: typography.fontWeights.medium,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       h6: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Medium',  // Official Roboto Medium (500)
         fontSize: 16,
         fontWeight: typography.fontWeights.medium,
         lineHeight: typography.lineHeights.normal,
@@ -323,21 +323,21 @@ export const holoSemanticDark: SemanticTokens = {
     },
     body: {
       large: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 18,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.relaxed,
         letterSpacing: typography.letterSpacing.normal,
       },
       medium: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 14,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.normal,
       },
       small: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
         fontSize: 12,
         fontWeight: typography.fontWeights.regular,
         lineHeight: typography.lineHeights.normal,
@@ -346,21 +346,21 @@ export const holoSemanticDark: SemanticTokens = {
     },
     label: {
       large: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 14,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,
       },
       medium: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 12,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
         letterSpacing: typography.letterSpacing.wide,
       },
       small: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
         fontSize: 11,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.tight,
@@ -368,14 +368,14 @@ export const holoSemanticDark: SemanticTokens = {
       },
     },
     caption: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Regular',  // Official Roboto Regular (400)
       fontSize: 12,
       fontWeight: typography.fontWeights.regular,
       lineHeight: typography.lineHeights.tight,
       letterSpacing: typography.letterSpacing.normal,
     },
     overline: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Roboto-Bold',  // Official Roboto Bold (700)
       fontSize: 10,
       fontWeight: typography.fontWeights.bold,
       lineHeight: typography.lineHeights.tight,

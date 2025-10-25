@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { DesignLanguageProvider, useDesignLanguage } from './lib/src/themes/DesignLanguageContext';
 import { ArticleCardV2 } from './lib/src/components/ArticleCard/ArticleCardV2';
 import { TagV2 } from './lib/src/components/Tag/TagV2';
@@ -282,12 +283,30 @@ const BlogFeed = () => {
 };
 
 export default function App() {
+  // Load Roboto fonts for Holo Design theme
+  const [fontsLoaded] = useFonts({
+    'Roboto-Light': Roboto_300Light,
+    'Roboto-Regular': Roboto_400Regular,
+    'Roboto-Medium': Roboto_500Medium,
+    'Roboto-Bold': Roboto_700Bold,
+  });
+
   // Auto-select design language based on platform
   const defaultLanguage = Platform.select({
     ios: 'flat',
     android: 'material',
     default: 'material',
   });
+
+  // Show loading screen while fonts are loading
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#33B5E5" />
+        <Text style={styles.loadingText}>Loading fonts...</Text>
+      </View>
+    );
+  }
 
   return (
     <DesignLanguageProvider
