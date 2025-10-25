@@ -99,16 +99,17 @@ fontWeight: Semibold
 
 ### Cards
 ```typescript
-borderRadius: 12px
-border: 1px solid
+borderRadius: 16px
+border: none (0px)
 
 padding:
-  small:  8px
+  small:  12px
   medium: 16px
   large:  24px
 
-shadow: 0.08 - 0.15 opacity (subtle)
+shadow: 0.04 - 0.08 opacity (very subtle)
 ```
+> Ref: [Meta Horizon Cards](https://developers.meta.com/horizon/design/cards)
 
 ### Input Fields
 ```typescript

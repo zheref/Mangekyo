@@ -102,26 +102,6 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
           {excerpt}
         </Text>
 
-        {tags.length > 0 && (
-          <View
-            style={[
-              styles.tagsContainer,
-              { marginTop: articleCardTokens.spacing.tagsGap },
-            ]}
-          >
-            {tags.map((tag, index) => (
-              <TagV2
-                key={`${tag}-${index}`}
-                label={tag}
-                variant="secondary"
-                onPress={onTagPress ? () => onTagPress(tag) : undefined}
-                designLanguage={activeDesignLanguage}
-                style={styles.tag}
-              />
-            ))}
-          </View>
-        )}
-
         <View
           style={[
             styles.meta,
@@ -139,6 +119,26 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
             {readTime && ` • ${readTime}`}
           </Text>
         </View>
+
+        {tags.length > 0 && (
+          <View
+            style={[
+              styles.tagsContainer,
+              { marginTop: articleCardTokens.spacing.metaGap },
+            ]}
+          >
+            {tags.map((tag, index) => (
+              <TagV2
+                key={`${tag}-${index}`}
+                label={tag}
+                variant="secondary"
+                onPress={onTagPress ? () => onTagPress(tag) : undefined}
+                designLanguage={activeDesignLanguage}
+                style={styles.tag}
+              />
+            ))}
+          </View>
+        )}
       </View>
     </>
   );
@@ -196,6 +196,27 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
             {readTime && ` • ${readTime}`}
           </Text>
         </View>
+
+        {/* Tags at bottom */}
+        {tags.length > 0 && (
+          <View
+            style={[
+              styles.tagsContainer,
+              { marginTop: articleCardTokens.spacing.metaGap },
+            ]}
+          >
+            {tags.slice(0, 3).map((tag, index) => (
+              <TagV2
+                key={`${tag}-${index}`}
+                label={tag}
+                variant="secondary"
+                onPress={onTagPress ? () => onTagPress(tag) : undefined}
+                designLanguage={activeDesignLanguage}
+                style={styles.tag}
+              />
+            ))}
+          </View>
+        )}
       </View>
     </View>
   );

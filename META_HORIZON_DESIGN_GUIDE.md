@@ -122,16 +122,18 @@ Meta Horizon's design system emphasizes:
 
 ### Cards
 
-**Border Radius**: 12px (more pronounced rounding)
+Based on [Meta Horizon Card Guidelines](https://developers.meta.com/horizon/design/cards)
+
+**Border Radius**: 16px (more pronounced than buttons)
 
 **Padding Options**:
-- Small: 8px
+- Small: 12px (more generous)
 - Medium: 16px
 - Large: 24px
 
-**Elevation**: Subtle shadows with low opacity (0.08-0.15)
+**Elevation**: Very subtle shadows (0.04-0.08 opacity) - Meta prefers minimal shadows
 
-**Border**: 1px solid, using secondary border color
+**Border**: None (borderWidth: 0) - Cards rely on subtle shadows for definition instead of borders
 
 ### Input Fields
 

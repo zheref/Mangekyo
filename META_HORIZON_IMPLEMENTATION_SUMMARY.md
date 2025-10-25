@@ -40,11 +40,11 @@ Defined component-specific styling:
 - Touch-friendly minimum heights
 - Semibold typography across all sizes
 
-**Card Component**:
-- Border radius: 12px (more pronounced for cards)
-- Subtle shadows (0.08-0.15 opacity)
-- 1px borders for definition
-- Three padding options (small, medium, large)
+**Card Component** (per [Meta Horizon guidelines](https://developers.meta.com/horizon/design/cards)):
+- Border radius: 16px (more pronounced than buttons)
+- Very subtle shadows (0.04-0.08 opacity) - Meta's minimal approach
+- No borders (relies on shadow for definition)
+- Three padding options (12px, 16px, 24px) - more generous spacing
 
 **Input Component**:
 - Border radius: 8px (matching buttons)
@@ -64,8 +64,9 @@ Defined component-specific styling:
 - Subtle overlay gradients
 
 **Article Card Component**:
-- All the card styling with article-specific spacing
-- Optimized gaps for content hierarchy
+- Follows Meta Horizon card guidelines (16px radius, no border, subtle shadow)
+- Generous spacing (16px header gap, 12px content gap)
+- Optimized gaps for content hierarchy and breathing room
 
 ### 3. Type System Updates (`/src/types/tokens.ts`)
 

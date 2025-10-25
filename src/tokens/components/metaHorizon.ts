@@ -52,10 +52,10 @@ export const metaHorizonComponentTokens: ComponentTokens = {
   },
 
   card: {
-    borderRadius: 12, // Meta uses larger radius for cards
+    borderRadius: 16, // Meta Horizon uses 16px for cards (more pronounced than buttons)
     padding: {
       none: 0,
-      small: spacing[2], // 8px
+      small: spacing[3], // 12px - More generous padding
       medium: spacing[4], // 16px
       large: spacing[6], // 24px
     },
@@ -64,29 +64,29 @@ export const metaHorizonComponentTokens: ComponentTokens = {
       small: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        elevation: 2,
+        shadowOpacity: 0.04, // Very subtle - Meta prefers minimal shadows
+        shadowRadius: 2,
+        elevation: 1,
       },
       medium: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 8,
-        elevation: 4,
+        shadowOpacity: 0.06, // Subtle elevation
+        shadowRadius: 4,
+        elevation: 2,
       },
       large: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 8,
+        shadowOpacity: 0.08, // Still quite subtle
+        shadowRadius: 8,
+        elevation: 3,
       },
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
-      width: 1,
-      color: metaHorizonSemanticLight.colors.border.secondary,
+      width: 0, // Meta Horizon cards typically don't have borders, relying on shadow instead
+      color: 'transparent',
     },
   },
 
@@ -112,7 +112,7 @@ export const metaHorizonComponentTokens: ComponentTokens = {
   },
 
   image: {
-    borderRadius: 12, // Matching card radius for consistency
+    borderRadius: 12, // Images within cards use 12px (slightly less than card itself)
     aspectRatio: {
       square: 1,
       portrait: 4 / 5,
@@ -145,26 +145,26 @@ export const metaHorizonComponentTokens: ComponentTokens = {
   },
 
   articleCard: {
-    borderRadius: 12,
-    padding: spacing[4], // 16px
+    borderRadius: 16, // Match card border radius (16px for Meta Horizon)
+    padding: spacing[4], // 16px - Generous padding around content
     imageHeight: 200,
     shadow: {
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.08,
-      shadowRadius: 12,
-      elevation: 3,
+      shadowOpacity: 0.06, // Very subtle shadow, consistent with Meta Horizon cards
+      shadowRadius: 8,
+      elevation: 2,
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
-      width: 1,
-      color: metaHorizonSemanticLight.colors.border.secondary,
+      width: 0, // No border - Meta Horizon relies on shadow for card definition
+      color: 'transparent',
     },
     spacing: {
-      headerGap: spacing[3], // 12px
-      contentGap: spacing[2], // 8px
-      tagsGap: spacing[2], // 8px
-      metaGap: spacing[1], // 4px
+      headerGap: spacing[4], // 16px - More breathing room
+      contentGap: spacing[3], // 12px - Increased spacing between elements
+      tagsGap: spacing[3], // 12px - More space before tags
+      metaGap: spacing[2], // 8px - Slightly more space for meta info
     },
   },
 };

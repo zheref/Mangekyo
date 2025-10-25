@@ -264,6 +264,7 @@ const BlogFeed = () => {
                 date={post.date}
                 author={post.author?.name}
                 readTime={post.readTime}
+                tags={post.tags}
                 layout="horizontal"
                 onPress={() => console.log('Open post:', post.title)}
                 onTagPress={toggleTag}
