@@ -1,15 +1,27 @@
 # Mangekyo Component Library
 
-A modern, themeable React Native component library built with TypeScript. Mangekyo provides a set of reusable UI components with support for multiple design languages and easy customization.
+A modern, themeable React Native component library built with TypeScript. Mangekyo provides a set of reusable UI components with support for **multiple design languages** including Material Design, Cupertino (iOS), and Metro (Windows).
+
+## ✨ New: Multi-Design Language System
+
+Switch between different design systems seamlessly! Your components can now look native on every platform:
+
+- **Material Design** (Google) - Bold shadows, vibrant colors
+- **Cupertino** (Apple iOS) - Soft shadows, rounded corners
+- **Metro** (Microsoft Windows) - Minimal shadows, sharp edges
+
+**[📖 Read the Design Language Guide →](./DESIGN_LANGUAGE_GUIDE.md)**
 
 ## Features
 
-- 🎨 **Multi-theme support** - Built-in Default and Material Design themes
+- 🎨 **Multi-Design Language Support** - Material, Cupertino, Metro, and more
+- 🌓 **Dark Mode** - Full dark mode support for every design language
 - 📱 **React Native** - Works seamlessly with React Native applications
-- 🎯 **TypeScript** - Fully typed for better developer experience
-- 📚 **Storybook** - Interactive component documentation and testing
-- 🎨 **Customizable** - Easy to extend and customize themes
+- 🎯 **TypeScript** - Fully typed with comprehensive token system
+- 📚 **Interactive Storybook** - Explore components across all design languages
+- 🔧 **Customizable** - Three-tier token system for easy customization
 - ⚡ **Tree-shakeable** - Optimized bundle size with ES modules
+- 🎨 **Platform-Adaptive** - Automatically use native design language per platform
 
 ## Installation
 
@@ -63,7 +75,95 @@ export function App() {
 }
 ```
 
-## Components
+## 🎨 Exploring with Storybook
+
+Storybook provides an interactive playground to explore all components across different design languages:
+
+```bash
+npm run storybook
+```
+
+Then open `http://localhost:6006` to:
+
+- **Switch design languages** using the toolbar (Material, Cupertino, Metro)
+- **Toggle dark mode** to see all components in both light and dark themes
+- **Test all component variants** interactively
+- **See side-by-side comparisons** of design languages
+- **Explore real-world examples** like forms and cards
+
+### Storybook Highlights
+
+- **Getting Started** - Introduction to the design language system
+- **Showcase > Interactive Switcher** - Full playground with all components
+- **Showcase > Side by Side** - Compare all design languages at once
+- **Components V2** - All components with design language support
+
+**[📖 Read the Storybook Guide →](./STORYBOOK_GUIDE.md)**
+
+## Design Language System (V2)
+
+Use the new V2 components for full design language support:
+
+```tsx
+import {
+  DesignLanguageProvider,
+  ButtonV2,
+  CardV2,
+  InputV2,
+} from '@mangekyo/components';
+
+function App() {
+  return (
+    <DesignLanguageProvider
+      initialDesignLanguage="material"  // or "cupertino" or "metro"
+      initialColorScheme="light"        // or "dark"
+    >
+      <CardV2 elevation="medium" padding="large">
+        <InputV2 label="Name" placeholder="Enter name" />
+        <ButtonV2 title="Submit" variant="primary" />
+      </CardV2>
+    </DesignLanguageProvider>
+  );
+}
+```
+
+### Switch Design Languages
+
+```tsx
+import { useDesignLanguage } from '@mangekyo/components';
+
+function LanguageSwitcher() {
+  const { setDesignLanguage, toggleColorScheme } = useDesignLanguage();
+
+  return (
+    <>
+      <ButtonV2 title="Material" onPress={() => setDesignLanguage('material')} />
+      <ButtonV2 title="iOS" onPress={() => setDesignLanguage('cupertino')} />
+      <ButtonV2 title="Windows" onPress={() => setDesignLanguage('metro')} />
+      <ButtonV2 title="Toggle Dark Mode" onPress={toggleColorScheme} />
+    </>
+  );
+}
+```
+
+### Platform-Adaptive Design
+
+```tsx
+import { Platform } from 'react-native';
+
+const designLanguage = Platform.select({
+  ios: 'cupertino',
+  android: 'material',
+  windows: 'metro',
+  default: 'material',
+});
+
+<DesignLanguageProvider initialDesignLanguage={designLanguage}>
+  <App />
+</DesignLanguageProvider>
+```
+
+## Components (Legacy)
 
 ### Button
 

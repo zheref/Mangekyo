@@ -12,7 +12,9 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  docs: {},
+  docs: {
+    autodocs: 'tag',
+  },
 };
 
 export default config;
