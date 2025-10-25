@@ -105,17 +105,26 @@ const BlogFeed = () => {
           <Pressable
             onPress={() => setShowFilters(!showFilters)}
             style={[
-              styles.filterButton,
               {
+                paddingHorizontal: theme.components.button.paddingHorizontal.medium,
+                paddingVertical: theme.components.button.paddingVertical.medium,
+                borderRadius: theme.components.button.borderRadius,
+                minWidth: 40,
+                alignItems: 'center',
                 backgroundColor: showFilters
                   ? theme.semantic.colors.interactive.primary
                   : theme.semantic.colors.surface.secondary,
+                borderWidth: theme.components.button.border?.width || 0,
+                borderColor: showFilters
+                  ? theme.semantic.colors.interactive.primary
+                  : theme.semantic.colors.border.secondary,
+                ...(theme.components.button.shadow?.medium && showFilters ? theme.components.button.shadow.medium : {}),
               },
             ]}
           >
             <Text
               style={[
-                styles.filterButtonText,
+                convertTypographyToTextStyle(theme.components.button.typography.medium),
                 {
                   color: showFilters
                     ? '#FFFFFF'
@@ -136,39 +145,50 @@ const BlogFeed = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.pillBarContent}
         >
-          {languages.map((lang) => (
-            <Pressable
-              key={lang.value}
-              onPress={() => setDesignLanguage(lang.value)}
-              style={[
-                styles.pill,
-                {
-                  backgroundColor:
-                    designLanguage === lang.value
+          {languages.map((lang) => {
+            const isSelected = designLanguage === lang.value;
+            const buttonTokens = theme.components.button;
+            
+            return (
+              <Pressable
+                key={lang.value}
+                onPress={() => setDesignLanguage(lang.value)}
+                style={[
+                  {
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingHorizontal: buttonTokens.paddingHorizontal.medium,
+                    paddingVertical: buttonTokens.paddingVertical.medium,
+                    borderRadius: buttonTokens.borderRadius,
+                    borderWidth: buttonTokens.border?.width || 0,
+                    gap: 6,
+                    backgroundColor: isSelected
                       ? theme.semantic.colors.interactive.primary
                       : theme.semantic.colors.surface.secondary,
-                  borderColor: designLanguage === lang.value 
-                    ? theme.semantic.colors.interactive.primary 
-                    : theme.semantic.colors.border.secondary,
-                },
-              ]}
-            >
-              <Text style={styles.pillEmoji}>{lang.emoji}</Text>
-              <Text
-                style={[
-                  styles.pillText,
-                  {
-                    color:
-                      designLanguage === lang.value
-                        ? '#FFFFFF'
-                        : theme.semantic.colors.text.primary,
+                    borderColor: isSelected
+                      ? theme.semantic.colors.interactive.primary
+                      : theme.semantic.colors.border.secondary,
+                    // Apply shadow for elevated design languages
+                    ...(buttonTokens.shadow?.medium && isSelected ? buttonTokens.shadow.medium : {}),
                   },
                 ]}
               >
-                {lang.label}
-              </Text>
-            </Pressable>
-          ))}
+                <Text style={styles.pillEmoji}>{lang.emoji}</Text>
+                <Text
+                  style={[
+                    convertTypographyToTextStyle(buttonTokens.typography.medium),
+                    {
+                      color: isSelected
+                        ? '#FFFFFF'
+                        : theme.semantic.colors.text.primary,
+                    },
+                  ]}
+                >
+                  {lang.label}
+                </Text>
+              </Pressable>
+            );
+          })}
         </ScrollView>
       </View>
 
@@ -278,9 +298,24 @@ const BlogFeed = () => {
         <View style={styles.footer}>
           <Pressable
             onPress={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}
-            style={[styles.themeToggleButton, { backgroundColor: theme.semantic.colors.surface.secondary }]}
+            style={[
+              {
+                paddingHorizontal: theme.components.button.paddingHorizontal.large,
+                paddingVertical: theme.components.button.paddingVertical.large,
+                borderRadius: theme.components.button.borderRadius,
+                backgroundColor: theme.semantic.colors.surface.secondary,
+                borderWidth: theme.components.button.border?.width || 0,
+                borderColor: theme.semantic.colors.border.secondary,
+                ...(theme.components.button.shadow?.small ? theme.components.button.shadow.small : {}),
+              },
+            ]}
           >
-            <Text style={[styles.themeToggleText, { color: theme.semantic.colors.text.primary }]}>
+            <Text
+              style={[
+                convertTypographyToTextStyle(theme.components.button.typography.large),
+                { color: theme.semantic.colors.text.primary },
+              ]}
+            >
               {colorScheme === 'light' ? '🌙' : '☀️'} {colorScheme === 'light' ? 'Dark' : 'Light'} Mode
             </Text>
           </Pressable>
@@ -349,21 +384,8 @@ const styles = StyleSheet.create({
     gap: 8,
     alignItems: 'center',
   },
-  pill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
-    borderWidth: 1,
-    gap: 6,
-  },
   pillEmoji: {
     fontSize: 16,
-  },
-  pillText: {
-    fontSize: 14,
-    fontWeight: '600',
   },
   header: {
     paddingTop: Platform.OS === 'ios' ? 60 : 20,
@@ -390,17 +412,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 13,
-  },
-  filterButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 8,
-    minWidth: 40,
-    alignItems: 'center',
-  },
-  filterButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
   },
   scrollView: {
     flex: 1,
@@ -463,14 +474,5 @@ const styles = StyleSheet.create({
     marginTop: 24,
     paddingVertical: 16,
     alignItems: 'center',
-  },
-  themeToggleButton: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 24,
-  },
-  themeToggleText: {
-    fontSize: 15,
-    fontWeight: '600',
   },
 });

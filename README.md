@@ -356,6 +356,7 @@ mangekyo/
 - **[Meta Horizon Font Note](./META_HORIZON_FONT_NOTE.md)** - Font implementation details (Inter vs Optimist)
 - **[Meta Horizon Card Update](./META_HORIZON_CARD_UPDATE.md)** - Card styling specifications
 - **[Meta Horizon Tag Update](./META_HORIZON_TAG_UPDATE.md)** - Tag styling specifications (pill-shaped badges)
+- **[Theme Picker Adaptive Update](./THEME_PICKER_ADAPTIVE_UPDATE.md)** - Adaptive theme picker that transforms with each design language
 - **[Holo Design Guide](./HOLO_DESIGN_GUIDE.md)** - Android Holo design system
 - **[Storybook Guide](./STORYBOOK_GUIDE.md)** - Using Storybook with Mangekyo
 
