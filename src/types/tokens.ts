@@ -2,12 +2,13 @@
  * Design Language Types
  */
 export type DesignLanguage =
-  | 'material'
-  | 'cupertino'
-  | 'metro'
-  | 'liquidGlass'
-  | 'base'
-  | 'primer';
+  | 'material'    // Google Material Design (2014-Present)
+  | 'cupertino'   // Apple iOS/macOS (2013-Present)
+  | 'aqua'        // Classic macOS (2000-2014)
+  | 'aeroGlass'   // Windows Vista/7 (2006-2012)
+  | 'metro'       // Windows 8 (2012-2015)
+  | 'fluent'      // Windows 10/11 (2017-Present)
+  | 'liquidGlass'; // Modern Glassmorphism (2020-Present)
 
 export type ColorScheme = 'light' | 'dark';
 

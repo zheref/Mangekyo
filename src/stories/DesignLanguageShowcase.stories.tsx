@@ -21,12 +21,13 @@ type Story = StoryObj<typeof meta>;
 // Component to show all variants in a design language
 const DesignLanguagePreview = ({ language }: { language: DesignLanguage }) => {
   const languageNames = {
-    material: 'Material Design',
-    cupertino: 'Cupertino (iOS)',
-    metro: 'Metro (Windows)',
-    liquidGlass: 'Liquid Glass',
-    base: 'Base (Uber)',
-    primer: 'Primer (GitHub)',
+    material: 'Material Design (Google)',
+    cupertino: 'Cupertino (iOS/macOS)',
+    aqua: 'Aqua (Classic macOS)',
+    aeroGlass: 'Aero Glass (Windows Vista/7)',
+    metro: 'Metro (Windows 8)',
+    fluent: 'Fluent Design (Windows 10/11)',
+    liquidGlass: 'Liquid Glass (Modern)',
   };
 
   return (
@@ -128,17 +129,21 @@ export const SideBySideComparison: Story = {
       <View style={{ padding: 20, gap: 20 }}>
         <View>
           <Text style={{ fontSize: 32, fontWeight: 'bold', marginBottom: 8 }}>
-            Design Language Comparison
+            All 7 Design Languages Comparison
           </Text>
           <Text style={{ fontSize: 16, color: '#666', marginBottom: 20 }}>
-            See how the same components look across different design languages
+            See how the same components look across all supported design languages
           </Text>
         </View>
 
         <View style={{ gap: 20 }}>
           <DesignLanguagePreview language="material" />
           <DesignLanguagePreview language="cupertino" />
+          <DesignLanguagePreview language="aqua" />
+          <DesignLanguagePreview language="aeroGlass" />
           <DesignLanguagePreview language="metro" />
+          <DesignLanguagePreview language="fluent" />
+          <DesignLanguagePreview language="liquidGlass" />
         </View>
       </View>
     </ScrollView>
@@ -207,18 +212,49 @@ export const InteractiveSwitcher: Story = {
                       onPress={() => setDesignLanguage('material')}
                       variant={designLanguage === 'material' ? 'primary' : 'outline'}
                       fullWidth
+                      size="small"
                     />
                     <ButtonV2
-                      title="Cupertino (iOS)"
+                      title="Cupertino (iOS/macOS)"
                       onPress={() => setDesignLanguage('cupertino')}
                       variant={designLanguage === 'cupertino' ? 'primary' : 'outline'}
                       fullWidth
+                      size="small"
                     />
                     <ButtonV2
-                      title="Metro (Windows)"
+                      title="Aqua (Classic Mac)"
+                      onPress={() => setDesignLanguage('aqua')}
+                      variant={designLanguage === 'aqua' ? 'primary' : 'outline'}
+                      fullWidth
+                      size="small"
+                    />
+                    <ButtonV2
+                      title="Aero Glass (Vista/7)"
+                      onPress={() => setDesignLanguage('aeroGlass')}
+                      variant={designLanguage === 'aeroGlass' ? 'primary' : 'outline'}
+                      fullWidth
+                      size="small"
+                    />
+                    <ButtonV2
+                      title="Metro (Windows 8)"
                       onPress={() => setDesignLanguage('metro')}
                       variant={designLanguage === 'metro' ? 'primary' : 'outline'}
                       fullWidth
+                      size="small"
+                    />
+                    <ButtonV2
+                      title="Fluent (Windows 10/11)"
+                      onPress={() => setDesignLanguage('fluent')}
+                      variant={designLanguage === 'fluent' ? 'primary' : 'outline'}
+                      fullWidth
+                      size="small"
+                    />
+                    <ButtonV2
+                      title="Liquid Glass (Modern)"
+                      onPress={() => setDesignLanguage('liquidGlass')}
+                      variant={designLanguage === 'liquidGlass' ? 'primary' : 'outline'}
+                      fullWidth
+                      size="small"
                     />
                   </View>
                 </View>

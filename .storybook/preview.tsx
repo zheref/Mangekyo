@@ -46,9 +46,13 @@ const preview: Preview = {
       toolbar: {
         icon: 'component',
         items: [
-          { value: 'material', title: 'Material Design', icon: 'circle' },
-          { value: 'cupertino', title: 'Cupertino (iOS)', icon: 'mobile' },
-          { value: 'metro', title: 'Metro (Windows)', icon: 'browser' },
+          { value: 'material', title: 'Material Design (Google)', icon: 'circle' },
+          { value: 'cupertino', title: 'Cupertino (iOS/macOS)', icon: 'mobile' },
+          { value: 'aqua', title: 'Aqua (Classic Mac)', icon: 'beaker' },
+          { value: 'aeroGlass', title: 'Aero Glass (Vista/7)', icon: 'eye' },
+          { value: 'metro', title: 'Metro (Windows 8)', icon: 'browser' },
+          { value: 'fluent', title: 'Fluent (Windows 10/11)', icon: 'starhollow' },
+          { value: 'liquidGlass', title: 'Liquid Glass (Modern)', icon: 'diamond' },
         ],
         showName: true,
         dynamicTitle: true,

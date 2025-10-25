@@ -5,45 +5,46 @@ const { colors, spacing, typography } = basePrimitiveTokens;
 
 /**
  * Material Design Semantic Tokens (Light Mode)
+ * Google Material Design 3 (2021+)
  */
 export const materialSemanticLight: SemanticTokens = {
   colors: {
     background: {
-      primary: colors.white,
-      secondary: colors.neutral[50],
-      tertiary: colors.neutral[100],
-      inverse: colors.neutral[900],
+      primary: '#FEFBFF', // Material 3 surface
+      secondary: '#F5F5F5',
+      tertiary: '#ECECEC',
+      inverse: '#1C1B1F',
     },
     surface: {
-      primary: colors.white,
-      secondary: colors.neutral[50],
-      tertiary: colors.neutral[100],
-      elevated: colors.white,
-      overlay: `rgba(0, 0, 0, ${basePrimitiveTokens.opacity[50]})`,
+      primary: '#FEFBFF',
+      secondary: '#E7E0EC', // Material 3 surface variant
+      tertiary: '#ECE6F0',
+      elevated: '#FFFFFF',
+      overlay: 'rgba(0, 0, 0, 0.5)',
     },
     text: {
-      primary: 'rgba(0, 0, 0, 0.87)',
-      secondary: 'rgba(0, 0, 0, 0.60)',
-      tertiary: 'rgba(0, 0, 0, 0.38)',
-      inverse: colors.white,
-      disabled: 'rgba(0, 0, 0, 0.38)',
-      link: colors.primary[700],
+      primary: '#1C1B1F', // Material 3 on-surface
+      secondary: '#49454F', // Material 3 on-surface-variant
+      tertiary: 'rgba(28, 27, 31, 0.60)',
+      inverse: '#FFFFFF',
+      disabled: 'rgba(28, 27, 31, 0.38)',
+      link: '#6750A4', // Material 3 primary
     },
     border: {
-      primary: colors.neutral[300],
-      secondary: colors.neutral[200],
-      focus: colors.primary[500],
-      error: colors.error[500],
+      primary: '#79747E', // Material 3 outline
+      secondary: '#C4C7C5',
+      focus: '#6750A4',
+      error: '#B3261E',
     },
     interactive: {
-      primary: colors.primary[600],
-      primaryHover: colors.primary[700],
-      primaryActive: colors.primary[800],
-      primaryDisabled: colors.neutral[300],
-      secondary: colors.secondary[600],
-      secondaryHover: colors.secondary[700],
-      secondaryActive: colors.secondary[800],
-      secondaryDisabled: colors.neutral[300],
+      primary: '#6750A4', // Material 3 primary
+      primaryHover: '#7965AF',
+      primaryActive: '#8B7AB8',
+      primaryDisabled: 'rgba(103, 80, 164, 0.12)',
+      secondary: '#625B71', // Material 3 secondary
+      secondaryHover: '#7A7289',
+      secondaryActive: '#8F8799',
+      secondaryDisabled: 'rgba(98, 91, 113, 0.12)',
     },
     feedback: {
       success: colors.success[600],
