@@ -14,6 +14,50 @@ const preview: Preview = {
     backgrounds: {
       disable: true, // Disable default backgrounds since we control it with colorScheme
     },
+    viewport: {
+      viewports: {
+        iphone14: {
+          name: 'iPhone 14',
+          styles: {
+            width: '390px',
+            height: '844px',
+          },
+          type: 'mobile',
+        },
+        iphone14Pro: {
+          name: 'iPhone 14 Pro',
+          styles: {
+            width: '393px',
+            height: '852px',
+          },
+          type: 'mobile',
+        },
+        pixel7: {
+          name: 'Pixel 7',
+          styles: {
+            width: '412px',
+            height: '915px',
+          },
+          type: 'mobile',
+        },
+        galaxyS23: {
+          name: 'Galaxy S23',
+          styles: {
+            width: '360px',
+            height: '780px',
+          },
+          type: 'mobile',
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '1280px',
+            height: '1024px',
+          },
+          type: 'desktop',
+        },
+      },
+    },
   },
   decorators: [
     (Story, context) => {
