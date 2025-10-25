@@ -53,10 +53,14 @@ export const ArticleCardV2: React.FC<ArticleCardV2Props> = ({
   };
 
   const containerStyle: ViewStyle = {
-    backgroundColor: articleCardTokens.background,
+    // Use semantic color for dynamic theme support
+    backgroundColor: semantic.colors.surface.elevated,
     borderRadius: articleCardTokens.borderRadius,
     borderWidth: articleCardTokens.border.width,
-    borderColor: articleCardTokens.border.color,
+    // Use semantic color for borders
+    borderColor: articleCardTokens.border.width > 0 
+      ? semantic.colors.border.secondary 
+      : 'transparent',
     ...articleCardTokens.shadow,
     overflow: 'hidden',
   };

@@ -6,58 +6,76 @@ const { spacing, borderRadius, typography } = basePrimitiveTokens;
 
 /**
  * Holo Design Component Tokens
- * Android 4.0-4.4 (Ice Cream Sandwich, Jelly Bean, KitKat)
+ * Android 4.0-4.4 KitKat (Ice Cream Sandwich, Jelly Bean, KitKat)
+ * 
+ * Key Characteristics:
+ * - Sharp edges (no border radius)
+ * - Drop shadows for depth
+ * - Holo blue (#33B5E5) as primary accent
+ * - Hard-edged, angular aesthetic
+ * - 48dp minimum touch targets
+ * - Roboto font family
+ * - Support for both light and dark themes
+ * 
+ * Icon Guidelines:
+ * - Action bar icons: 32×32dp with 8dp padding (total 48×48dp touch target)
+ * - Small/contextual icons: 24×24dp
+ * - Notification icons: 24×24dp (white)
+ * - Launcher icons: 48×48dp
+ * - Use white icons on dark backgrounds, black icons on light backgrounds
+ * - Icons should be simple, geometric, and flat
+ * - Standard Holo icon set available in the Android SDK
  */
 export const holoComponentTokens: ComponentTokens = {
   button: {
-    borderRadius: borderRadius.none, // Sharp edges in Holo
+    borderRadius: borderRadius.none, // Sharp edges - no rounding in Holo
     paddingVertical: {
-      small: spacing[1],
-      medium: spacing[2],
-      large: spacing[3],
+      small: spacing[1],      // 8dp
+      medium: spacing[2],     // 16dp
+      large: spacing[3],      // 24dp
     },
     paddingHorizontal: {
-      small: spacing[4],
-      medium: spacing[6],
-      large: spacing[8],
+      small: spacing[4],      // 32dp
+      medium: spacing[6],     // 48dp
+      large: spacing[8],      // 64dp
     },
     minHeight: {
       small: 32,
-      medium: 48, // Standard touch target
+      medium: 48,  // Standard 48dp touch target (Android guideline)
       large: 56,
     },
     typography: {
       small: {
-        fontFamily: 'Roboto, System',
-        fontSize: 14,
-        fontWeight: typography.fontWeights.bold,
+        fontFamily: 'Roboto',
+        fontSize: 14,  // Standard button text
+        fontWeight: typography.fontWeights.bold,  // Buttons use bold
         lineHeight: typography.lineHeights.normal,
-        letterSpacing: typography.letterSpacing.normal,
+        letterSpacing: typography.letterSpacing.wide,  // Slightly wider for buttons
       },
       medium: {
-        fontFamily: 'Roboto, System',
+        fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
-        letterSpacing: typography.letterSpacing.normal,
+        letterSpacing: typography.letterSpacing.wide,
       },
       large: {
-        fontFamily: 'Roboto, System',
+        fontFamily: 'Roboto',
         fontSize: 18,
         fontWeight: typography.fontWeights.bold,
         lineHeight: typography.lineHeights.normal,
-        letterSpacing: typography.letterSpacing.normal,
+        letterSpacing: typography.letterSpacing.wide,
       },
     },
   },
 
   card: {
-    borderRadius: borderRadius.none,
+    borderRadius: borderRadius.none,  // Hard edges, no rounding
     padding: {
       none: 0,
-      small: spacing[3],
-      medium: spacing[4],
-      large: spacing[6],
+      small: spacing[3],   // 24dp
+      medium: spacing[4],  // 32dp
+      large: spacing[6],   // 48dp
     },
     shadow: {
       none: {
@@ -68,58 +86,61 @@ export const holoComponentTokens: ComponentTokens = {
         elevation: 0,
       },
       small: {
-        shadowColor: '#33B5E5',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
+        shadowColor: '#000',  // Standard black shadow, not blue
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 2,
         elevation: 2,
       },
       medium: {
-        shadowColor: '#33B5E5',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.4,
-        shadowRadius: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         elevation: 4,
       },
       large: {
-        shadowColor: '#33B5E5',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.5,
-        shadowRadius: 12,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.35,
+        shadowRadius: 8,
         elevation: 8,
       },
     },
-    background: holoSemanticLight.colors.surface.elevated,
+    // NOTE: Components now use theme.semantic.colors for dynamic theme support
+    background: 'transparent', // Placeholder - components use semantic.colors.surface.elevated
     border: {
-      width: 1,
-      color: holoSemanticLight.colors.border.primary,
+      width: 0,  // Cards typically don't have borders in Holo, they use shadows
+      color: 'transparent', // Placeholder - components use semantic.colors.border.secondary
     },
   },
 
   input: {
-    borderRadius: borderRadius.none,
-    paddingVertical: spacing[2],
-    paddingHorizontal: spacing[3],
-    minHeight: 48,
+    borderRadius: borderRadius.none,  // No rounding
+    paddingVertical: spacing[2],      // 16dp
+    paddingHorizontal: spacing[3],    // 24dp
+    minHeight: 48,  // Standard touch target
     typography: {
-      fontFamily: 'Roboto, System',
-      fontSize: 16,
+      fontFamily: 'Roboto',
+      fontSize: 16,  // Comfortable reading size
       fontWeight: typography.fontWeights.regular,
       lineHeight: typography.lineHeights.normal,
       letterSpacing: typography.letterSpacing.normal,
     },
     border: {
-      width: 1,
+      width: 2,  // Slightly thicker borders for definition
+      // NOTE: Components now use theme.semantic.colors for dynamic theme support
       color: {
-        default: holoSemanticLight.colors.border.secondary,
-        focus: holoSemanticLight.colors.border.focus,
-        error: holoSemanticLight.colors.border.error,
-        disabled: holoSemanticLight.colors.text.disabled,
+        default: 'transparent', // Placeholder - components use semantic.colors.border.*
+        focus: 'transparent',
+        error: 'transparent',
+        disabled: 'transparent',
       },
     },
+    // NOTE: Components now use theme.semantic.colors for dynamic theme support
     background: {
-      default: holoSemanticLight.colors.surface.secondary,
-      disabled: holoSemanticLight.colors.surface.tertiary,
+      default: 'transparent', // Placeholder - components use semantic.colors.surface.primary
+      disabled: 'transparent',
     },
   },
 
@@ -138,15 +159,15 @@ export const holoComponentTokens: ComponentTokens = {
   },
 
   tag: {
-    borderRadius: borderRadius.none,
-    paddingVertical: spacing[1],
-    paddingHorizontal: spacing[2],
+    borderRadius: borderRadius.none,  // Sharp edges
+    paddingVertical: spacing[1],      // 8dp
+    paddingHorizontal: spacing[2],    // 16dp
     typography: {
-      fontFamily: 'Roboto, System',
+      fontFamily: 'Roboto',
       fontSize: 12,
       fontWeight: typography.fontWeights.bold,
       lineHeight: typography.lineHeights.normal,
-      letterSpacing: typography.letterSpacing.normal,
+      letterSpacing: typography.letterSpacing.wide,  // Better legibility for small text
     },
     border: {
       width: 1,
@@ -160,26 +181,27 @@ export const holoComponentTokens: ComponentTokens = {
   },
 
   articleCard: {
-    borderRadius: borderRadius.none,
-    padding: spacing[4],
+    borderRadius: borderRadius.none,  // Sharp edges
+    padding: spacing[4],              // 32dp
     imageHeight: 200,
     shadow: {
-      shadowColor: '#33B5E5',
-      shadowOffset: { width: 0, height: 0 },
+      shadowColor: '#000',  // Standard drop shadow
+      shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.3,
       shadowRadius: 8,
       elevation: 4,
     },
-    background: holoSemanticLight.colors.surface.elevated,
+    // NOTE: Components now use theme.semantic.colors for dynamic theme support
+    background: 'transparent', // Placeholder - components use semantic.colors.surface.elevated
     border: {
-      width: 1,
-      color: holoSemanticLight.colors.border.primary,
+      width: 0,  // Use shadows instead of borders
+      color: 'transparent', // Placeholder - components use semantic.colors.border.secondary
     },
     spacing: {
-      headerGap: spacing[3],
-      contentGap: spacing[2],
-      tagsGap: spacing[2],
-      metaGap: spacing[1],
+      headerGap: spacing[3],   // 24dp
+      contentGap: spacing[2],  // 16dp
+      tagsGap: spacing[2],     // 16dp
+      metaGap: spacing[1],     // 8dp
     },
   },
 };

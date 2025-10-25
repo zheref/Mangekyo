@@ -44,23 +44,25 @@ export const InputV2: React.FC<InputV2Props> = ({
   const inputTokens = components.input;
 
   const getBorderColor = (): string => {
+    // Use semantic colors for dynamic theme support
     if (error) {
-      return inputTokens.border.color.error;
+      return semantic.colors.border.error;
     }
     if (isFocused) {
-      return inputTokens.border.color.focus;
+      return semantic.colors.border.focus;
     }
     if (disabled) {
-      return inputTokens.border.color.disabled;
+      return semantic.colors.text.disabled;
     }
-    return inputTokens.border.color.default;
+    return semantic.colors.border.secondary;
   };
 
   const getBackgroundColor = (): string => {
+    // Use semantic colors for dynamic theme support
     if (disabled) {
-      return inputTokens.background.disabled;
+      return semantic.colors.surface.tertiary;
     }
-    return inputTokens.background.default;
+    return semantic.colors.surface.primary;
   };
 
   return (

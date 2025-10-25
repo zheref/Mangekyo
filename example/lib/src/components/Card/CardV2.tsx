@@ -37,7 +37,10 @@ export const CardV2: React.FC<CardV2Props> = ({
   const getBorderStyle = (): ViewStyle => {
     return {
       borderWidth: cardTokens.border.width,
-      borderColor: cardTokens.border.color,
+      // Use semantic color for dynamic theme support, fallback to component token
+      borderColor: cardTokens.border.width > 0 
+        ? semantic.colors.border.secondary 
+        : 'transparent',
     };
   };
 
@@ -46,7 +49,8 @@ export const CardV2: React.FC<CardV2Props> = ({
       style={[
         styles.card,
         {
-          backgroundColor: cardTokens.background,
+          // Use semantic color for dynamic theme support
+          backgroundColor: semantic.colors.surface.elevated,
           borderRadius: cardTokens.borderRadius,
         },
         getShadowStyle(),
