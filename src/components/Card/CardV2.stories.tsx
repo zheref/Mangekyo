@@ -7,7 +7,7 @@ import { InputV2 } from '../Input/InputV2';
 import { DesignLanguageProvider, useDesignLanguage } from '../../themes/DesignLanguageContext';
 
 const meta = {
-  title: 'Components V2/Card',
+  title: 'Components/Card',
   component: CardV2,
   parameters: {
     layout: 'centered',

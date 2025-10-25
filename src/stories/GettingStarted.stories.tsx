@@ -187,9 +187,9 @@ function LanguageSwitcher() {
           <Text style={styles.sectionTitle}>Try These Stories</Text>
           <Text style={styles.bulletPoint}>1. <Text style={styles.highlight}>Showcase &gt; Interactive Switcher</Text> - Full interactive demo</Text>
           <Text style={styles.bulletPoint}>2. <Text style={styles.highlight}>Showcase &gt; Side By Side Comparison</Text> - See all languages at once</Text>
-          <Text style={styles.bulletPoint}>3. <Text style={styles.highlight}>Components V2 &gt; Button</Text> - Explore button variations</Text>
-          <Text style={styles.bulletPoint}>4. <Text style={styles.highlight}>Components V2 &gt; Card</Text> - Explore card variations</Text>
-          <Text style={styles.bulletPoint}>5. <Text style={styles.highlight}>Components V2 &gt; Input</Text> - Explore input variations</Text>
+          <Text style={styles.bulletPoint}>3. <Text style={styles.highlight}>Components &gt; Button</Text> - Explore button variations</Text>
+          <Text style={styles.bulletPoint}>4. <Text style={styles.highlight}>Components &gt; Card</Text> - Explore card variations</Text>
+          <Text style={styles.bulletPoint}>5. <Text style={styles.highlight}>Components &gt; Input</Text> - Explore input variations</Text>
         </View>
 
         {/* Platform Adaptive */}

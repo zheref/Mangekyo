@@ -8,7 +8,7 @@ import {
 } from '../../themes/DesignLanguageContext';
 
 const meta = {
-  title: 'Components V2/Button',
+  title: 'Components/Button',
   component: ButtonV2,
   parameters: {
     layout: 'centered',
