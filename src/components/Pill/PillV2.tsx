@@ -118,7 +118,7 @@ export const PillV2: React.FC<PillV2Props> = ({
     paddingVertical: tokens.paddingVertical[size],
     borderRadius: tokens.borderRadius,
     borderWidth: tokens.border?.width || 0,
-    gap: icon ? 6 : 0,
+    gap: icon && !isMetaHorizon ? 6 : 0,
     backgroundColor: getBackgroundColor(),
     borderColor: getBorderColor(),
     opacity: disabled ? 0.5 : 1,
@@ -141,7 +141,7 @@ export const PillV2: React.FC<PillV2Props> = ({
         style,
       ]}
     >
-      {icon && <View style={styles.iconContainer}>{icon}</View>}
+      {icon && !isMetaHorizon && <View style={styles.iconContainer}>{icon}</View>}
       <Text style={[labelStyle, textStyle]}>{label}</Text>
     </Pressable>
   );

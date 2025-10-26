@@ -115,7 +115,7 @@ const BlogFeed = () => {
               justifyContent: 'center',
               backgroundColor: showFilters
                 ? theme.semantic.colors.interactive.primary
-                : theme.semantic.colors.interactive.secondary,
+                : theme.semantic.colors.interactive.secondary, // #EFEFEF for Meta Horizon
               borderRadius: theme.semantic.spacing[4], // 16px from tokens
             }}>
               <IconV2 
@@ -166,7 +166,7 @@ const BlogFeed = () => {
             // Meta Horizon uses subtle gray for selected, transparent for unselected
             const isMetaHorizon = designLanguage === 'metaHorizon';
             const selectedBg = isMetaHorizon 
-              ? theme.semantic.colors.surface.secondary  // Light gray for Meta Horizon
+              ? theme.semantic.colors.interactive.secondary  // #EFEFEF for Meta Horizon
               : theme.semantic.colors.interactive.primary;
             const unselectedBg = isMetaHorizon
               ? 'transparent'  // Transparent for Meta Horizon

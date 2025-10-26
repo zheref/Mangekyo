@@ -42,10 +42,10 @@ export const metaHorizonSemanticLight: SemanticTokens = {
       primaryHover: '#0654D4',
       primaryActive: '#0551C5',
       primaryDisabled: 'rgba(8, 102, 255, 0.4)',
-      secondary: '#E4E6EB',
-      secondaryHover: '#D8DADF',
-      secondaryActive: '#CCD0D5',
-      secondaryDisabled: '#F0F2F5',
+      secondary: '#EFEFEF', // Light gray background for selected/active states
+      secondaryHover: '#E5E5E5',
+      secondaryActive: '#DADADA',
+      secondaryDisabled: '#F5F5F5',
     },
     feedback: {
       success: '#31A24C', // Meta's success green
