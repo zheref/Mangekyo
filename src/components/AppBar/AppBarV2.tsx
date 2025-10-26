@@ -3,13 +3,13 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   ViewStyle,
   TextStyle,
 } from 'react-native';
 import Constants from 'expo-constants';
 import { useDesignLanguage } from '../../themes/DesignLanguageContext';
 import { DesignLanguage } from '../../types/tokens';
+import { basePrimitiveTokens } from '../../tokens/primitives';
 
 export interface AppBarV2Props {
   /** The title text displayed in the center of the app bar */
@@ -107,7 +107,7 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
       <TouchableOpacity
         key={index}
         onPress={action.onPress}
-        style={styles.actionButton}
+        style={getActionButtonStyle()}
         accessibilityLabel={action.accessibilityLabel}
         accessibilityRole="button"
       >
@@ -128,6 +128,10 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
       paddingTop: safeAreaPadding.paddingTop,
       paddingBottom: safeAreaPadding.paddingBottom,
       backgroundColor: semantic.colors.background.primary,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      width: '100%',
     };
 
     // Add shadow/elevation if enabled
@@ -139,6 +143,34 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
     }
 
     return baseStyle;
+  };
+  
+  const getActionContainerStyle = (): ViewStyle => {
+    return {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: basePrimitiveTokens.spacing[2], // 8px from primitive tokens
+      minWidth: 40, // spacing[10] - minimum touch target (40px)
+    };
+  };
+  
+  const getTitleContainerStyle = (centered: boolean): ViewStyle => {
+    return {
+      flex: 1,
+      justifyContent: 'center',
+      paddingHorizontal: basePrimitiveTokens.spacing[3], // 12px from primitive tokens
+      alignItems: centered ? 'center' : 'flex-start',
+    };
+  };
+  
+  const getActionButtonStyle = (): ViewStyle => {
+    return {
+      width: 40, // spacing[10] from primitive tokens (40px)
+      height: 40, // spacing[10] from primitive tokens (40px)
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 20, // Half of spacing[10] for circular button
+    };
   };
 
   const getTitleStyle = (): TextStyle => {
@@ -158,16 +190,16 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
                            activeDesignLanguage === 'cupertino';
 
   return (
-    <View style={[styles.container, getAppBarStyle(), style]}>
+    <View style={[getAppBarStyle(), style]}>
       {/* Left actions */}
-      <View style={styles.leftActions}>
+      <View style={getActionContainerStyle()}>
         {allLeftActions.map((action, index) => renderActionButton(action, index))}
       </View>
 
       {/* Title */}
-      <View style={[styles.titleContainer, shouldCenterTitle && styles.titleCentered]}>
+      <View style={getTitleContainerStyle(shouldCenterTitle)}>
         <Text
-          style={[styles.title, getTitleStyle(), titleStyle]}
+          style={[getTitleStyle(), titleStyle]}
           numberOfLines={1}
           ellipsizeMode="tail"
         >
@@ -176,49 +208,10 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
       </View>
 
       {/* Right actions */}
-      <View style={styles.rightActions}>
+      <View style={getActionContainerStyle()}>
         {allRightActions.map((action, index) => renderActionButton(action, index))}
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  leftActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    minWidth: 40, // Ensure space for actions
-  },
-  rightActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    minWidth: 40, // Ensure space for actions
-  },
-  titleContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 12,
-  },
-  titleCentered: {
-    alignItems: 'center',
-  },
-  title: {
-    textAlign: 'center',
-  },
-  actionButton: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20, // Circular touch target
-  },
-});
 

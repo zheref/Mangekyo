@@ -129,6 +129,7 @@ export const basePrimitiveTokens: PrimitiveTokens = {
     4: 16,
     6: 24,
     8: 32,
+    10: 40, // Standard minimum touch target size
     12: 48,
     16: 64,
     20: 80,

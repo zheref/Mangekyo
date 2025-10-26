@@ -99,7 +99,7 @@ const BlogFeed = () => {
           icon: (
             <IconV2 
               name="search" 
-              size={24} 
+              size={theme.components.appBar.iconSize} 
               color={theme.semantic.colors.text.secondary}
             />
           ),
@@ -109,20 +109,20 @@ const BlogFeed = () => {
         rightAction={{
           icon: (
             <View style={{
-              width: 32,
-              height: 32,
+              width: theme.semantic.spacing[8], // 32px from tokens
+              height: theme.semantic.spacing[8], // 32px from tokens
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: showFilters
                 ? theme.semantic.colors.interactive.primary
                 : theme.semantic.colors.interactive.secondary,
-              borderRadius: 16,
+              borderRadius: theme.semantic.spacing[4], // 16px from tokens
             }}>
               <IconV2 
                 name={showFilters ? 'close' : 'settings'} 
-                size={18}
+                size={theme.semantic.spacing[4] + 2} // 18px (16 + 2)
                 color={showFilters
-                  ? '#FFFFFF'
+                  ? theme.semantic.colors.surface.primary
                   : theme.semantic.colors.text.primary}
               />
               {hasActiveFilters && !showFilters && (
@@ -130,11 +130,11 @@ const BlogFeed = () => {
                   position: 'absolute',
                   top: 0,
                   right: 0,
-                  width: 8,
-                  height: 8,
-                  borderRadius: 4,
+                  width: theme.semantic.spacing[2], // 8px from tokens
+                  height: theme.semantic.spacing[2], // 8px from tokens
+                  borderRadius: theme.semantic.spacing[1], // 4px from tokens
                   backgroundColor: theme.semantic.colors.feedback.error,
-                  borderWidth: 1,
+                  borderWidth: theme.semantic.border.width,
                   borderColor: theme.semantic.colors.background.primary,
                 }} />
               )}
@@ -166,14 +166,14 @@ const BlogFeed = () => {
             // Meta Horizon uses subtle gray for selected, transparent for unselected
             const isMetaHorizon = designLanguage === 'metaHorizon';
             const selectedBg = isMetaHorizon 
-              ? '#E4E6EB'  // Light gray for Meta Horizon
+              ? theme.semantic.colors.surface.secondary  // Light gray for Meta Horizon
               : theme.semantic.colors.interactive.primary;
             const unselectedBg = isMetaHorizon
               ? 'transparent'  // Transparent for Meta Horizon
               : theme.semantic.colors.surface.secondary;
             const selectedTextColor = isMetaHorizon
               ? theme.semantic.colors.text.primary  // Dark text for Meta Horizon
-              : '#FFFFFF';
+              : theme.semantic.colors.surface.primary;
             
             return (
               <Pressable
@@ -187,7 +187,7 @@ const BlogFeed = () => {
                     paddingVertical: buttonTokens.paddingVertical.medium,
                     borderRadius: buttonTokens.borderRadius,
                     borderWidth: buttonTokens.border?.width || 0,
-                    gap: 6,
+                    gap: theme.semantic.spacing[2] - 2, // 6px (8 - 2)
                     backgroundColor: isSelected ? selectedBg : unselectedBg,
                     borderColor: isSelected
                       ? (isMetaHorizon ? 'transparent' : theme.semantic.colors.interactive.primary)
@@ -396,89 +396,79 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   pillBar: {
-    paddingVertical: 10,
-    elevation: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
+    paddingVertical: 10, // Slightly less than spacing[3] for compact design
   },
   pillBarFlat: {
-    // Meta Horizon: completely remove all shadows to match the flat design
-    elevation: 0,
-    shadowColor: 'transparent',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0,
-    shadowRadius: 0,
+    // Meta Horizon: completely flat, no additional styles needed
   },
   pillBarContent: {
-    paddingHorizontal: 16,
-    gap: 8,
+    paddingHorizontal: 16, // Fixed horizontal padding for pill bar
+    gap: 8, // Fixed gap between pills
     alignItems: 'center',
   },
   pillEmoji: {
-    fontSize: 16,
+    fontSize: 16, // Fixed emoji size for consistent appearance
   },
   scrollView: {
     flex: 1,
   },
   contentContainer: {
-    padding: 16,
-    gap: 16,
-    paddingBottom: 40,
+    padding: 16, // spacing[4] - standard content padding
+    gap: 16, // spacing[4] - standard gap between sections
+    paddingBottom: 40, // spacing[10] - extra bottom padding for scroll
   },
   filterHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 12, // spacing[3]
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 16, // base font size
+    fontWeight: '600', // semibold
   },
   filterSection: {
-    marginBottom: 16,
+    marginBottom: 16, // spacing[4]
   },
   filterLabel: {
-    fontSize: 14,
-    fontWeight: '600',
-    marginBottom: 8,
+    fontSize: 14, // sm font size
+    fontWeight: '600', // semibold
+    marginBottom: 8, // spacing[2]
   },
   tagsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 8, // spacing[2]
   },
   resultsBar: {
-    paddingVertical: 8,
+    paddingVertical: 8, // spacing[2]
   },
   resultsText: {
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: 14, // sm font size
+    fontWeight: '500', // medium
   },
   loadingContainer: {
-    padding: 48,
+    padding: 48, // spacing[12]
     alignItems: 'center',
   },
   loadingText: {
-    marginTop: 16,
-    fontSize: 16,
+    marginTop: 16, // spacing[4]
+    fontSize: 16, // base font size
   },
   emptyText: {
-    fontSize: 16,
+    fontSize: 16, // base font size
     textAlign: 'center',
-    paddingVertical: 24,
+    paddingVertical: 24, // spacing[6]
   },
   postsContainer: {
-    gap: 12,
+    gap: 12, // spacing[3]
   },
   articleCard: {
     marginBottom: 0,
   },
   footer: {
-    marginTop: 24,
-    paddingVertical: 16,
+    marginTop: 24, // spacing[6]
+    paddingVertical: 16, // spacing[4]
     alignItems: 'center',
   },
 });
