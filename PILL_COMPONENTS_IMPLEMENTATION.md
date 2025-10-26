@@ -85,14 +85,29 @@ pillBar: {
 
 ## Meta Horizon Theme Customizations
 
-As requested, the Meta Horizon theme has **NO shadows** on the pill bar:
-- PillBar has `shadow: undefined` (no shadow)
+The Meta Horizon theme follows Meta's flat design principles with **absolutely NO shadows**:
+
+### PillBar Styling
+- **No shadow at all** - completely flat (elevation: 0, shadowOpacity: 0)
+- Background uses `surface.elevated` color
+- Matches the flat aesthetic seen in WhatsApp and other Meta apps
+
+### Pill Styling  
 - Pills have `shadow: undefined` (no shadow)
 - Selected pills use subtle gray background (#E4E6EB)
 - Unselected pills use transparent background
 - Text remains dark for both states (accessible contrast)
+- Fully rounded corners (`borderRadius.full`)
 
-This maintains Meta's flat, clean design aesthetic.
+### Implementation Details
+Both the `PillBarV2` component and the example app explicitly check for Meta Horizon and remove all shadow properties:
+- `elevation: 0` (Android)
+- `shadowColor: 'transparent'`
+- `shadowOpacity: 0`
+- `shadowOffset: { width: 0, height: 0 }`
+- `shadowRadius: 0`
+
+This maintains Meta's signature flat, clean design aesthetic as seen in their production apps.
 
 ## Example Usage
 

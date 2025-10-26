@@ -146,17 +146,15 @@ const BlogFeed = () => {
           }}
           elevation={true}
         />
-        
-        {/* Subtitle below AppBar */}
-        <View style={styles.subtitleContainer}>
-          <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
-            Latest updates • {filteredPosts.length} posts
-          </Text>
-        </View>
       </View>
 
       {/* Design Language Pill Bar */}
-      <View style={[styles.pillBar, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
+      <View style={[
+        styles.pillBar,
+        { backgroundColor: theme.semantic.colors.surface.elevated },
+        // Meta Horizon: completely flat, no shadow at all
+        designLanguage === 'metaHorizon' && styles.pillBarFlat
+      ]}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -405,6 +403,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 2,
+  },
+  pillBarFlat: {
+    // Meta Horizon: completely remove all shadows to match the flat design
+    elevation: 0,
+    shadowColor: 'transparent',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0,
+    shadowRadius: 0,
   },
   pillBarContent: {
     paddingHorizontal: 16,

@@ -54,8 +54,14 @@ export const PillBarV2: React.FC<PillBarV2Props> = ({
   const containerStyle: ViewStyle = {
     backgroundColor: pillBarTokens?.backgroundColor || theme.semantic.colors.surface.elevated,
     paddingVertical: pillBarTokens?.paddingVertical || 10,
-    // Apply shadow only if not Meta Horizon
-    ...(pillBarTokens?.shadow && !isMetaHorizon ? pillBarTokens.shadow : {}),
+    // Meta Horizon: completely flat with no shadow at all
+    ...(isMetaHorizon ? {
+      elevation: 0,
+      shadowColor: 'transparent',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+    } : pillBarTokens?.shadow ? pillBarTokens.shadow : {}),
   };
 
   const defaultContentContainerStyle: ViewStyle = {
