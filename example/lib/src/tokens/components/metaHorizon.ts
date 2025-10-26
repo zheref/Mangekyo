@@ -60,32 +60,38 @@ export const metaHorizonComponentTokens: ComponentTokens = {
       large: spacing[6], // 24px
     },
     shadow: {
-      none: shadows.xs,
+      none: {
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        elevation: 0, // No shadow on Android
+      },
       small: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.04, // Very subtle - Meta prefers minimal shadows
-        shadowRadius: 2,
-        elevation: 1,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0, // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0, // No shadow on Android
       },
       medium: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.06, // Subtle elevation
-        shadowRadius: 4,
-        elevation: 2,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0, // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0, // No shadow on Android
       },
       large: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.08, // Still quite subtle
-        shadowRadius: 8,
-        elevation: 3,
+        shadowColor: 'transparent',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0, // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0, // No shadow on Android
       },
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
-      width: 0, // Meta Horizon cards typically don't have borders, relying on shadow instead
+      width: 0, // Meta Horizon cards use background color contrast, not borders or shadows
       color: 'transparent',
     },
   },
@@ -149,15 +155,15 @@ export const metaHorizonComponentTokens: ComponentTokens = {
     padding: spacing[4], // 16px - Generous padding around content
     imageHeight: 200,
     shadow: {
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.06, // Very subtle shadow, consistent with Meta Horizon cards
-      shadowRadius: 8,
-      elevation: 2,
+      shadowColor: 'transparent',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0, // No shadows per Meta Horizon guidelines
+      shadowRadius: 0,
+      elevation: 0, // No shadow on Android
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
-      width: 0, // No border - Meta Horizon relies on shadow for card definition
+      width: 0, // No border - Meta Horizon uses background color contrast only
       color: 'transparent',
     },
     spacing: {
@@ -188,6 +194,55 @@ export const metaHorizonComponentTokens: ComponentTokens = {
       fontWeight: typography.fontWeights.semibold, // Emphasize title
     },
     iconSize: 24, // Standard icon size for app bar actions
+  },
+
+  pill: {
+    borderRadius: borderRadius.full, // Fully rounded pills like buttons
+    paddingVertical: {
+      small: spacing[1], // 4px
+      medium: spacing[2], // 8px
+      large: spacing[2], // 8px
+    },
+    paddingHorizontal: {
+      small: spacing[3], // 12px
+      medium: spacing[4], // 16px
+      large: spacing[6], // 24px
+    },
+    typography: {
+      small: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 13,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      medium: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 15,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+      large: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 17,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal,
+      },
+    },
+    border: {
+      width: 0, // No border for Meta Horizon pills
+    },
+    // No shadow for Meta Horizon pills
+  },
+
+  pillBar: {
+    backgroundColor: metaHorizonSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4], // 16px
+    gap: spacing[2], // 8px
+    // NO shadow for Meta Horizon pill bar - completely flat
   },
 };
 

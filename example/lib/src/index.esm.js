@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, useMemo } from 'react';
-import { StyleSheet, TouchableOpacity, ActivityIndicator, Text, View, TextInput, Image, Pressable } from 'react-native';
+import { StyleSheet, TouchableOpacity, ActivityIndicator, Text, View, TextInput, Image, Pressable, Platform, ScrollView } from 'react-native';
 
 function _arrayLikeToArray(r, a) {
   (null == a || a > r.length) && (a = r.length);
@@ -8,6 +8,9 @@ function _arrayLikeToArray(r, a) {
 }
 function _arrayWithHoles(r) {
   if (Array.isArray(r)) return r;
+}
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
 }
 function _defineProperty(e, r, t) {
   return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
@@ -25,6 +28,9 @@ function _extends() {
     }
     return n;
   }, _extends.apply(null, arguments);
+}
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
 }
 function _iterableToArrayLimit(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
@@ -52,6 +58,9 @@ function _iterableToArrayLimit(r, l) {
 }
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function ownKeys(e, r) {
   var t = Object.keys(e);
@@ -96,6 +105,9 @@ function _objectWithoutPropertiesLoose(r, e) {
 }
 function _slicedToArray(r, e) {
   return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
 }
 function _toPrimitive(t, r) {
   if ("object" != typeof t || !t) return t;
@@ -433,19 +445,19 @@ var Button = function Button(_ref) {
   return /*#__PURE__*/React.createElement(TouchableOpacity, {
     onPress: onPress,
     disabled: disabled || loading,
-    style: [styles$5.button, getVariantStyle(), getSizeStyle(), fullWidth && styles$5.fullWidth, (disabled || loading) && styles$5.disabled, style],
+    style: [styles$7.button, getVariantStyle(), getSizeStyle(), fullWidth && styles$7.fullWidth, (disabled || loading) && styles$7.disabled, style],
     activeOpacity: 0.7
   }, loading ? /*#__PURE__*/React.createElement(ActivityIndicator, {
     color: getTextColor()
   }) : /*#__PURE__*/React.createElement(Text, {
-    style: [styles$5.text, {
+    style: [styles$7.text, {
       color: getTextColor(),
       fontSize: getTextSize(),
       fontWeight: theme.typography.fontWeight.semibold
     }, textStyle]
   }, title));
 };
-var styles$5 = StyleSheet.create({
+var styles$7 = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -3726,12 +3738,131 @@ var holoComponentTokens = {
       // 16dp
       metaGap: spacing$9[1] // 8dp
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$9[4],
+    backgroundColor: 'transparent',
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 4
+    },
+    border: {
+      width: 0,
+      color: 'transparent'
+    },
+    title: {
+      fontFamily: typography$9.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography$9.fontWeights.bold,
+      lineHeight: typography$9.lineHeights.normal,
+      letterSpacing: typography$9.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$9.none,
+    // Sharp edges, no rounding
+    paddingVertical: {
+      small: spacing$9[1],
+      // 8dp
+      medium: spacing$9[2],
+      // 16dp
+      large: spacing$9[2] // 16dp
+    },
+    paddingHorizontal: {
+      small: spacing$9[3],
+      // 24dp
+      medium: spacing$9[4],
+      // 32dp
+      large: spacing$9[6] // 48dp
+    },
+    typography: {
+      small: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 12,
+        fontWeight: typography$9.fontWeights.bold,
+        lineHeight: typography$9.lineHeights.normal,
+        letterSpacing: typography$9.letterSpacing.wide
+      },
+      medium: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 14,
+        fontWeight: typography$9.fontWeights.bold,
+        lineHeight: typography$9.lineHeights.normal,
+        letterSpacing: typography$9.letterSpacing.wide
+      },
+      large: {
+        fontFamily: 'Roboto-Bold',
+        fontSize: 16,
+        fontWeight: typography$9.fontWeights.bold,
+        lineHeight: typography$9.lineHeights.normal,
+        letterSpacing: typography$9.letterSpacing.wide
+      }
+    },
+    border: {
+      width: 1 // Holo uses borders
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 2,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: 'transparent',
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$9[4],
+    gap: spacing$9[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3,
+      elevation: 3
+    }
   }
 };
 
 var spacing$8 = basePrimitiveTokens.spacing,
   borderRadius$8 = basePrimitiveTokens.borderRadius,
-  shadows$3 = basePrimitiveTokens.shadows,
+  shadows$2 = basePrimitiveTokens.shadows,
   typography$8 = basePrimitiveTokens.typography;
 /**
  * Material Design Component Tokens
@@ -3788,7 +3919,7 @@ var materialComponentTokens = {
       large: spacing$8[6]
     },
     shadow: {
-      none: shadows$3.xs,
+      none: shadows$2.xs,
       small: {
         shadowColor: '#000',
         shadowOffset: {
@@ -3900,6 +4031,121 @@ var materialComponentTokens = {
       contentGap: spacing$8[2],
       tagsGap: spacing$8[2],
       metaGap: spacing$8[1]
+    }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$8[4],
+    backgroundColor: materialSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 4
+    },
+    border: {
+      width: 0,
+      color: 'transparent'
+    },
+    title: {
+      fontFamily: typography$8.fontFamilies.body,
+      fontSize: 20,
+      fontWeight: typography$8.fontWeights.medium,
+      lineHeight: typography$8.lineHeights.normal,
+      letterSpacing: typography$8.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$8.full,
+    // Material uses pill shape
+    paddingVertical: {
+      small: spacing$8[1],
+      medium: spacing$8[2],
+      large: spacing$8[2]
+    },
+    paddingHorizontal: {
+      small: spacing$8[3],
+      medium: spacing$8[4],
+      large: spacing$8[6]
+    },
+    typography: {
+      small: {
+        fontFamily: typography$8.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography$8.fontWeights.medium,
+        lineHeight: typography$8.lineHeights.normal,
+        letterSpacing: typography$8.letterSpacing.wide
+      },
+      medium: {
+        fontFamily: typography$8.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography$8.fontWeights.medium,
+        lineHeight: typography$8.lineHeights.normal,
+        letterSpacing: typography$8.letterSpacing.wide
+      },
+      large: {
+        fontFamily: typography$8.fontFamilies.body,
+        fontSize: 17,
+        fontWeight: typography$8.fontWeights.medium,
+        lineHeight: typography$8.lineHeights.normal,
+        letterSpacing: typography$8.letterSpacing.wide
+      }
+    },
+    border: {
+      width: 0
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 2,
+        elevation: 2
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 4
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: materialSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$8[4],
+    gap: spacing$8[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.08,
+      shadowRadius: 2,
+      elevation: 2
     }
   }
 };
@@ -4128,6 +4374,128 @@ var flatComponentTokens = {
       // 8
       metaGap: spacing$7[1] // 4
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$7[4],
+    // 16
+    backgroundColor: flatSemanticLight.colors.background.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.05,
+      shadowRadius: 3,
+      elevation: 2
+    },
+    border: {
+      width: 0,
+      color: 'transparent'
+    },
+    title: {
+      fontFamily: 'System',
+      fontSize: 17,
+      fontWeight: typography$7.fontWeights.semibold,
+      lineHeight: 1.29,
+      letterSpacing: -0.41
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$7['2xl'],
+    // 16px - iOS rounded corners
+    paddingVertical: {
+      small: spacing$7[1],
+      // 4
+      medium: spacing$7[1.5],
+      // 6
+      large: spacing$7[2] // 8
+    },
+    paddingHorizontal: {
+      small: spacing$7[3],
+      // 12
+      medium: spacing$7[4],
+      // 16
+      large: spacing$7[5] // 20
+    },
+    typography: {
+      small: {
+        fontFamily: 'System',
+        fontSize: 13,
+        fontWeight: typography$7.fontWeights.semibold,
+        lineHeight: 1.3,
+        letterSpacing: -0.08
+      },
+      medium: {
+        fontFamily: 'System',
+        fontSize: 15,
+        fontWeight: typography$7.fontWeights.semibold,
+        lineHeight: 1.33,
+        letterSpacing: -0.24
+      },
+      large: {
+        fontFamily: 'System',
+        fontSize: 17,
+        fontWeight: typography$7.fontWeights.semibold,
+        lineHeight: 1.29,
+        letterSpacing: -0.41
+      }
+    },
+    border: {
+      width: 0
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.04,
+        shadowRadius: 2,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 3,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: flatSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$7[4],
+    // 16
+    gap: spacing$7[2],
+    // 8
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.04,
+      shadowRadius: 3,
+      elevation: 1
+    }
   }
 };
 
@@ -4317,12 +4685,127 @@ var liquidGlassComponentTokens = {
       tagsGap: spacing$6[3],
       metaGap: spacing$6[2]
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$6[4],
+    backgroundColor: liquidGlassSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: 'rgba(0, 0, 0, 0.1)',
+      shadowOffset: {
+        width: 0,
+        height: 4
+      },
+      shadowOpacity: 0.12,
+      shadowRadius: 16,
+      elevation: 3
+    },
+    border: {
+      width: 1,
+      color: liquidGlassSemanticLight.colors.border.primary
+    },
+    title: {
+      fontFamily: typography$6.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography$6.fontWeights.semibold,
+      lineHeight: typography$6.lineHeights.normal,
+      letterSpacing: typography$6.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$6.full,
+    // Fully rounded for glass effect
+    paddingVertical: {
+      small: spacing$6[2],
+      medium: spacing$6[3],
+      large: spacing$6[4]
+    },
+    paddingHorizontal: {
+      small: spacing$6[4],
+      medium: spacing$6[6],
+      large: spacing$6[8]
+    },
+    typography: {
+      small: {
+        fontFamily: 'Inter, System',
+        fontSize: 13,
+        fontWeight: typography$6.fontWeights.medium,
+        lineHeight: typography$6.lineHeights.normal,
+        letterSpacing: typography$6.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: 'Inter, System',
+        fontSize: 15,
+        fontWeight: typography$6.fontWeights.medium,
+        lineHeight: typography$6.lineHeights.normal,
+        letterSpacing: typography$6.letterSpacing.normal
+      },
+      large: {
+        fontFamily: 'Inter, System',
+        fontSize: 17,
+        fontWeight: typography$6.fontWeights.medium,
+        lineHeight: typography$6.lineHeights.normal,
+        letterSpacing: typography$6.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 1
+    },
+    shadow: {
+      small: {
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOffset: {
+          width: 0,
+          height: 4
+        },
+        shadowOpacity: 0.12,
+        shadowRadius: 16,
+        elevation: 2
+      },
+      large: {
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOffset: {
+          width: 0,
+          height: 6
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 24,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: liquidGlassSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$6[4],
+    gap: spacing$6[3],
+    shadow: {
+      shadowColor: 'rgba(0, 0, 0, 0.1)',
+      shadowOffset: {
+        width: 0,
+        height: 4
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 16,
+      elevation: 2
+    }
   }
 };
 
 var spacing$5 = basePrimitiveTokens.spacing,
   borderRadius$5 = basePrimitiveTokens.borderRadius,
-  shadows$2 = basePrimitiveTokens.shadows,
+  shadows$1 = basePrimitiveTokens.shadows,
   typography$5 = basePrimitiveTokens.typography;
 /**
  * Metro/Fluent Design Component Tokens
@@ -4380,7 +4863,7 @@ var metroComponentTokens = {
       large: spacing$5[8]
     },
     shadow: {
-      none: shadows$2.xs,
+      none: shadows$1.xs,
       small: {
         shadowColor: '#000',
         shadowOffset: {
@@ -4502,6 +4985,81 @@ var metroComponentTokens = {
       tagsGap: spacing$5[2],
       metaGap: spacing$5[1]
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$5[4],
+    backgroundColor: metroSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 0
+      },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0
+    },
+    border: {
+      width: 1,
+      color: metroSemanticLight.colors.border.secondary
+    },
+    title: {
+      fontFamily: typography$5.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography$5.fontWeights.light,
+      lineHeight: typography$5.lineHeights.normal,
+      letterSpacing: typography$5.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$5.none,
+    // Metro flat design, no rounding
+    paddingVertical: {
+      small: spacing$5[1],
+      medium: spacing$5[2],
+      large: spacing$5[3]
+    },
+    paddingHorizontal: {
+      small: spacing$5[3],
+      medium: spacing$5[4],
+      large: spacing$5[6]
+    },
+    typography: {
+      small: {
+        fontFamily: typography$5.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography$5.fontWeights.semibold,
+        lineHeight: typography$5.lineHeights.normal,
+        letterSpacing: typography$5.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: typography$5.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography$5.fontWeights.semibold,
+        lineHeight: typography$5.lineHeights.normal,
+        letterSpacing: typography$5.letterSpacing.normal
+      },
+      large: {
+        fontFamily: typography$5.fontFamilies.body,
+        fontSize: 17,
+        fontWeight: typography$5.fontWeights.semibold,
+        lineHeight: typography$5.lineHeights.normal,
+        letterSpacing: typography$5.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 1 // Metro uses borders
+    }
+    // No shadow for Metro
+  },
+  pillBar: {
+    backgroundColor: metroSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$5[4],
+    gap: spacing$5[2]
+    // No shadow for Metro - flat design
   }
 };
 
@@ -4690,13 +5248,127 @@ var fluentComponentTokens = {
       tagsGap: spacing$4[2],
       metaGap: spacing$4[1]
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$4[4],
+    backgroundColor: fluentSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2
+    },
+    border: {
+      width: 0,
+      color: 'transparent'
+    },
+    title: {
+      fontFamily: typography$4.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography$4.fontWeights.semibold,
+      lineHeight: typography$4.lineHeights.normal,
+      letterSpacing: typography$4.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$4.sm,
+    paddingVertical: {
+      small: spacing$4[1],
+      medium: spacing$4[2],
+      large: spacing$4[3]
+    },
+    paddingHorizontal: {
+      small: spacing$4[4],
+      medium: spacing$4[6],
+      large: spacing$4[8]
+    },
+    typography: {
+      small: {
+        fontFamily: 'Segoe UI Variable, System',
+        fontSize: 13,
+        fontWeight: typography$4.fontWeights.semibold,
+        lineHeight: typography$4.lineHeights.normal,
+        letterSpacing: typography$4.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: 'Segoe UI Variable, System',
+        fontSize: 15,
+        fontWeight: typography$4.fontWeights.semibold,
+        lineHeight: typography$4.lineHeights.normal,
+        letterSpacing: typography$4.letterSpacing.normal
+      },
+      large: {
+        fontFamily: 'Segoe UI Variable, System',
+        fontSize: 17,
+        fontWeight: typography$4.fontWeights.semibold,
+        lineHeight: typography$4.lineHeights.normal,
+        letterSpacing: typography$4.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 1
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 2,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.08,
+        shadowRadius: 4,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 4
+        },
+        shadowOpacity: 0.12,
+        shadowRadius: 8,
+        elevation: 4
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: fluentSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$4[4],
+    gap: spacing$4[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.06,
+      shadowRadius: 3,
+      elevation: 2
+    }
   }
 };
 
 var spacing$3 = basePrimitiveTokens.spacing,
-  borderRadius$3 = basePrimitiveTokens.borderRadius,
-  shadows$1 = basePrimitiveTokens.shadows,
-  typography$3 = basePrimitiveTokens.typography;
+  borderRadius$3 = basePrimitiveTokens.borderRadius;
+  basePrimitiveTokens.shadows;
+  var typography$3 = basePrimitiveTokens.typography;
 /**
  * Meta Horizon Design Component Tokens
  * Based on Meta's official Horizon design system
@@ -4760,45 +5432,54 @@ var metaHorizonComponentTokens = {
       large: spacing$3[6] // 24px
     },
     shadow: {
-      none: shadows$1.xs,
-      small: {
-        shadowColor: '#000',
+      none: {
+        shadowColor: 'transparent',
         shadowOffset: {
           width: 0,
-          height: 1
+          height: 0
         },
-        shadowOpacity: 0.04,
-        // Very subtle - Meta prefers minimal shadows
-        shadowRadius: 2,
-        elevation: 1
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        elevation: 0 // No shadow on Android
+      },
+      small: {
+        shadowColor: 'transparent',
+        shadowOffset: {
+          width: 0,
+          height: 0
+        },
+        shadowOpacity: 0,
+        // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0 // No shadow on Android
       },
       medium: {
-        shadowColor: '#000',
+        shadowColor: 'transparent',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 0
         },
-        shadowOpacity: 0.06,
-        // Subtle elevation
-        shadowRadius: 4,
-        elevation: 2
+        shadowOpacity: 0,
+        // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0 // No shadow on Android
       },
       large: {
-        shadowColor: '#000',
+        shadowColor: 'transparent',
         shadowOffset: {
           width: 0,
-          height: 4
+          height: 0
         },
-        shadowOpacity: 0.08,
-        // Still quite subtle
-        shadowRadius: 8,
-        elevation: 3
+        shadowOpacity: 0,
+        // No shadows per Meta Horizon guidelines
+        shadowRadius: 0,
+        elevation: 0 // No shadow on Android
       }
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
       width: 0,
-      // Meta Horizon cards typically don't have borders, relying on shadow instead
+      // Meta Horizon cards use background color contrast, not borders or shadows
       color: 'transparent'
     }
   },
@@ -4868,20 +5549,20 @@ var metaHorizonComponentTokens = {
     // 16px - Generous padding around content
     imageHeight: 200,
     shadow: {
-      shadowColor: '#000',
+      shadowColor: 'transparent',
       shadowOffset: {
         width: 0,
-        height: 2
+        height: 0
       },
-      shadowOpacity: 0.06,
-      // Very subtle shadow, consistent with Meta Horizon cards
-      shadowRadius: 8,
-      elevation: 2
+      shadowOpacity: 0,
+      // No shadows per Meta Horizon guidelines
+      shadowRadius: 0,
+      elevation: 0 // No shadow on Android
     },
     background: metaHorizonSemanticLight.colors.surface.elevated,
     border: {
       width: 0,
-      // No border - Meta Horizon relies on shadow for card definition
+      // No border - Meta Horizon uses background color contrast only
       color: 'transparent'
     },
     spacing: {
@@ -4893,6 +5574,88 @@ var metaHorizonComponentTokens = {
       // 12px - More space before tags
       metaGap: spacing$3[2] // 8px - Slightly more space for meta info
     }
+  },
+  appBar: {
+    height: 56,
+    // Standard app bar height matching Meta's design
+    paddingHorizontal: spacing$3[4],
+    // 16px horizontal padding
+    backgroundColor: metaHorizonSemanticLight.colors.background.primary,
+    // Pure white
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 0
+      },
+      shadowOpacity: 0,
+      // NO shadow - completely flat like Meta's design
+      shadowRadius: 0,
+      elevation: 0
+    },
+    border: {
+      width: 0,
+      // No border - completely clean separation
+      color: 'transparent'
+    },
+    title: _objectSpread2(_objectSpread2({}, metaHorizonSemanticLight.typography.heading.h6), {}, {
+      // 17px, Semibold
+      fontWeight: typography$3.fontWeights.semibold // Emphasize title
+    }),
+    iconSize: 24 // Standard icon size for app bar actions
+  },
+  pill: {
+    borderRadius: borderRadius$3.full,
+    // Fully rounded pills like buttons
+    paddingVertical: {
+      small: spacing$3[1],
+      // 4px
+      medium: spacing$3[2],
+      // 8px
+      large: spacing$3[2] // 8px
+    },
+    paddingHorizontal: {
+      small: spacing$3[3],
+      // 12px
+      medium: spacing$3[4],
+      // 16px
+      large: spacing$3[6] // 24px
+    },
+    typography: {
+      small: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 13,
+        fontWeight: typography$3.fontWeights.semibold,
+        lineHeight: typography$3.lineHeights.normal,
+        letterSpacing: typography$3.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 15,
+        fontWeight: typography$3.fontWeights.semibold,
+        lineHeight: typography$3.lineHeights.normal,
+        letterSpacing: typography$3.letterSpacing.normal
+      },
+      large: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+        fontSize: 17,
+        fontWeight: typography$3.fontWeights.semibold,
+        lineHeight: typography$3.lineHeights.normal,
+        letterSpacing: typography$3.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 0 // No border for Meta Horizon pills
+    }
+    // No shadow for Meta Horizon pills
+  },
+  pillBar: {
+    backgroundColor: metaHorizonSemanticLight.colors.surface.elevated,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$3[4],
+    // 16px
+    gap: spacing$3[2] // 8px
+    // NO shadow for Meta Horizon pill bar - completely flat
   }
 };
 
@@ -5080,6 +5843,121 @@ var cupertinoComponentTokens = {
       contentGap: spacing$2[2],
       tagsGap: spacing$2[2],
       metaGap: spacing$2[1]
+    }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$2[4],
+    backgroundColor: cupertinoSemanticLight.colors.background.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.05,
+      shadowRadius: 3,
+      elevation: 2
+    },
+    border: {
+      width: 0,
+      color: 'transparent'
+    },
+    title: {
+      fontFamily: 'System',
+      fontSize: 17,
+      fontWeight: typography$2.fontWeights.semibold,
+      lineHeight: 1.29,
+      letterSpacing: -0.41
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$2.xl,
+    // iOS style rounded
+    paddingVertical: {
+      small: spacing$2[1],
+      medium: spacing$2[1.5],
+      large: spacing$2[2]
+    },
+    paddingHorizontal: {
+      small: spacing$2[3],
+      medium: spacing$2[4],
+      large: spacing$2[5]
+    },
+    typography: {
+      small: {
+        fontFamily: 'System',
+        fontSize: 13,
+        fontWeight: typography$2.fontWeights.semibold,
+        lineHeight: 1.3,
+        letterSpacing: -0.08
+      },
+      medium: {
+        fontFamily: 'System',
+        fontSize: 15,
+        fontWeight: typography$2.fontWeights.semibold,
+        lineHeight: 1.33,
+        letterSpacing: -0.24
+      },
+      large: {
+        fontFamily: 'System',
+        fontSize: 17,
+        fontWeight: typography$2.fontWeights.semibold,
+        lineHeight: 1.29,
+        letterSpacing: -0.41
+      }
+    },
+    border: {
+      width: 0
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.04,
+        shadowRadius: 2,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: cupertinoSemanticLight.colors.surface.secondary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$2[4],
+    gap: spacing$2[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.04,
+      shadowRadius: 3,
+      elevation: 1
     }
   }
 };
@@ -5273,6 +6151,121 @@ var aquaComponentTokens = {
       tagsGap: spacing$1[2],
       metaGap: spacing$1[1]
     }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing$1[4],
+    backgroundColor: aquaSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2
+    },
+    border: {
+      width: 1,
+      color: aquaSemanticLight.colors.border.secondary
+    },
+    title: {
+      fontFamily: typography$1.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography$1.fontWeights.semibold,
+      lineHeight: typography$1.lineHeights.normal,
+      letterSpacing: typography$1.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius$1.lg,
+    // Aqua has rounded corners
+    paddingVertical: {
+      small: spacing$1[1],
+      medium: spacing$1[2],
+      large: spacing$1[2]
+    },
+    paddingHorizontal: {
+      small: spacing$1[3],
+      medium: spacing$1[4],
+      large: spacing$1[5]
+    },
+    typography: {
+      small: {
+        fontFamily: typography$1.fontFamilies.body,
+        fontSize: 11,
+        fontWeight: typography$1.fontWeights.regular,
+        lineHeight: typography$1.lineHeights.normal,
+        letterSpacing: typography$1.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: typography$1.fontFamilies.body,
+        fontSize: 13,
+        fontWeight: typography$1.fontWeights.regular,
+        lineHeight: typography$1.lineHeights.normal,
+        letterSpacing: typography$1.letterSpacing.normal
+      },
+      large: {
+        fontFamily: typography$1.fontFamilies.body,
+        fontSize: 15,
+        fontWeight: typography$1.fontWeights.regular,
+        lineHeight: typography$1.lineHeights.normal,
+        letterSpacing: typography$1.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 1
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: aquaSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing$1[4],
+    gap: spacing$1[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1
+      },
+      shadowOpacity: 0.08,
+      shadowRadius: 4,
+      elevation: 2
+    }
   }
 };
 
@@ -5460,6 +6453,120 @@ var aeroGlassComponentTokens = {
       contentGap: spacing[2],
       tagsGap: spacing[2],
       metaGap: spacing[1]
+    }
+  },
+  appBar: {
+    height: 56,
+    paddingHorizontal: spacing[4],
+    backgroundColor: aeroGlassSemanticLight.colors.surface.primary,
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.12,
+      shadowRadius: 6,
+      elevation: 3
+    },
+    border: {
+      width: 1,
+      color: aeroGlassSemanticLight.colors.border.primary
+    },
+    title: {
+      fontFamily: typography.fontFamilies.body,
+      fontSize: 18,
+      fontWeight: typography.fontWeights.semibold,
+      lineHeight: typography.lineHeights.normal,
+      letterSpacing: typography.letterSpacing.normal
+    },
+    iconSize: 24
+  },
+  pill: {
+    borderRadius: borderRadius.sm,
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[3]
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[6]
+    },
+    typography: {
+      small: {
+        fontFamily: 'Segoe UI, System',
+        fontSize: 12,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal
+      },
+      medium: {
+        fontFamily: 'Segoe UI, System',
+        fontSize: 14,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal
+      },
+      large: {
+        fontFamily: 'Segoe UI, System',
+        fontSize: 16,
+        fontWeight: typography.fontWeights.regular,
+        lineHeight: typography.lineHeights.normal,
+        letterSpacing: typography.letterSpacing.normal
+      }
+    },
+    border: {
+      width: 1
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowOpacity: 0.08,
+        shadowRadius: 3,
+        elevation: 1
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.12,
+        shadowRadius: 5,
+        elevation: 2
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 7,
+        elevation: 3
+      }
+    }
+  },
+  pillBar: {
+    backgroundColor: aeroGlassSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 2
     }
   }
 };
@@ -5700,13 +6807,13 @@ var Card = function Card(_ref) {
     }
   };
   return /*#__PURE__*/React.createElement(View, {
-    style: [styles$4.card, {
+    style: [styles$6.card, {
       backgroundColor: theme.colors.surface,
       borderRadius: theme.borderRadius.lg
     }, theme.shadows[elevation], getPaddingStyle(), style]
   }, children);
 };
-var styles$4 = StyleSheet.create({
+var styles$6 = StyleSheet.create({
   card: {
     overflow: 'hidden'
   }
@@ -5747,9 +6854,9 @@ var Input = function Input(_ref) {
     return theme.colors.border;
   };
   return /*#__PURE__*/React.createElement(View, {
-    style: [fullWidth && styles$3.fullWidth, containerStyle]
+    style: [fullWidth && styles$5.fullWidth, containerStyle]
   }, label && /*#__PURE__*/React.createElement(Text, {
-    style: [styles$3.label, {
+    style: [styles$5.label, {
       color: theme.colors.text,
       fontSize: theme.typography.fontSize.sm,
       fontWeight: theme.typography.fontWeight.medium,
@@ -5767,7 +6874,7 @@ var Input = function Input(_ref) {
       setIsFocused(false);
       (_textInputProps$onBlu = textInputProps.onBlur) === null || _textInputProps$onBlu === void 0 || _textInputProps$onBlu.call(textInputProps, e);
     },
-    style: [styles$3.input, {
+    style: [styles$5.input, {
       borderColor: getBorderColor(),
       borderWidth: 1,
       borderRadius: theme.borderRadius.md,
@@ -5779,14 +6886,14 @@ var Input = function Input(_ref) {
     }, inputStyle],
     placeholderTextColor: theme.colors.textSecondary
   })), (error || helperText) && /*#__PURE__*/React.createElement(Text, {
-    style: [styles$3.helperText, {
+    style: [styles$5.helperText, {
       color: error ? theme.colors.error : theme.colors.textSecondary,
       fontSize: theme.typography.fontSize.xs,
       marginTop: theme.spacing.xs
     }]
   }, error || helperText));
 };
-var styles$3 = StyleSheet.create({
+var styles$5 = StyleSheet.create({
   fullWidth: {
     width: '100%'
   },
@@ -5826,11 +6933,11 @@ var ImageV2 = function ImageV2(_ref) {
   return /*#__PURE__*/React.createElement(View, {
     style: [containerStyle, style]
   }, /*#__PURE__*/React.createElement(Image, _extends({}, imageProps, {
-    style: styles$2.image,
+    style: styles$4.image,
     resizeMode: resizeMode
   })));
 };
-var styles$2 = StyleSheet.create({
+var styles$4 = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%'
@@ -5918,7 +7025,7 @@ var TagV2 = function TagV2(_ref) {
     color: getTextColor()
   });
   var content = /*#__PURE__*/React.createElement(View, {
-    style: [styles$1.container, containerStyle, style]
+    style: [styles$3.container, containerStyle, style]
   }, /*#__PURE__*/React.createElement(Text, {
     style: textStyle
   }, label));
@@ -5927,13 +7034,13 @@ var TagV2 = function TagV2(_ref) {
       onPress: onPress,
       style: function style(_ref2) {
         var pressed = _ref2.pressed;
-        return [pressed && styles$1.pressed];
+        return [pressed && styles$3.pressed];
       }
     }, content);
   }
   return content;
 };
-var styles$1 = StyleSheet.create({
+var styles$3 = StyleSheet.create({
   container: {
     alignSelf: 'flex-start'
   },
@@ -6010,22 +7117,22 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
         height: articleCardTokens.imageHeight
       }
     }), /*#__PURE__*/React.createElement(View, {
-      style: [styles.content, {
+      style: [styles$2.content, {
         padding: articleCardTokens.padding
       }]
     }, /*#__PURE__*/React.createElement(Text, {
-      style: [styles.title, convertTypographyToTextStyle(semantic.typography.heading.h4), {
+      style: [styles$2.title, convertTypographyToTextStyle(semantic.typography.heading.h4), {
         color: semantic.colors.text.primary
       }],
       numberOfLines: 2
     }, title), /*#__PURE__*/React.createElement(Text, {
-      style: [styles.excerpt, convertTypographyToTextStyle(semantic.typography.body.medium), {
+      style: [styles$2.excerpt, convertTypographyToTextStyle(semantic.typography.body.medium), {
         color: semantic.colors.text.secondary,
         marginTop: articleCardTokens.spacing.contentGap
       }],
       numberOfLines: 3
     }, excerpt), /*#__PURE__*/React.createElement(View, {
-      style: [styles.meta, {
+      style: [styles$2.meta, {
         marginTop: articleCardTokens.spacing.headerGap
       }]
     }, /*#__PURE__*/React.createElement(Text, {
@@ -6033,7 +7140,7 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
         color: semantic.colors.text.tertiary
       }]
     }, formatDate(date), author && " \u2022 ".concat(author), readTime && " \u2022 ".concat(readTime))), tags.length > 0 && /*#__PURE__*/React.createElement(View, {
-      style: [styles.tagsContainer, {
+      style: [styles$2.tagsContainer, {
         marginTop: articleCardTokens.spacing.metaGap
       }]
     }, tags.map(function (tag, index) {
@@ -6045,22 +7152,22 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
           return onTagPress(tag);
         } : undefined,
         designLanguage: activeDesignLanguage,
-        style: styles.tag
+        style: styles$2.tag
       });
     }))));
   };
   var renderHorizontalLayout = function renderHorizontalLayout() {
     return /*#__PURE__*/React.createElement(View, {
-      style: styles.horizontalContent
+      style: styles$2.horizontalContent
     }, showImage && /*#__PURE__*/React.createElement(View, {
-      style: [styles.iconContainer, {
+      style: [styles$2.iconContainer, {
         backgroundColor: semantic.colors.interactive.primary,
         borderRadius: articleCardTokens.borderRadius / 2
       }]
     }, /*#__PURE__*/React.createElement(Text, {
-      style: styles.iconText
+      style: styles$2.iconText
     }, "\u269B\uFE0F")), /*#__PURE__*/React.createElement(View, {
-      style: styles.horizontalTextContent
+      style: styles$2.horizontalTextContent
     }, /*#__PURE__*/React.createElement(Text, {
       style: [convertTypographyToTextStyle(semantic.typography.heading.h6), {
         color: semantic.colors.text.primary
@@ -6073,7 +7180,7 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
       }],
       numberOfLines: 2
     }, excerpt), /*#__PURE__*/React.createElement(View, {
-      style: [styles.meta, {
+      style: [styles$2.meta, {
         marginTop: articleCardTokens.spacing.metaGap
       }]
     }, /*#__PURE__*/React.createElement(Text, {
@@ -6081,7 +7188,7 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
         color: semantic.colors.text.tertiary
       }]
     }, formatDate(date), readTime && " \u2022 ".concat(readTime))), tags.length > 0 && /*#__PURE__*/React.createElement(View, {
-      style: [styles.tagsContainer, {
+      style: [styles$2.tagsContainer, {
         marginTop: articleCardTokens.spacing.metaGap
       }]
     }, tags.slice(0, 3).map(function (tag, index) {
@@ -6093,14 +7200,14 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
           return onTagPress(tag);
         } : undefined,
         designLanguage: activeDesignLanguage,
-        style: styles.tag
+        style: styles$2.tag
       });
     }))));
   };
   var content = /*#__PURE__*/React.createElement(View, {
-    style: [styles.container, containerStyle, style]
+    style: [styles$2.container, containerStyle, style]
   }, /*#__PURE__*/React.createElement(View, {
-    style: [styles.innerContent, {
+    style: [styles$2.innerContent, {
       padding: layout === 'horizontal' ? articleCardTokens.padding : 0
     }]
   }, layout === 'horizontal' ? renderHorizontalLayout() : renderVerticalLayout()));
@@ -6109,13 +7216,13 @@ var ArticleCardV2 = function ArticleCardV2(_ref) {
       onPress: onPress,
       style: function style(_ref2) {
         var pressed = _ref2.pressed;
-        return [pressed && styles.pressed];
+        return [pressed && styles$2.pressed];
       }
     }, content);
   }
   return content;
 };
-var styles = StyleSheet.create({
+var styles$2 = StyleSheet.create({
   container: {
     width: '100%'
   },
@@ -6166,5 +7273,642 @@ var styles = StyleSheet.create({
   }
 });
 
-export { ArticleCardV2, Button, Card, DesignLanguageProvider, ImageV2, Input, TagV2, ThemeProvider, createTheme, defaultTheme, materialTheme, themes, useDesignLanguage, useTheme };
+var AppBarV2 = function AppBarV2(_ref) {
+  var title = _ref.title,
+    leftAction = _ref.leftAction,
+    rightAction = _ref.rightAction,
+    _ref$leftActions = _ref.leftActions,
+    leftActions = _ref$leftActions === void 0 ? [] : _ref$leftActions,
+    _ref$rightActions = _ref.rightActions,
+    rightActions = _ref$rightActions === void 0 ? [] : _ref$rightActions,
+    style = _ref.style,
+    titleStyle = _ref.titleStyle,
+    overrideDesignLanguage = _ref.designLanguage,
+    _ref$elevation = _ref.elevation,
+    elevation = _ref$elevation === void 0 ? true : _ref$elevation;
+  var _useDesignLanguage = useDesignLanguage(),
+    theme = _useDesignLanguage.theme,
+    globalDesignLanguage = _useDesignLanguage.designLanguage;
+  var activeDesignLanguage = overrideDesignLanguage !== null && overrideDesignLanguage !== void 0 ? overrideDesignLanguage : globalDesignLanguage;
+  var semantic = theme.semantic,
+    components = theme.components;
+  var appBarTokens = components.appBar;
+  // Combine single actions with arrays
+  var allLeftActions = leftAction ? [leftAction].concat(_toConsumableArray(leftActions)) : leftActions;
+  var allRightActions = rightAction ? [rightAction].concat(_toConsumableArray(rightActions)) : rightActions;
+  var renderActionButton = function renderActionButton(action, index) {
+    return /*#__PURE__*/React.createElement(TouchableOpacity, {
+      key: index,
+      onPress: action.onPress,
+      style: styles$1.actionButton,
+      accessibilityLabel: action.accessibilityLabel,
+      accessibilityRole: "button"
+    }, action.icon);
+  };
+  var getAppBarStyle = function getAppBarStyle() {
+    var baseStyle = {
+      height: appBarTokens.height,
+      paddingHorizontal: appBarTokens.paddingHorizontal,
+      backgroundColor: semantic.colors.background.primary
+    };
+    // Add shadow/elevation if enabled
+    if (elevation) {
+      return _objectSpread2(_objectSpread2({}, baseStyle), appBarTokens.shadow);
+    }
+    return baseStyle;
+  };
+  var getTitleStyle = function getTitleStyle() {
+    return {
+      fontFamily: appBarTokens.title.fontFamily,
+      fontSize: appBarTokens.title.fontSize,
+      fontWeight: appBarTokens.title.fontWeight,
+      lineHeight: appBarTokens.title.fontSize * appBarTokens.title.lineHeight,
+      letterSpacing: appBarTokens.title.letterSpacing,
+      color: semantic.colors.text.primary
+    };
+  };
+  // Meta Horizon centers the title, other designs may left-align
+  var shouldCenterTitle = activeDesignLanguage === 'metaHorizon' || activeDesignLanguage === 'flat' || activeDesignLanguage === 'cupertino';
+  return /*#__PURE__*/React.createElement(View, {
+    style: [styles$1.container, getAppBarStyle(), style]
+  }, /*#__PURE__*/React.createElement(View, {
+    style: styles$1.leftActions
+  }, allLeftActions.map(function (action, index) {
+    return renderActionButton(action, index);
+  })), /*#__PURE__*/React.createElement(View, {
+    style: [styles$1.titleContainer, shouldCenterTitle && styles$1.titleCentered]
+  }, /*#__PURE__*/React.createElement(Text, {
+    style: [styles$1.title, getTitleStyle(), titleStyle],
+    numberOfLines: 1,
+    ellipsizeMode: "tail"
+  }, title)), /*#__PURE__*/React.createElement(View, {
+    style: styles$1.rightActions
+  }, allRightActions.map(function (action, index) {
+    return renderActionButton(action, index);
+  })));
+};
+var styles$1 = StyleSheet.create({
+  container: _objectSpread2({
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%'
+  }, Platform.OS === 'ios' ? {
+    paddingTop: 0
+  } : {}),
+  leftActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    minWidth: 40 // Ensure space for actions
+  },
+  rightActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    minWidth: 40 // Ensure space for actions
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 12
+  },
+  titleCentered: {
+    alignItems: 'center'
+  },
+  title: {
+    textAlign: 'center'
+  },
+  actionButton: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20 // Circular touch target
+  }
+});
+
+// Icon mappings for each design language
+// Using NON-EMOJI Unicode glyphs that match design system styles
+var ICON_GLYPHS = {
+  // Meta Horizon - Clean outline icons (Ionicons-inspired)
+  metaHorizon: {
+    search: '⌕',
+    // Viewdata square (proper Unicode glyph, not emoji)
+    filter: '☰',
+    // Trigram menu
+    settings: '⚙',
+    // Gear (Unicode glyph U+2699)
+    close: '✕',
+    // Multiplication X
+    back: '←',
+    // Leftwards arrow
+    menu: '☰',
+    // Trigram for heaven
+    share: '⤴',
+    // Arrow pointing rightwards then curving upwards
+    more: '⋯',
+    // Midline horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    // Lower right pencil
+    "delete": '⊗',
+    // Circled times (X in circle)
+    check: '✓',
+    // Check mark
+    'chevron-left': '‹',
+    // Single left-pointing angle quotation mark
+    'chevron-right': '›',
+    // Single right-pointing angle quotation mark
+    home: '⌂',
+    // House
+    user: '⚲',
+    // Neuter (person symbol)
+    star: '☆',
+    // White star
+    heart: '♡',
+    // White heart suit
+    notification: '⍾' // Bell symbol
+  },
+  // Material Design - Bold, filled icons (Material Icons style)
+  material: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '≡',
+    // Identical to (triple line)
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    // Multiplication X
+    back: '←',
+    // Leftwards arrow
+    menu: '☰',
+    // Trigram
+    share: '⤴',
+    // Arrow up-right
+    more: '⋮',
+    // Vertical ellipsis (Material/Android style)
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    // Pencil
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    // Check mark
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '★',
+    // Black star (filled - Material style)
+    heart: '♥',
+    // Black heart suit (filled)
+    notification: '⍾' // Bell
+  },
+  // iOS Flat Design - Thin, elegant icons (SF Symbols style)
+  flat: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '⊚',
+    // Circled ring operator
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    // Multiplication X
+    back: '‹',
+    // Single left angle (thin - iOS style)
+    menu: '☰',
+    // Trigram
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis (iOS style)
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    // Pencil
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    // Check mark
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '☆',
+    // White star (outline - iOS style)
+    heart: '♡',
+    // White heart (outline)
+    notification: '⍾' // Bell
+  },
+  // Holo Design - Bold Android icons (Holo style)
+  holo: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '≡',
+    // Identical to
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '←',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋮',
+    // Vertical ellipsis (Android style)
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '★',
+    // Black star (filled - Android style)
+    heart: '♥',
+    // Black heart (filled)
+    notification: '⍾' // Bell
+  },
+  // Liquid Glass - Modern, clean icons (glass morphism style)
+  liquidGlass: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '⊚',
+    // Circled ring
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    // Multiplication X
+    back: '←',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '☆',
+    // White star (outline)
+    heart: '♡',
+    // White heart (outline)
+    notification: '⍾' // Bell
+  },
+  // Metro - Windows Phone style (bold, geometric)
+  metro: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '≡',
+    // Identical to (bold lines)
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '←',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '★',
+    // Black star (filled - Metro bold)
+    heart: '♥',
+    // Black heart (filled)
+    notification: '⍾' // Bell
+  },
+  // Fluent Design - Windows 11 style (soft, modern)
+  fluent: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '⊚',
+    // Circled ring
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '←',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '☆',
+    // White star (outline - Fluent)
+    heart: '♡',
+    // White heart (outline)
+    notification: '⍾' // Bell
+  },
+  // Cupertino - macOS style (similar to iOS)
+  cupertino: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '⊚',
+    // Circled ring
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '‹',
+    // Thin chevron
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '☆',
+    // White star (outline)
+    heart: '♡',
+    // White heart (outline)
+    notification: '⍾' // Bell
+  },
+  // Aqua - Classic macOS style
+  aqua: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '⊚',
+    // Circled ring
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '‹',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '☆',
+    // White star (outline)
+    heart: '♡',
+    // White heart (outline)
+    notification: '⍾' // Bell
+  },
+  // Aero Glass - Windows Vista/7 style (glossy)
+  aeroGlass: {
+    search: '⌕',
+    // Viewdata square (glyph)
+    filter: '≡',
+    // Identical to (bold lines)
+    settings: '⚙',
+    // Gear (Unicode glyph)
+    close: '✕',
+    back: '←',
+    menu: '☰',
+    share: '⤴',
+    // Arrow up-right
+    more: '⋯',
+    // Horizontal ellipsis
+    add: '＋',
+    // Fullwidth plus
+    edit: '✎',
+    "delete": '⊗',
+    // Circled times
+    check: '✓',
+    'chevron-left': '‹',
+    'chevron-right': '›',
+    home: '⌂',
+    user: '⚲',
+    // Neuter symbol
+    star: '★',
+    // Black star (filled)
+    heart: '♥',
+    // Black heart (filled)
+    notification: '⍾' // Bell
+  }
+};
+// Emoji fallbacks for when glyphs aren't available
+var EMOJI_FALLBACKS = {
+  search: '🔍',
+  filter: '⚙️',
+  settings: '⚙️',
+  close: '✖️',
+  back: '◀️',
+  menu: '☰',
+  share: '📤',
+  more: '⋯',
+  add: '➕',
+  edit: '✏️',
+  "delete": '🗑️',
+  check: '✅',
+  'chevron-left': '◀',
+  'chevron-right': '▶',
+  home: '🏠',
+  user: '👤',
+  star: '⭐',
+  heart: '❤️',
+  notification: '🔔'
+};
+var IconV2 = function IconV2(_ref) {
+  var _ICON_GLYPHS$activeDe;
+  var name = _ref.name,
+    _ref$size = _ref.size,
+    size = _ref$size === void 0 ? 24 : _ref$size,
+    color = _ref.color,
+    overrideDesignLanguage = _ref.designLanguage,
+    style = _ref.style;
+  var _useDesignLanguage = useDesignLanguage(),
+    theme = _useDesignLanguage.theme,
+    globalDesignLanguage = _useDesignLanguage.designLanguage;
+  var activeDesignLanguage = overrideDesignLanguage !== null && overrideDesignLanguage !== void 0 ? overrideDesignLanguage : globalDesignLanguage;
+  // Get the icon glyph for the active design language
+  var glyph = ((_ICON_GLYPHS$activeDe = ICON_GLYPHS[activeDesignLanguage]) === null || _ICON_GLYPHS$activeDe === void 0 ? void 0 : _ICON_GLYPHS$activeDe[name]) || EMOJI_FALLBACKS[name] || '?';
+  // Use theme color if not specified
+  var iconColor = color || theme.semantic.colors.text.primary;
+  return /*#__PURE__*/React.createElement(Text, {
+    style: [{
+      fontSize: size * 1.2,
+      // Slightly larger to compensate for glyph rendering
+      color: iconColor,
+      lineHeight: size * 1.2,
+      textAlign: 'center',
+      includeFontPadding: false,
+      // Use system font for proper Unicode glyph rendering
+      fontFamily: Platform.OS === 'ios' ? 'System' : 'sans-serif',
+      fontWeight: '400' // Regular weight for glyphs
+    }, style],
+    allowFontScaling: false
+  }, glyph);
+};
+
+var PillV2 = function PillV2(_ref) {
+  var _tokens$border, _tokens$shadow;
+  var label = _ref.label,
+    icon = _ref.icon,
+    onPress = _ref.onPress,
+    _ref$selected = _ref.selected,
+    selected = _ref$selected === void 0 ? false : _ref$selected,
+    _ref$size = _ref.size,
+    size = _ref$size === void 0 ? 'medium' : _ref$size,
+    _ref$disabled = _ref.disabled,
+    disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+    _style = _ref.style,
+    textStyle = _ref.textStyle,
+    overrideDesignLanguage = _ref.designLanguage;
+  var _useDesignLanguage = useDesignLanguage(),
+    theme = _useDesignLanguage.theme,
+    globalDesignLanguage = _useDesignLanguage.designLanguage;
+  var activeDesignLanguage = overrideDesignLanguage !== null && overrideDesignLanguage !== void 0 ? overrideDesignLanguage : globalDesignLanguage;
+  var pillTokens = theme.components.pill;
+  var buttonTokens = theme.components.button; // Fallback for backward compatibility
+  // Use pill tokens if available, otherwise fall back to button tokens
+  var tokens = pillTokens || buttonTokens;
+  // Meta Horizon uses subtle styling for selected state
+  var isMetaHorizon = activeDesignLanguage === 'metaHorizon';
+  var getBackgroundColor = function getBackgroundColor() {
+    if (disabled) {
+      return theme.semantic.colors.surface.tertiary;
+    }
+    if (selected) {
+      return isMetaHorizon ? '#E4E6EB' // Light gray for Meta Horizon
+      : theme.semantic.colors.interactive.primary;
+    }
+    return isMetaHorizon ? 'transparent' : theme.semantic.colors.surface.secondary;
+  };
+  var getTextColor = function getTextColor() {
+    if (disabled) {
+      return theme.semantic.colors.text.disabled;
+    }
+    if (selected) {
+      return isMetaHorizon ? theme.semantic.colors.text.primary // Dark text for Meta Horizon
+      : '#FFFFFF';
+    }
+    return theme.semantic.colors.text.primary;
+  };
+  var getBorderColor = function getBorderColor() {
+    if (disabled) {
+      return theme.semantic.colors.border.secondary;
+    }
+    if (selected) {
+      return isMetaHorizon ? 'transparent' : theme.semantic.colors.interactive.primary;
+    }
+    return theme.semantic.colors.border.secondary;
+  };
+  var pillStyle = _objectSpread2({
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: tokens.paddingHorizontal[size],
+    paddingVertical: tokens.paddingVertical[size],
+    borderRadius: tokens.borderRadius,
+    borderWidth: ((_tokens$border = tokens.border) === null || _tokens$border === void 0 ? void 0 : _tokens$border.width) || 0,
+    gap: icon ? 6 : 0,
+    backgroundColor: getBackgroundColor(),
+    borderColor: getBorderColor(),
+    opacity: disabled ? 0.5 : 1
+  }, (_tokens$shadow = tokens.shadow) !== null && _tokens$shadow !== void 0 && _tokens$shadow[size] && selected && !isMetaHorizon ? tokens.shadow[size] : {});
+  var labelStyle = _objectSpread2(_objectSpread2({}, convertTypographyToTextStyle(tokens.typography[size])), {}, {
+    color: getTextColor()
+  });
+  return /*#__PURE__*/React.createElement(Pressable, {
+    onPress: onPress,
+    disabled: disabled,
+    style: function style(_ref2) {
+      var pressed = _ref2.pressed;
+      return [pillStyle, pressed && !disabled && styles.pressed, _style];
+    }
+  }, icon && /*#__PURE__*/React.createElement(View, {
+    style: styles.iconContainer
+  }, icon), /*#__PURE__*/React.createElement(Text, {
+    style: [labelStyle, textStyle]
+  }, label));
+};
+var styles = StyleSheet.create({
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  pressed: {
+    opacity: 0.7
+  }
+});
+
+var PillBarV2 = function PillBarV2(_ref) {
+  var children = _ref.children,
+    style = _ref.style,
+    contentContainerStyle = _ref.contentContainerStyle,
+    _ref$showsHorizontalS = _ref.showsHorizontalScrollIndicator,
+    showsHorizontalScrollIndicator = _ref$showsHorizontalS === void 0 ? false : _ref$showsHorizontalS,
+    overrideDesignLanguage = _ref.designLanguage,
+    scrollViewProps = _ref.scrollViewProps;
+  var _useDesignLanguage = useDesignLanguage(),
+    theme = _useDesignLanguage.theme,
+    globalDesignLanguage = _useDesignLanguage.designLanguage;
+  var activeDesignLanguage = overrideDesignLanguage !== null && overrideDesignLanguage !== void 0 ? overrideDesignLanguage : globalDesignLanguage;
+  var pillBarTokens = theme.components.pillBar;
+  // Meta Horizon has no shadow
+  var isMetaHorizon = activeDesignLanguage === 'metaHorizon';
+  var containerStyle = _objectSpread2({
+    backgroundColor: (pillBarTokens === null || pillBarTokens === void 0 ? void 0 : pillBarTokens.backgroundColor) || theme.semantic.colors.surface.elevated,
+    paddingVertical: (pillBarTokens === null || pillBarTokens === void 0 ? void 0 : pillBarTokens.paddingVertical) || 10
+  }, pillBarTokens !== null && pillBarTokens !== void 0 && pillBarTokens.shadow && !isMetaHorizon ? pillBarTokens.shadow : {});
+  var defaultContentContainerStyle = {
+    paddingHorizontal: (pillBarTokens === null || pillBarTokens === void 0 ? void 0 : pillBarTokens.contentPaddingHorizontal) || 16,
+    gap: (pillBarTokens === null || pillBarTokens === void 0 ? void 0 : pillBarTokens.gap) || 8,
+    alignItems: 'center'
+  };
+  return /*#__PURE__*/React.createElement(View, {
+    style: [containerStyle, style]
+  }, /*#__PURE__*/React.createElement(ScrollView, _extends({
+    horizontal: true,
+    showsHorizontalScrollIndicator: showsHorizontalScrollIndicator,
+    contentContainerStyle: [defaultContentContainerStyle, contentContainerStyle]
+  }, scrollViewProps), children));
+};
+
+export { AppBarV2, ArticleCardV2, Button, Card, DesignLanguageProvider, IconV2, ImageV2, Input, PillBarV2, PillV2, TagV2, ThemeProvider, createTheme, defaultTheme, materialTheme, themes, useDesignLanguage, useTheme };
 //# sourceMappingURL=index.esm.js.map

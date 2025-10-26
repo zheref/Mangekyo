@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Platform, ActivityIndicator, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { 
@@ -13,11 +13,8 @@ import { ArticleCardV2 } from './lib/src/components/ArticleCard/ArticleCardV2';
 import { TagV2 } from './lib/src/components/Tag/TagV2';
 import { ButtonV2 } from './lib/src/components/Button/ButtonV2';
 import { CardV2 } from './lib/src/components/Card/CardV2';
-import { AppBarV2 } from './lib/src/components/AppBar/AppBarV2';
-import { IconV2 } from './lib/src/components/Icon/IconV2';
-import { PillV2 } from './lib/src/components/Pill/PillV2';
-import { PillBarV2 } from './lib/src/components/Pill/PillBarV2';
 import { fetchBlogPosts, getAllTags, getAllYears, filterBlogPosts } from './lib/src/services/blogService';
+import { convertTypographyToTextStyle } from './lib/src/utils/typography';
 
 const BlogFeed = () => {
   const { theme, designLanguage, setDesignLanguage, colorScheme, setColorScheme } = useDesignLanguage();
@@ -93,78 +90,117 @@ const BlogFeed = () => {
     <View style={[styles.container, { backgroundColor: theme.semantic.colors.background.primary }]}>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
-      {/* App Bar with dynamic design language support */}
-      <View style={{ paddingTop: Platform.OS === 'ios' ? 44 : 0 }}>
-        <AppBarV2
-          title="Now in React Native"
-          leftAction={{
-            icon: (
-              <IconV2 
-                name="search" 
-                size={24} 
-                color={theme.semantic.colors.text.secondary}
-              />
-            ),
-            onPress: () => console.log('Search pressed'),
-            accessibilityLabel: 'Search posts',
-          }}
-          rightAction={{
-            icon: (
-              <View style={{
-                width: 32,
-                height: 32,
+      {/* Header */}
+      <View style={[styles.header, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
+        <View style={styles.headerContent}>
+          <View style={styles.headerLeft}>
+            <Text style={[styles.title, { color: theme.semantic.colors.text.primary }]}>
+              Now in React Native
+            </Text>
+            <Text style={[styles.subtitle, { color: theme.semantic.colors.text.secondary }]}>
+              Latest updates • {filteredPosts.length} posts
+            </Text>
+          </View>
+
+          <Pressable
+            onPress={() => setShowFilters(!showFilters)}
+            style={[
+              {
+                paddingHorizontal: theme.components.button.paddingHorizontal.medium,
+                paddingVertical: theme.components.button.paddingVertical.medium,
+                borderRadius: theme.components.button.borderRadius,
+                minWidth: 40,
                 alignItems: 'center',
-                justifyContent: 'center',
                 backgroundColor: showFilters
                   ? theme.semantic.colors.interactive.primary
-                  : theme.semantic.colors.interactive.secondary,
-                borderRadius: 16,
-              }}>
-                <IconV2 
-                  name={showFilters ? 'close' : 'settings'} 
-                  size={18}
-                  color={showFilters
+                  : theme.semantic.colors.surface.secondary,
+                borderWidth: theme.components.button.border?.width || 0,
+                borderColor: showFilters
+                  ? theme.semantic.colors.interactive.primary
+                  : theme.semantic.colors.border.secondary,
+                ...(theme.components.button.shadow?.medium && showFilters ? theme.components.button.shadow.medium : {}),
+              },
+            ]}
+          >
+            <Text
+              style={[
+                convertTypographyToTextStyle(theme.components.button.typography.medium),
+                {
+                  color: showFilters
                     ? '#FFFFFF'
-                    : theme.semantic.colors.text.primary}
-                />
-                {hasActiveFilters && !showFilters && (
-                  <View style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: 8,
-                    height: 8,
-                    borderRadius: 4,
-                    backgroundColor: theme.semantic.colors.feedback.error,
-                    borderWidth: 1,
-                    borderColor: theme.semantic.colors.background.primary,
-                  }} />
-                )}
-              </View>
-            ),
-            onPress: () => setShowFilters(!showFilters),
-            accessibilityLabel: showFilters ? 'Close filters' : 'Open filters',
-          }}
-          elevation={true}
-        />
+                    : theme.semantic.colors.text.primary,
+                },
+              ]}
+            >
+              {showFilters ? '✕' : '⚙'} {hasActiveFilters ? `(${selectedTags.length + (selectedYear ? 1 : 0)})` : ''}
+            </Text>
+          </Pressable>
+        </View>
       </View>
 
       {/* Design Language Pill Bar */}
-      <PillBarV2>
-        {languages.map((lang) => {
-          const isSelected = designLanguage === lang.value;
-          return (
-            <PillV2
-              key={lang.value}
-              label={lang.label}
-              icon={<Text style={styles.pillEmoji}>{lang.emoji}</Text>}
-              selected={isSelected}
-              onPress={() => setDesignLanguage(lang.value)}
-              size="medium"
-            />
-          );
-        })}
-      </PillBarV2>
+      <View style={[styles.pillBar, { backgroundColor: theme.semantic.colors.surface.elevated }]}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.pillBarContent}
+        >
+          {languages.map((lang) => {
+            const isSelected = designLanguage === lang.value;
+            const buttonTokens = theme.components.button;
+            
+            // Meta Horizon uses subtle gray for selected, transparent for unselected
+            const isMetaHorizon = designLanguage === 'metaHorizon';
+            const selectedBg = isMetaHorizon 
+              ? '#E4E6EB'  // Light gray for Meta Horizon
+              : theme.semantic.colors.interactive.primary;
+            const unselectedBg = isMetaHorizon
+              ? 'transparent'  // Transparent for Meta Horizon
+              : theme.semantic.colors.surface.secondary;
+            const selectedTextColor = isMetaHorizon
+              ? theme.semantic.colors.text.primary  // Dark text for Meta Horizon
+              : '#FFFFFF';
+            
+            return (
+              <Pressable
+                key={lang.value}
+                onPress={() => setDesignLanguage(lang.value)}
+                style={[
+                  {
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingHorizontal: buttonTokens.paddingHorizontal.medium,
+                    paddingVertical: buttonTokens.paddingVertical.medium,
+                    borderRadius: buttonTokens.borderRadius,
+                    borderWidth: buttonTokens.border?.width || 0,
+                    gap: 6,
+                    backgroundColor: isSelected ? selectedBg : unselectedBg,
+                    borderColor: isSelected
+                      ? (isMetaHorizon ? 'transparent' : theme.semantic.colors.interactive.primary)
+                      : theme.semantic.colors.border.secondary,
+                    // Apply shadow for elevated design languages (not for Meta Horizon)
+                    ...(buttonTokens.shadow?.medium && isSelected && !isMetaHorizon ? buttonTokens.shadow.medium : {}),
+                  },
+                ]}
+              >
+                <Text style={styles.pillEmoji}>{lang.emoji}</Text>
+                <Text
+                  style={[
+                    convertTypographyToTextStyle(buttonTokens.typography.medium),
+                    {
+                      color: isSelected
+                        ? selectedTextColor
+                        : theme.semantic.colors.text.primary,
+                    },
+                  ]}
+                >
+                  {lang.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+      </View>
 
       <ScrollView
         style={styles.scrollView}
@@ -345,16 +381,47 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  pillBar: {
+    paddingVertical: 10,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+  },
+  pillBarContent: {
+    paddingHorizontal: 16,
+    gap: 8,
+    alignItems: 'center',
+  },
   pillEmoji: {
     fontSize: 16,
   },
-  subtitleContainer: {
+  header: {
+    paddingTop: Platform.OS === 'ios' ? 60 : 20,
+    paddingBottom: 12,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerLeft: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 2,
   },
   subtitle: {
     fontSize: 13,
-    textAlign: 'center',
   },
   scrollView: {
     flex: 1,
