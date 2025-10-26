@@ -92,61 +92,60 @@ const BlogFeed = () => {
     <View style={[styles.container, { backgroundColor: theme.semantic.colors.background.primary }]}>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
 
-      {/* App Bar with design-language-aware styling */}
-      <View style={{ paddingTop: Platform.OS === 'ios' ? 44 : 0 }}>
-        <AppBarV2
-          title="Now in React Native"
-          leftAction={{
-            icon: (
+      {/* App Bar with design-language-aware styling and auto safe area */}
+      <AppBarV2
+        title="Now in React Native"
+        leftAction={{
+          icon: (
+            <IconV2 
+              name="search" 
+              size={24} 
+              color={theme.semantic.colors.text.secondary}
+            />
+          ),
+          onPress: () => console.log('Search pressed'),
+          accessibilityLabel: 'Search posts',
+        }}
+        rightAction={{
+          icon: (
+            <View style={{
+              width: 32,
+              height: 32,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: showFilters
+                ? theme.semantic.colors.interactive.primary
+                : theme.semantic.colors.interactive.secondary,
+              borderRadius: 16,
+            }}>
               <IconV2 
-                name="search" 
-                size={24} 
-                color={theme.semantic.colors.text.secondary}
+                name={showFilters ? 'close' : 'settings'} 
+                size={18}
+                color={showFilters
+                  ? '#FFFFFF'
+                  : theme.semantic.colors.text.primary}
               />
-            ),
-            onPress: () => console.log('Search pressed'),
-            accessibilityLabel: 'Search posts',
-          }}
-          rightAction={{
-            icon: (
-              <View style={{
-                width: 32,
-                height: 32,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: showFilters
-                  ? theme.semantic.colors.interactive.primary
-                  : theme.semantic.colors.interactive.secondary,
-                borderRadius: 16,
-              }}>
-                <IconV2 
-                  name={showFilters ? 'close' : 'settings'} 
-                  size={18}
-                  color={showFilters
-                    ? '#FFFFFF'
-                    : theme.semantic.colors.text.primary}
-                />
-                {hasActiveFilters && !showFilters && (
-                  <View style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: 8,
-                    height: 8,
-                    borderRadius: 4,
-                    backgroundColor: theme.semantic.colors.feedback.error,
-                    borderWidth: 1,
-                    borderColor: theme.semantic.colors.background.primary,
-                  }} />
-                )}
-              </View>
-            ),
-            onPress: () => setShowFilters(!showFilters),
-            accessibilityLabel: showFilters ? 'Close filters' : 'Open filters',
-          }}
-          elevation={true}
-        />
-      </View>
+              {hasActiveFilters && !showFilters && (
+                <View style={{
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  width: 8,
+                  height: 8,
+                  borderRadius: 4,
+                  backgroundColor: theme.semantic.colors.feedback.error,
+                  borderWidth: 1,
+                  borderColor: theme.semantic.colors.background.primary,
+                }} />
+              )}
+            </View>
+          ),
+          onPress: () => setShowFilters(!showFilters),
+          accessibilityLabel: showFilters ? 'Close filters' : 'Open filters',
+        }}
+        elevation={true}
+        safeArea={true} // Auto-detect platform and apply appropriate padding
+      />
 
       {/* Design Language Pill Bar */}
       <View style={[
@@ -419,15 +418,6 @@ const styles = StyleSheet.create({
   },
   pillEmoji: {
     fontSize: 16,
-  },
-  subtitleContainer: {
-    paddingHorizontal: 16,
-    paddingTop: 8,
-    paddingBottom: 4,
-  },
-  subtitle: {
-    fontSize: 13,
-    fontWeight: '400',
   },
   scrollView: {
     flex: 1,

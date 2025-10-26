@@ -6,8 +6,8 @@ import {
   StyleSheet,
   ViewStyle,
   TextStyle,
-  Platform,
 } from 'react-native';
+import Constants from 'expo-constants';
 import { useDesignLanguage } from '../../themes/DesignLanguageContext';
 import { DesignLanguage } from '../../types/tokens';
 
@@ -46,6 +46,13 @@ export interface AppBarV2Props {
   designLanguage?: DesignLanguage;
   /** Whether to show the shadow/elevation */
   elevation?: boolean;
+  /**
+   * Safe area padding configuration
+   * - true (default): Auto-detect platform and apply appropriate padding
+   * - false: No safe area padding
+   * - { top?: number, bottom?: number }: Manual control with specific values
+   */
+  safeArea?: boolean | { top?: number; bottom?: number };
 }
 
 export const AppBarV2: React.FC<AppBarV2Props> = ({
@@ -58,6 +65,7 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
   titleStyle,
   designLanguage: overrideDesignLanguage,
   elevation = true,
+  safeArea = true,
 }) => {
   const { theme, designLanguage: globalDesignLanguage } = useDesignLanguage();
   const activeDesignLanguage = overrideDesignLanguage ?? globalDesignLanguage;
@@ -68,6 +76,28 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
   // Combine single actions with arrays
   const allLeftActions = leftAction ? [leftAction, ...leftActions] : leftActions;
   const allRightActions = rightAction ? [rightAction, ...rightActions] : rightActions;
+
+  /**
+   * Calculate safe area padding based on platform and configuration
+   * Uses expo-constants for reliable status bar height detection
+   */
+  const getSafeAreaPadding = (): { paddingTop: number; paddingBottom: number } => {
+    if (safeArea === false) {
+      return { paddingTop: 0, paddingBottom: 0 };
+    }
+
+    if (typeof safeArea === 'object') {
+      return {
+        paddingTop: safeArea.top ?? 0,
+        paddingBottom: safeArea.bottom ?? 0,
+      };
+    }
+
+    // Auto-detect platform-specific safe area using expo-constants
+    // This works reliably on both iOS and Android with edge-to-edge mode
+    const statusBarHeight = Constants.statusBarHeight ?? 0;
+    return { paddingTop: statusBarHeight, paddingBottom: 0 };
+  };
 
   const renderActionButton = (
     action: { icon: ReactNode; onPress: () => void; accessibilityLabel?: string },
@@ -87,9 +117,16 @@ export const AppBarV2: React.FC<AppBarV2Props> = ({
   };
 
   const getAppBarStyle = (): ViewStyle => {
+    const safeAreaPadding = getSafeAreaPadding();
+    
+    // Total height includes the safe area padding + the app bar content height
+    const totalHeight = appBarTokens.height + safeAreaPadding.paddingTop + safeAreaPadding.paddingBottom;
+    
     const baseStyle: ViewStyle = {
-      height: appBarTokens.height,
+      height: totalHeight,
       paddingHorizontal: appBarTokens.paddingHorizontal,
+      paddingTop: safeAreaPadding.paddingTop,
+      paddingBottom: safeAreaPadding.paddingBottom,
       backgroundColor: semantic.colors.background.primary,
     };
 
@@ -152,8 +189,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    // Add safe area for iOS notch if needed
-    ...(Platform.OS === 'ios' ? { paddingTop: 0 } : {}),
   },
   leftActions: {
     flexDirection: 'row',

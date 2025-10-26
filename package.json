@@ -30,6 +30,7 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
+    "expo-constants": ">=16.0.0",
     "react": "^18.0.0",
     "react-native": "^0.76.0"
   },
@@ -40,6 +41,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@react-native/babel-preset": "^0.76.0",
     "@react-native/metro-config": "^0.76.0",
+    "expo-constants": "^18.0.10",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
