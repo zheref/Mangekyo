@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "react-native": "src/index.ts",
   "files": [
     "dist"
   ],
@@ -15,10 +16,13 @@
     "build-storybook": "storybook build",
     "type-check": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
+    "dev": "npm run example",
     "example": "cd example && npm start",
     "example:ios": "cd example && npm run ios",
     "example:android": "cd example && npm run android",
-    "example:web": "cd example && npm run web"
+    "example:web": "cd example && npm run web",
+    "sync": "cp -R src example/lib/",
+    "watch:sync": "chokidar 'src/**/*' -c 'npm run sync'"
   },
   "keywords": [
     "react-native",

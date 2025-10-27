@@ -26,3 +26,6 @@ export type {
   TypographyStyle,
   ShadowDefinition,
 } from './types/tokens';
+
+// Utilities
+export { convertTypographyToTextStyle } from './utils/typography';

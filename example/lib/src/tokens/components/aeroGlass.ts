@@ -96,4 +96,45 @@ export const aeroGlassComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.sm,
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[2],
+      large: spacing[3],
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[6],
+    },
+    typography: {
+      small: { fontFamily: 'Segoe UI, System', fontSize: 12, fontWeight: typography.fontWeights.regular, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      medium: { fontFamily: 'Segoe UI, System', fontSize: 14, fontWeight: typography.fontWeights.regular, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+      large: { fontFamily: 'Segoe UI, System', fontSize: 16, fontWeight: typography.fontWeights.regular, lineHeight: typography.lineHeights.normal, letterSpacing: typography.letterSpacing.normal },
+    },
+    border: {
+      width: 1,
+    },
+    shadow: {
+      small: { shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.08, shadowRadius: 3, elevation: 1 },
+      medium: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.12, shadowRadius: 5, elevation: 2 },
+      large: { shadowColor: '#000', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.16, shadowRadius: 7, elevation: 3 },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: aeroGlassSemanticLight.colors.surface.primary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 2,
+    },
+  },
 };

@@ -200,4 +200,81 @@ export const cupertinoComponentTokens: ComponentTokens = {
     },
     iconSize: 24,
   },
+
+  pill: {
+    borderRadius: borderRadius.xl, // iOS style rounded
+    paddingVertical: {
+      small: spacing[1],
+      medium: spacing[1.5],
+      large: spacing[2],
+    },
+    paddingHorizontal: {
+      small: spacing[3],
+      medium: spacing[4],
+      large: spacing[5],
+    },
+    typography: {
+      small: {
+        fontFamily: 'System',
+        fontSize: 13,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.3,
+        letterSpacing: -0.08,
+      },
+      medium: {
+        fontFamily: 'System',
+        fontSize: 15,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.33,
+        letterSpacing: -0.24,
+      },
+      large: {
+        fontFamily: 'System',
+        fontSize: 17,
+        fontWeight: typography.fontWeights.semibold,
+        lineHeight: 1.29,
+        letterSpacing: -0.41,
+      },
+    },
+    border: {
+      width: 0,
+    },
+    shadow: {
+      small: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.04,
+        shadowRadius: 2,
+        elevation: 1,
+      },
+      medium: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
+        elevation: 2,
+      },
+      large: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.06,
+        shadowRadius: 6,
+        elevation: 3,
+      },
+    },
+  },
+
+  pillBar: {
+    backgroundColor: cupertinoSemanticLight.colors.surface.secondary,
+    paddingVertical: 10,
+    contentPaddingHorizontal: spacing[4],
+    gap: spacing[2],
+    shadow: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.04,
+      shadowRadius: 3,
+      elevation: 1,
+    },
+  },
 };

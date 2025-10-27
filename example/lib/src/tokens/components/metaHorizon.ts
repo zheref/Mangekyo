@@ -242,7 +242,14 @@ export const metaHorizonComponentTokens: ComponentTokens = {
     paddingVertical: 10,
     contentPaddingHorizontal: spacing[4], // 16px
     gap: spacing[2], // 8px
-    // NO shadow for Meta Horizon pill bar - completely flat
+    shadow: {
+      // Meta Horizon: completely flat with absolutely no shadow
+      shadowColor: 'transparent',
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+    },
   },
 };
 
